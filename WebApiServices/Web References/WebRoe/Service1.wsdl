@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SendOrden">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sede" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoAtencion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellidospaterno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellidomaterno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechanacimiento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sexo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DtAnalisis">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="tipodoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nrodoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codtiporoe" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="empresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOrdenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendOrdenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOrdenAnular">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodOrden" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOrdenAnularResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendOrdenAnularResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOrdenAnalisisAnular">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idadmision" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nropeticion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigocomponente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOrdenAnalisisAnularResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendOrdenAnalisisAnularResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendOrdenSoapIn">
+    <wsdl:part name="parameters" element="tns:SendOrden" />
+  </wsdl:message>
+  <wsdl:message name="SendOrdenSoapOut">
+    <wsdl:part name="parameters" element="tns:SendOrdenResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendOrdenAnularSoapIn">
+    <wsdl:part name="parameters" element="tns:SendOrdenAnular" />
+  </wsdl:message>
+  <wsdl:message name="SendOrdenAnularSoapOut">
+    <wsdl:part name="parameters" element="tns:SendOrdenAnularResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendOrdenAnalisisAnularSoapIn">
+    <wsdl:part name="parameters" element="tns:SendOrdenAnalisisAnular" />
+  </wsdl:message>
+  <wsdl:message name="SendOrdenAnalisisAnularSoapOut">
+    <wsdl:part name="parameters" element="tns:SendOrdenAnalisisAnularResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="SendOrden">
+      <wsdl:input message="tns:SendOrdenSoapIn" />
+      <wsdl:output message="tns:SendOrdenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOrdenAnular">
+      <wsdl:input message="tns:SendOrdenAnularSoapIn" />
+      <wsdl:output message="tns:SendOrdenAnularSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOrdenAnalisisAnular">
+      <wsdl:input message="tns:SendOrdenAnalisisAnularSoapIn" />
+      <wsdl:output message="tns:SendOrdenAnalisisAnularSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendOrden">
+      <soap:operation soapAction="http://tempuri.org/SendOrden" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrdenAnular">
+      <soap:operation soapAction="http://tempuri.org/SendOrdenAnular" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrdenAnalisisAnular">
+      <soap:operation soapAction="http://tempuri.org/SendOrdenAnalisisAnular" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendOrden">
+      <soap12:operation soapAction="http://tempuri.org/SendOrden" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrdenAnular">
+      <soap12:operation soapAction="http://tempuri.org/SendOrdenAnular" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrdenAnalisisAnular">
+      <soap12:operation soapAction="http://tempuri.org/SendOrdenAnalisisAnular" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="https://precisa.pe/ServiceReferencia/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+      <soap12:address location="https://precisa.pe/ServiceReferencia/Service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

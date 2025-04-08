@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d90dd0f344504b0c91c6cbf65f50c7d6" Name="Diagram1" >
+        <EntityTypeShape EntityType="PrecisaModel.VW_HomologacionCliente" Width="2" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PrecisaModel.WCO_SedeCompartida" Width="2" PointX="3.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

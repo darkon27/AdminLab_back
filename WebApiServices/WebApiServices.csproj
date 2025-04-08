@@ -1,0 +1,995 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{177FAEAA-B7D4-4C20-BF33-20EA7825B5BB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApiServices</RootNamespace>
+    <AssemblyName>WebApiServices</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44334</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.Engine.13.0.4001\lib\net40\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.ClientDoc.13.0.4001\lib\net40\CrystalDecisions.ReportAppServer.ClientDoc.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommLayer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CommLayer.13.0.4001\lib\net40\CrystalDecisions.ReportAppServer.CommLayer.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CommonControls.13.0.4001\lib\net40\CrystalDecisions.ReportAppServer.CommonControls.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CommonObjectModel.13.0.4001\lib\net40\CrystalDecisions.ReportAppServer.CommonObjectModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.Controllers.13.0.4001\lib\net40\CrystalDecisions.ReportAppServer.Controllers.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CubeDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CubeDefModel.13.0.4001\lib\net40\CrystalDecisions.ReportAppServer.CubeDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.DataDefModel.13.0.4001\lib\net40\CrystalDecisions.ReportAppServer.DataDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.DataSetConversion.13.0.4001\lib\net40\CrystalDecisions.ReportAppServer.DataSetConversion.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ObjectFactory, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.ObjectFactory.13.0.4001\lib\net40\CrystalDecisions.ReportAppServer.ObjectFactory.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Prompting, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.Prompting.13.0.4001\lib\net40\CrystalDecisions.ReportAppServer.Prompting.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.ReportDefModel.13.0.4001\lib\net40\CrystalDecisions.ReportAppServer.ReportDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.XmlSerialize, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.XmlSerialize.13.0.4001\lib\net40\CrystalDecisions.ReportAppServer.XmlSerialize.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportSource.13.0.4001\lib\net40\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.Shared.13.0.4001\lib\net40\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.14.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.14.1\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.14.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.14.1\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.14.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.14.1\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="RoyalSystems.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c5aa3fdd065cb640, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\RoyalSystems.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="RoyalSystems.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f741e964c2c5882d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\RoyalSystems.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="SAPBusinessObjects.WPF.Viewer, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalDecisions.CrystalReports.13.0.25.3158\lib\SAPBusinessObjects.WPF.Viewer.dll</HintPath>
+    </Reference>
+    <Reference Include="SAPBusinessObjects.WPF.ViewerShared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalDecisions.CrystalReports.13.0.25.3158\lib\SAPBusinessObjects.WPF.ViewerShared.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.14.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.14.1\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppService.asmx.cs">
+      <DependentUpon>AppService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="ClassReporte.cs" />
+    <Compile Include="Controllers\AdmisionController.cs" />
+    <Compile Include="Controllers\callisController.cs" />
+    <Compile Include="Controllers\ConsultaController.cs" />
+    <Compile Include="Controllers\FacturacionController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformeController.cs" />
+    <Compile Include="Controllers\MaestroController.cs" />
+    <Compile Include="Controllers\SeguridadController.cs" />
+    <Compile Include="Controllers\TokenGenerator.cs" />
+    <Compile Include="Controllers\TokenValidationHandler.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\WSSannaController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaseDatos.cs" />
+    <Compile Include="Models\DatosResultados.cs" />
+    <Compile Include="Models\Datos\ADDAT_Admision.cs" />
+    <Compile Include="Models\Datos\ADDAT_ClasificadorMovimiento.cs" />
+    <Compile Include="Models\Datos\ADDAT_Cobranza.cs" />
+    <Compile Include="Models\Datos\ADDAT_Compania.cs" />
+    <Compile Include="Models\Datos\ADDAT_CorrelativosMast.cs" />
+    <Compile Include="Models\Datos\ADDAT_EmpleadoMast.cs" />
+    <Compile Include="Models\Datos\ADDAT_Expediente.cs" />
+    <Compile Include="Models\Datos\ADDAT_Facturacion.cs" />
+    <Compile Include="Models\Datos\ADDAT_ListaBase.cs" />
+    <Compile Include="Models\Datos\ADDAT_ModeloServicio.cs" />
+    <Compile Include="Models\Datos\ADDAT_Perfil.cs" />
+    <Compile Include="Models\Datos\ADDAT_PersonaMast.cs" />
+    <Compile Include="Models\Datos\ADDAT_Produccion.cs" />
+    <Compile Include="Models\Datos\ADDAT_Sede.cs" />
+    <Compile Include="Models\Datos\ADDAT_TipoCambio.cs" />
+    <Compile Include="Models\Datos\ADDAT_TipoCambioComercial.cs" />
+    <Compile Include="Models\Datos\ADDAT_TipoOperacion.cs" />
+    <Compile Include="Models\Datos\ADDAT_TipoPaciente.cs" />
+    <Compile Include="Models\Datos\ADDAT_TipoPago.cs" />
+    <Compile Include="Models\Datos\ADDAT_Usuario.cs" />
+    <Compile Include="Models\Datos\CODAT_Componente.cs" />
+    <Compile Include="Models\DAT_Conexion.cs" />
+    <Compile Include="Models\Entidades\ADBE_Admision.cs" />
+    <Compile Include="Models\Entidades\ADBE_AdmisionServicio.cs" />
+    <Compile Include="Models\Entidades\ADBE_ComponentePerfil.cs" />
+    <Compile Include="Models\Entidades\ADBE_ContratoPrecio.cs" />
+    <Compile Include="Models\Entidades\ADBE_EmpleadoMast.cs" />
+    <Compile Include="Models\Entidades\ADBE_PersonaMast.cs" />
+    <Compile Include="Models\Entidades\ADBE_PreAdmision.cs" />
+    <Compile Include="Models\Entidades\ADBE_PruebaReferencia.cs" />
+    <Compile Include="Models\Entidades\ADBE_PruebaReferenciaDetalle.cs" />
+    <Compile Include="Models\Entidades\ADBE_Referencia.cs" />
+    <Compile Include="Models\Entidades\ADBE_ReferenciaComponente.cs" />
+    <Compile Include="Models\Entidades\ADBE_ReferenciaDetalle.cs" />
+    <Compile Include="Models\Entidades\ADBE_Resumenes.cs" />
+    <Compile Include="Models\Entidades\ADBE_Sede.cs" />
+    <Compile Include="Models\Entidades\ADBE_TipoOperacion.cs" />
+    <Compile Include="Models\Entidades\ADBE_Unegocio.cs" />
+    <Compile Include="Models\Entidades\ADDAT_CorreoNegocio.cs" />
+    <Compile Include="Models\Entidades\CABE_Transaccion.cs" />
+    <Compile Include="Models\Entidades\ADBE_WServicioLog.cs" />
+    <Compile Include="Models\Entidades\COBE_Componente.cs" />
+    <Compile Include="Models\Entidades\COBE_OrdenAtencionDetalle.cs" />
+    <Compile Include="Models\Entidades\rptView_AdmisionServicioConstancia.cs" />
+    <Compile Include="Models\Entidades\WCO_PreAdmision.cs" />
+    <Compile Include="Models\Metodos.cs" />
+    <Compile Include="Models\ModelPrecisa.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelPrecisa.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelPrecisa.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelPrecisa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelPrecisa.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Request\Admision.cs" />
+    <Compile Include="Models\Request\AnulacionPreAdmision.cs" />
+    <Compile Include="Models\Request\file.cs" />
+    <Compile Include="Models\Request\Global.cs" />
+    <Compile Include="Models\Request\ImpresionRequest.cs" />
+    <Compile Include="Models\Request\InformeRequest.cs" />
+    <Compile Include="Models\Request\Login.cs" />
+    <Compile Include="Models\Request\Perfil.cs" />
+    <Compile Include="Models\Request\RegistroPreAdmision.cs" />
+    <Compile Include="Models\Request\RequestAdmision.cs" />
+    <Compile Include="Models\Request\RequestAtencion.cs" />
+    <Compile Include="Models\Request\RequestCorreo.cs" />
+    <Compile Include="Models\Request\SoaAdmision.cs" />
+    <Compile Include="Models\Request\ViewAdmision.cs" />
+    <Compile Include="Models\Request\ViewConsultaOA.cs" />
+    <Compile Include="Models\Request\ViewModalDetalle.cs" />
+    <Compile Include="Models\Request\ViewModalExite.cs" />
+    <Compile Include="Models\Request\ViewModalReporte.cs" />
+    <Compile Include="Models\Request\ViewModel.cs" />
+    <Compile Include="Models\Request\ViewTransaccion.cs" />
+    <Compile Include="Models\Response\Response.cs" />
+    <Compile Include="Models\Response\RestConsultaOA.cs" />
+    <Compile Include="Models\Sp_PDP_validacion_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UT_Kerberos.cs" />
+    <Compile Include="Models\VW_HomologacionCliente.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_AccesoUsuario_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_BUSCARPERSONAUSUARIO_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ExportarCobranzaDetalle_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ExportarCobranza_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ExportarComprobanteCobranza_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ExportarComprobanteDetalle_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ExportarComprobante_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarAdmisionReferencia_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarAdmisionServicioConstanciaDetalle_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarAdmisionServicioConstancia_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarAdmisionServicioDetalle_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarAdmisionServicioImpresion_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarAdmisionServicioReporte_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarAdmisionServicio_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarAprobadores_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarAseguradora_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_LISTARASIGNARPERFILPAG_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarAutorizacionBeneficiario_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarBanco_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarBase_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarClasiComponente_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarClasificadorMovimiento_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarCobranzaDetalleId_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarCobranza_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarComboPerfil_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarCompaniaMast_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarComponenteMaestro_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarComponenteMuestra_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarComponentePerfil_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarComponentesdeListaB_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarComponente_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarComprobanteDetalleId_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarComprobanteFormaPago_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarComprobanteId_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarConfiguracionCorreo_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarCorrelativosMast_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarCorreoNegocioDetalle_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarCorreoNegocio_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarCostCenterMst_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarCuentaBancaria_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarEmpleados_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarEspecialidad_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarExpedienteDetalle_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarExpedienteParticulares_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarExpediente_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarHomologacionCliente_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarHomologacionPreAdmision_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarHomologacion_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarListaBase_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarMedico_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarMenuOpcionesPerfil_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarModeloServicio_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarModServDetalle_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarMonedaMast_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarMuestra_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarParametro_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_LISTARPERFILPAG_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarPeriodoEmision_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarPersonasGeneral_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarPortal_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarPreCarga_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarProduccionGeneral_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarProduccion_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarSedeCliente_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarSedeCompartida_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarSedePrinter_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarSedeSucursalNegocio_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarSedeSucursal_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarSede_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarSerie_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarSucursalCompSerie_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarSucursal_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTablaMaestroDetalle_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTablasMaestras_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTipoCambioComercial_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTipoCambioMo_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTipoCambio_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTipodeAdmision_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTipoOperacionClienteSede_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTipoOperacionClienteTipoPaciente_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTipoOperacionCliente_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTipoOperacion_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTipoPaciente_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTipoPago_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTipoTrabajador_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarTMAestroDetalles_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarUbigeo_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarUsuarioSede_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarUsuarioWeb_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarUsuario_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_PerfilPaginasOpciones_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_PerfilPaginas_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_SedeCompartida.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_TraerIDPersonaxCorreo_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_TraerTipoOperacionxCodigo_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_TraerTipoOperacionxId_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_TRAERUSUARIOXCODIGO_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_TraerXAdmisionServicio_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_TraerXCodigoPersonaId_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_TraerXIdSede_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_UnificarAtencionPaciente_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte\Crystal1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Crystal1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporte\Rpt_Constancia.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Constancia.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporte\Rpt_ConstanciaZivot.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_ConstanciaZivot.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SoaService.asmx.cs">
+      <DependentUpon>SoaService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Web References\WebRoe\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WebSanna\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WsReporte\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WsSannaLab\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WsSeguridad\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppService.asmx" />
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\ModelPrecisa.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelPrecisa.edmx</DependentUpon>
+      <LastGenOutput>ModelPrecisa.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelPrecisa.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelPrecisa.edmx</DependentUpon>
+      <LastGenOutput>ModelPrecisa.cs</LastGenOutput>
+    </Content>
+    <Content Include="Reporte\ReporteConstancia.xml" />
+    <Content Include="Reporte\Zivot.xml" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Controllers\BarraCodigo\Instructivo.pdf" />
+    <EntityDeploy Include="Models\ModelPrecisa.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelPrecisa.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelPrecisa.edmx.diagram">
+      <DependentUpon>ModelPrecisa.edmx</DependentUpon>
+    </Content>
+    <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="SoaService.asmx" />
+    <Content Include="Web References\WebRoe\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\WebRoe\Service1.disco" />
+    <None Include="Web References\WebSanna\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WebSanna\SoaService.disco" />
+    <None Include="Web References\WsReporte\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WsReporte\WServiceReporte.disco" />
+    <None Include="Web References\WsSannaLab\AppService.disco" />
+    <Content Include="Web References\WsSeguridad\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\WebRoe\Service1.wsdl" />
+    <None Include="Web References\WebSanna\SoaService.wsdl" />
+    <None Include="Web References\WsReporte\WServiceReporte.wsdl" />
+    <None Include="Web References\WsSannaLab\AppService.wsdl" />
+    <Content Include="Web References\WsSannaLab\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\WsSeguridad\SoaService.disco" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="SpringWeb.config" />
+    <None Include="Web References\WsSeguridad\SoaService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Reporte\pdf\" />
+    <Folder Include="Views\Facturacion\" />
+    <Folder Include="Views\WSSanna\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://143.137.145.236/ServicesClinica/AppService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WsSannaLab\</RelPath>
+      <UpdateFromURL>http://143.137.145.236/ServicesClinica/AppService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WebApiServices_WsSannaLab_AppService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://143.137.145.236/WsSeguridad/SoaService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WsSeguridad\</RelPath>
+      <UpdateFromURL>http://143.137.145.236/WsSeguridad/SoaService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WebApiServices_WsSeguridad_SoaService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:14064/WServiceReporte.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WsReporte\</RelPath>
+      <UpdateFromURL>http://localhost:14064/WServiceReporte.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WebApiServices_WsReporte_WServiceReporte</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://precisa.pe/ServiceReferencia/Service1.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WebRoe\</RelPath>
+      <UpdateFromURL>https://precisa.pe/ServiceReferencia/Service1.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WebApiServices_WebRoe_Service1</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://precisa.pe/ServiceReferencia/Service1.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WebSanna\</RelPath>
+      <UpdateFromURL>https://precisa.pe/ServiceReferencia/Service1.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WebApiServices_WebSanna_SoaService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reporte\Crystal1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Crystal1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\Rpt_Constancia.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Constancia.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\Rpt_ConstanciaZivot.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_ConstanciaZivot.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49967</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44334/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

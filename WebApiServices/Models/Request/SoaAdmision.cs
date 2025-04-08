@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace WebApiServices.Models.Request
+{
+    public partial class SoaAdmision
+    {
+        public int IdAdmision { get; set; }
+        public Nullable<int> UneuNegocioId { get; set; }
+        public Nullable<int> TipoOperacionId { get; set; }
+        public Nullable<int> Persona { get; set; }
+        public Nullable<System.DateTime> FechaAdmision { get; set; }
+        public string HistoriaClinica { get; set; }
+        public string NroPeticion { get; set; }
+        public string OrdenAtencion { get; set; }
+        public Nullable<int> MedicoId { get; set; }
+        public Nullable<int> IdSede { get; set; }
+        public string MedicoDescripcion { get; set; }
+        public Nullable<int> IdEmpresaPaciente { get; set; }
+        public Nullable<int> IdAseguradora { get; set; }
+        public string TipoOrden { get; set; }
+        public string Cama { get; set; }
+        public Nullable<int> Grupo { get; set; }
+        public Nullable<int> IdSedeEmpresa { get; set; }
+        public Nullable<decimal> CoaSeguro { get; set; }
+        public Nullable<System.DateTime> FechaLimite { get; set; }
+        public string ClasificadorMovimiento { get; set; }
+        public Nullable<int> IdAprobador { get; set; }
+        public string OrdenSinapa { get; set; }
+        public Nullable<decimal> ValorDescuento { get; set; }
+        public Nullable<int> FlatSeguro { get; set; }
+        public Nullable<int> FlatCoaSeguro { get; set; }
+        public Nullable<int> FlatMovilidad { get; set; }
+        public Nullable<decimal> Afecto { get; set; }
+        public Nullable<decimal> Igv { get; set; }
+        public Nullable<decimal> Total { get; set; }
+        public Nullable<decimal> Anticipo { get; set; }
+        public Nullable<decimal> Saldo { get; set; }
+        public Nullable<decimal> Redondeo { get; set; }
+        public Nullable<int> TipoPaciente { get; set; }
+        public Nullable<int> IdEspecialidad { get; set; }
+        public Nullable<int> Especialidad { get; set; }
+        public string DesEspecialidad { get; set; }
+        public Nullable<int> TipoOrdenAtencion { get; set; }
+        public Nullable<int> IdContrato { get; set; }
+        public Nullable<int> IdPoliza { get; set; }
+        public Nullable<int> IdPlan { get; set; }
+        public string ObservacionAlta { get; set; }
+        public Nullable<int> TipoAtencion { get; set; }
+        public string DesEstado { get; set; }
+        public Nullable<int> TIPOADMISIONID { get; set; }
+        public Nullable<int> FlatAprobacion { get; set; }
+        public Nullable<int> Estado { get; set; }
+        public Nullable<System.DateTime> FechaCreacion { get; set; }
+        public Nullable<System.DateTime> FechaModificacion { get; set; }
+        public string UsuarioCreacion { get; set; }
+        public string UsuarioModificacion { get; set; }
+        public string IpCreacion { get; set; }
+        public string IpModificacion { get; set; }
+        public virtual List<WCO_ListarAdmisionServicioDetalle_Result> list_AdmisionServicio { get; set; }
+
+    }
+}

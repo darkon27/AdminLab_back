@@ -1,0 +1,986 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrecisaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="WCO_UsuarioWeb">
+    <Key>
+      <PropertyRef Name="UserNameWeb" />
+      <PropertyRef Name="tipoUserWeb" />
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="ClasificadorMovimiento" />
+    </Key>
+    <Property Name="UserNameWeb" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="PasswordWeb" Type="char" MaxLength="40" />
+    <Property Name="userHash" Type="char" MaxLength="50" />
+    <Property Name="estadoActualizacion" Type="char" MaxLength="1" />
+    <Property Name="tipoUserWeb" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="fec_registro" Type="datetime" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClasificadorMovimiento" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VW_HomologacionCliente">
+    <Key>
+      <PropertyRef Name="IdEmpresa" />
+      <PropertyRef Name="Documento" />
+      <PropertyRef Name="TipoDocumento" />
+    </Key>
+    <Property Name="CodigoHomologado" Type="varchar" MaxLength="25" />
+    <Property Name="NombreCompleto" Type="varchar" MaxLength="100" />
+    <Property Name="IdEmpresa" Type="int" Nullable="false" />
+    <Property Name="Documento" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="CodigoComponente" Type="varchar" MaxLength="25" />
+    <Property Name="TipoDocumento" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <Function Name="Sp_PDP_validacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="documento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_AccesoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USUARIO" Type="varchar" Mode="In" />
+    <Parameter Name="PASSWORD" Type="varchar" Mode="In" />
+    <Parameter Name="SEDE" Type="int" Mode="In" />
+    <Parameter Name="IDPERSONA" Type="int" Mode="In" />
+    <Parameter Name="TDOCUMENTO" Type="varchar" Mode="In" />
+    <Parameter Name="EXPERIRARPASSWORDFLAG" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_AnulacionPreAdmision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmpresaProveedor" Type="varchar" Mode="In" />
+    <Parameter Name="Acceso" Type="varchar" Mode="In" />
+    <Parameter Name="IdOrdenAtencion" Type="int" Mode="In" />
+    <Parameter Name="Linea" Type="int" Mode="In" />
+    <Parameter Name="Mensaje" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="IdPreAdmision" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_BUSCARPERSONAUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NOMBRECOMPLETO" Type="varchar" Mode="In" />
+    <Parameter Name="TipoDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+    <Parameter Name="tipopersona" Type="varchar" Mode="In" />
+    <Parameter Name="SoloBeneficiarios" Type="int" Mode="In" />
+    <Parameter Name="idEmpresaEmpleadora" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_InsertarPreAdmision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPreAdmision" Type="int" Mode="In" />
+    <Parameter Name="FechaProgramacion" Type="datetime" Mode="In" />
+    <Parameter Name="TipoOperacionId" Type="int" Mode="In" />
+    <Parameter Name="Cliente" Type="varchar" Mode="In" />
+    <Parameter Name="Acceso" Type="varchar" Mode="In" />
+    <Parameter Name="Servicio" Type="varchar" Mode="In" />
+    <Parameter Name="Sucursal" Type="varchar" Mode="In" />
+    <Parameter Name="CodigoHC" Type="varchar" Mode="In" />
+    <Parameter Name="CodigoOA" Type="varchar" Mode="In" />
+    <Parameter Name="TipoAtencion" Type="varchar" Mode="In" />
+    <Parameter Name="TipoOrden" Type="varchar" Mode="In" />
+    <Parameter Name="Numerocama" Type="varchar" Mode="In" />
+    <Parameter Name="PacienteNombres" Type="varchar" Mode="In" />
+    <Parameter Name="PacienteAPPaterno" Type="varchar" Mode="In" />
+    <Parameter Name="PacienteAPMaterno" Type="varchar" Mode="In" />
+    <Parameter Name="FechaNacimiento" Type="datetime" Mode="In" />
+    <Parameter Name="Sexo" Type="varchar" Mode="In" />
+    <Parameter Name="TipoDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+    <Parameter Name="Especialidad_Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="IdOrdenAtencion" Type="int" Mode="In" />
+    <Parameter Name="Linea" Type="int" Mode="In" />
+    <Parameter Name="Componente" Type="varchar" Mode="In" />
+    <Parameter Name="ComponenteNombre" Type="varchar" Mode="In" />
+    <Parameter Name="CantidadSolicitada" Type="int" Mode="In" />
+    <Parameter Name="MedicoNombres" Type="varchar" Mode="In" />
+    <Parameter Name="MedicoAPPaterno" Type="varchar" Mode="In" />
+    <Parameter Name="MedicoAPMaterno" Type="varchar" Mode="In" />
+    <Parameter Name="CMP" Type="varchar" Mode="In" />
+    <Parameter Name="Aseguradora_RUC" Type="varchar" Mode="In" />
+    <Parameter Name="Aseguradora_Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Empleadora_RUC" Type="varchar" Mode="In" />
+    <Parameter Name="Empleadora_Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="FechaLimiteAtencion" Type="datetime" Mode="In" />
+    <Parameter Name="PacienteTelefono" Type="varchar" Mode="In" />
+    <Parameter Name="Pacienteemail" Type="varchar" Mode="In" />
+    <Parameter Name="Observacion" Type="varchar" Mode="In" />
+    <Parameter Name="NroLote" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="IpCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListaBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="wco_ListaClasificadorMovimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodigoTabla" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAccionDocumento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodigoDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionCarga" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
+    <Parameter Name="NumeroDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="TipoOperacionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionControl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAdmisionControl" Type="int" Mode="In" />
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+    <Parameter Name="IdAprobador" Type="int" Mode="In" />
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="TipoAdmisionId" Type="int" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="TipoPacienteId" Type="int" Mode="In" />
+    <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
+    <Parameter Name="OrdenAtencion" Type="varchar" Mode="In" />
+    <Parameter Name="HistoriaClinica" Type="varchar" Mode="In" />
+    <Parameter Name="IdPersona" Type="int" Mode="In" />
+    <Parameter Name="FechaIni" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFin" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionExistente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPersona" Type="int" Mode="In" />
+    <Parameter Name="OrdenAtencion" Type="varchar" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionExportar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="TipoOperacionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionProduccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TipoAdmisionId" Type="int" Mode="In" />
+    <Parameter Name="ClienteId" Type="int" Mode="In" />
+    <Parameter Name="TipoPacienteId" Type="int" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="TipoAtencionId" Type="int" Mode="In" />
+    <Parameter Name="AseguradoraId" Type="int" Mode="In" />
+    <Parameter Name="EmpresaId" Type="int" Mode="In" />
+    <Parameter Name="PacienteId" Type="int" Mode="In" />
+    <Parameter Name="TipoOperacionId" Type="int" Mode="In" />
+    <Parameter Name="IdClasificacion" Type="int" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+    <Parameter Name="NombreComponente" Type="varchar" Mode="In" />
+    <Parameter Name="pFecha1" Type="datetime" Mode="In" />
+    <Parameter Name="pFecha2" Type="datetime" Mode="In" />
+    <Parameter Name="ClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="Periodo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionReferencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionReferenciaGrupo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionRoe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+    <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pFechaFin" Type="datetime" Mode="In" />
+    <Parameter Name="pFechaIni" Type="datetime" Mode="In" />
+    <Parameter Name="pNroPeticion" Type="varchar" Mode="In" />
+    <Parameter Name="pTipoAdmision" Type="int" Mode="In" />
+    <Parameter Name="pHistoriaClinica" Type="varchar" Mode="In" />
+    <Parameter Name="pEstado" Type="int" Mode="In" />
+    <Parameter Name="Persona" Type="int" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="OrdenAtencion" Type="varchar" Mode="In" />
+    <Parameter Name="IdClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="FlatCoaSeguro" Type="int" Mode="In" />
+    <Parameter Name="FlatMovilidad" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionServicioArchivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionServicioConstancia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pIdAdmision" Type="int" Mode="In" />
+    <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionServicioDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pIdAdmision" Type="int" Mode="In" />
+    <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionServicioDetalleId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pIdAdmision" Type="int" Mode="In" />
+    <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAdmisionServicioImpresion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pIdAdmision" Type="int" Mode="In" />
+    <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAprobadores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAprobador" Type="int" Mode="In" />
+    <Parameter Name="TipoDescuento" Type="int" Mode="In" />
+    <Parameter Name="IdUsuario" Type="char" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarArqueo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NumeroArqueo" Type="varchar" Mode="In" />
+    <Parameter Name="FechaIngreso" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAseguradora" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="IdAseguradora" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_LISTARASIGNARPERFILPAG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="perfil" Type="varchar" Mode="In" />
+    <Parameter Name="usuario" Type="varchar" Mode="In" />
+    <Parameter Name="nombrecompleto" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarAutorizacionBeneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFin" Type="datetime" Mode="In" />
+    <Parameter Name="IdTitularAutorizado" Type="int" Mode="In" />
+    <Parameter Name="IdPaciente" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarBanco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Banco" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WCO_ListarCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCaja" Type="int" Mode="In" />
+    <Parameter Name="Codigo" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="HostName" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarCajeros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WCO_ListarCargaDuplicada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaNacimiento" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarClasiComponente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdClasificacion" Type="int" Mode="In" />
+    <Parameter Name="IdClasificacionPadre" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="TipoOperacionID" Type="int" Mode="In" />
+    <Parameter Name="ModeloServicioId" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarClasificadorMovimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="Compania" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarCobranza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCobranza" Type="int" Mode="In" />
+    <Parameter Name="IdComprobante" Type="int" Mode="In" />
+    <Parameter Name="NumeroComprobante" Type="varchar" Mode="In" />
+    <Parameter Name="TipoComprobante" Type="varchar" Mode="In" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFinal" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="Serie" Type="varchar" Mode="In" />
+    <Parameter Name="IdPersona" Type="int" Mode="In" />
+    <Parameter Name="Sucursal" Type="varchar" Mode="In" />
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+    <Parameter Name="IdClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="Cajero" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarCobranzaDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCobranza" Type="int" Mode="In" />
+    <Parameter Name="IdComprobante" Type="int" Mode="In" />
+    <Parameter Name="NumeroComprobante" Type="varchar" Mode="In" />
+    <Parameter Name="TipoComprobante" Type="varchar" Mode="In" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFinal" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="Serie" Type="varchar" Mode="In" />
+    <Parameter Name="IdPersona" Type="int" Mode="In" />
+    <Parameter Name="Sucursal" Type="varchar" Mode="In" />
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+    <Parameter Name="IdClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="IdExpediente" Type="int" Mode="In" />
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComboPerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WCO_ListarCompaniaMast" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="DescripcionCorta" Type="varchar" Mode="In" />
+    <Parameter Name="DocumentoFiscal" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="char" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarCompGrupCaracteristica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdGrupoComponente" Type="int" Mode="In" />
+    <Parameter Name="IdGrupoComponentePadre" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComponente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdClasificacion" Type="int" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="ModeloServicioId" Type="int" Mode="In" />
+    <Parameter Name="TipoOperacionID" Type="int" Mode="In" />
+    <Parameter Name="TipoPacienteId" Type="int" Mode="In" />
+    <Parameter Name="ClasificadorMovimiento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComponenteAdelanto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdClasificacion" Type="int" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="ClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="IdGrupoCaracteristica" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComponenteMaestro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdClasificacion" Type="int" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="ClasificadorMovimiento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComponenteMuestra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+    <Parameter Name="IdMuestra" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Abreviatura" Type="varchar" Mode="In" />
+    <Parameter Name="Cantidad" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComponentePerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+    <Parameter Name="CodigoHomologado" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComponentesdeListaB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idlista" Type="int" Mode="In" />
+    <Parameter Name="Codigo" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+    <Parameter Name="IdClasificacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdTransaccion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobanteAdmision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+    <Parameter Name="IdComprobante" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobanteAdmisionId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdComprobante" Type="int" Mode="In" />
+    <Parameter Name="IdExpediente" Type="int" Mode="In" />
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobanteAgrupado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PeriodoEmision" Type="int" Mode="In" />
+    <Parameter Name="FechaPago" Type="datetime" Mode="In" />
+    <Parameter Name="NumeroDeposito" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobanteAgrupadoDiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobanteAsociado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdComprobante" Type="int" Mode="In" />
+    <Parameter Name="IdExpediente" Type="int" Mode="In" />
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobanteDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdComprobante" Type="int" Mode="In" />
+    <Parameter Name="IdLinea" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobanteDetalleAdmision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdComprobante" Type="int" Mode="In" />
+    <Parameter Name="IdLinea" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobanteDiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobanteExpedienteDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdExpediente" Type="int" Mode="In" />
+    <Parameter Name="IdSecuencia" Type="int" Mode="In" />
+    <Parameter Name="IdComprobante" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="Periodo" Type="varchar" Mode="In" />
+    <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobanteFormaPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdComprobante" Type="int" Mode="In" />
+    <Parameter Name="IdLinea" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobanteId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="IdComprobante" Type="int" Mode="In" />
+    <Parameter Name="NumeroComprobante" Type="varchar" Mode="In" />
+    <Parameter Name="TipoComprobante" Type="varchar" Mode="In" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFinal" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="Serie" Type="varchar" Mode="In" />
+    <Parameter Name="IdPersona" Type="int" Mode="In" />
+    <Parameter Name="Sucursal" Type="varchar" Mode="In" />
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+    <Parameter Name="IdClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="ConceptoFacturacion" Type="int" Mode="In" />
+    <Parameter Name="EstadoSunatElectronico" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarComprobanteReporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="IdComprobante" Type="int" Mode="In" />
+    <Parameter Name="NumeroComprobante" Type="varchar" Mode="In" />
+    <Parameter Name="TipoComprobante" Type="varchar" Mode="In" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFinal" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="Serie" Type="varchar" Mode="In" />
+    <Parameter Name="IdPersona" Type="int" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+    <Parameter Name="IdClasificadorMovimiento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarConfiguracionCorreo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="ParametroClave" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarContratoPlanBeneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPolizaPlan" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarCorrelativosMast" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="TipoComprobante" Type="varchar" Mode="In" />
+    <Parameter Name="Serie" Type="varchar" Mode="In" />
+    <Parameter Name="SedCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarCorreoNegocio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="IdCorreo" Type="int" Mode="In" />
+    <Parameter Name="Correo" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarCorreoNegocioDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCorreo" Type="int" Mode="In" />
+    <Parameter Name="IdCorreoDet" Type="int" Mode="In" />
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarCostCenterMst" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CostCenter" Type="char" Mode="In" />
+    <Parameter Name="LocalName" Type="char" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarCuentaBancaria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CuentaBancaria" Type="varchar" Mode="In" />
+    <Parameter Name="Banco" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarDetalleAsociado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdTablaMaestro" Type="int" Mode="In" />
+    <Parameter Name="IdCodigo" Type="int" Mode="In" />
+    <Parameter Name="Secuencial" Type="int" Mode="In" />
+    <Parameter Name="Codigo" Type="varchar" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="tipoTrabajador" Type="varchar" Mode="In" />
+    <Parameter Name="estado" Type="char" Mode="In" />
+    <Parameter Name="Idempleado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarEspecialidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdEspecialidad" Type="int" Mode="In" />
+    <Parameter Name="Codigo" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarEstadoAprobacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdSecuencial" Type="int" Mode="In" />
+    <Parameter Name="EstadoDocumento" Type="int" Mode="In" />
+    <Parameter Name="IdUsuario" Type="char" Mode="In" />
+    <Parameter Name="CodigoTabla" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarExamenInsumo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdExamen" Type="int" Mode="In" />
+    <Parameter Name="IdInsumo" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarExamenPatologico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdExamen" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarExpediente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="IdExpediente" Type="int" Mode="In" />
+    <Parameter Name="CodigoExpediente" Type="varchar" Mode="In" />
+    <Parameter Name="ClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="IdTipoExpediente" Type="int" Mode="In" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFinal" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="TipoAdmisionId" Type="int" Mode="In" />
+    <Parameter Name="IdCliente" Type="int" Mode="In" />
+    <Parameter Name="IdContrato" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarExpedienteDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdExpediente" Type="int" Mode="In" />
+    <Parameter Name="IdSecuencia" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="Periodo" Type="varchar" Mode="In" />
+    <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarExpedienteDetalleAgrupado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdExpediente" Type="int" Mode="In" />
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarExpedienteDetalleReporte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdExpediente" Type="int" Mode="In" />
+    <Parameter Name="IdSecuencia" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="Periodo" Type="varchar" Mode="In" />
+    <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarExpedienteParticulares" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="IdExpediente" Type="int" Mode="In" />
+    <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
+    <Parameter Name="ClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="IdTipoExpediente" Type="int" Mode="In" />
+    <Parameter Name="IdTipoAdmision" Type="int" Mode="In" />
+    <Parameter Name="Persona" Type="int" Mode="In" />
+    <Parameter Name="OrdenAtencion" Type="varchar" Mode="In" />
+    <Parameter Name="HistoriaClinica" Type="varchar" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFinal" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="EstadoAdmsion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarHomologacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+    <Parameter Name="CodigoHomologado" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarHomologacionCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPersona" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarHomologacionPreAdmision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+    <Parameter Name="CodigoHomologado" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarInsumo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdInsumo" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarListaBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarMedico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="TipoDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+    <Parameter Name="CMP" Type="varchar" Mode="In" />
+    <Parameter Name="MedicoId" Type="int" Mode="In" />
+    <Parameter Name="IdEspecialidad" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarMenuOpciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="APLICACIONCODIGO" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarMenuOpcionesPerfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PERFIL" Type="varchar" Mode="In" />
+    <Parameter Name="APLICACIONCODIGO" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarModeloServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="ModeloServicioId" Type="int" Mode="In" />
+    <Parameter Name="MosDescripcion" Type="varchar" Mode="In" />
+    <Parameter Name="MosEstado" Type="int" Mode="In" />
+    <Parameter Name="TipoOperacionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarModServDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="ModeloServicioId" Type="int" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+    <Parameter Name="TipoOperacionID" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarMonedaMast" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Estado" Type="char" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarMuestra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="IdMuestra" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarParametro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="AplicacionCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="ParametroClave" Type="varchar" Mode="In" />
+    <Parameter Name="DescripcionParametro" Type="varchar" Mode="In" />
+    <Parameter Name="TipodeDatoFlag" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarPcPrinter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPc" Type="int" Mode="In" />
+    <Parameter Name="IdPrinter" Type="int" Mode="In" />
+    <Parameter Name="Ip" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_LISTARPERFILPAG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="estado" Type="varchar" Mode="In" />
+    <Parameter Name="perfil" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarPeriodoEmision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarPeriodosPrograma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Periodo" Type="varchar" Mode="In" />
+    <Parameter Name="Programa" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFin" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarPersonas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="tipoperso" Type="varchar" Mode="In" />
+    <Parameter Name="estado" Type="char" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarPersonasGeneral" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NOMBRECOMPLETO" Type="varchar" Mode="In" />
+    <Parameter Name="TipoDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+    <Parameter Name="TipoPersona" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarPersonasJava" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pPersona" Type="int" Mode="In" />
+    <Parameter Name="pNombres" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_LISTARPERSONAUSUMASIVO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PERSONA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarPortal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPortal" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarPreCarga" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="al_Servicio" Type="varchar" Mode="In" />
+    <Parameter Name="al_Sucursal" Type="varchar" Mode="In" />
+    <Parameter Name="al_CodigoOA" Type="varchar" Mode="In" />
+    <Parameter Name="al_Linea" Type="int" Mode="In" />
+    <Parameter Name="al_NombreCompleto" Type="varchar" Mode="In" />
+    <Parameter Name="al_Documento" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarPrinterCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="IdAdmision" Type="int" Mode="In" />
+    <Parameter Name="IpHomologado" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarProcesoCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fecha" Type="datetime" Mode="In" />
+    <Parameter Name="IdCaja" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="Cajero" Type="int" Mode="In" />
+    <Parameter Name="Sucursal" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarProcesoCajaDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdProcesoCaja" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarProduccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TipoAdmisionId" Type="int" Mode="In" />
+    <Parameter Name="ClienteId" Type="int" Mode="In" />
+    <Parameter Name="TipoPacienteId" Type="int" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="TipoAtencionId" Type="int" Mode="In" />
+    <Parameter Name="AseguradoraId" Type="int" Mode="In" />
+    <Parameter Name="EmpresaId" Type="int" Mode="In" />
+    <Parameter Name="PacienteId" Type="int" Mode="In" />
+    <Parameter Name="TipoOperacionId" Type="int" Mode="In" />
+    <Parameter Name="IdClasificacion" Type="int" Mode="In" />
+    <Parameter Name="CodigoComponente" Type="varchar" Mode="In" />
+    <Parameter Name="NombreComponente" Type="varchar" Mode="In" />
+    <Parameter Name="pFecha1" Type="datetime" Mode="In" />
+    <Parameter Name="pFecha2" Type="datetime" Mode="In" />
+    <Parameter Name="ClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="Periodo" Type="varchar" Mode="In" />
+    <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarProduccionGeneral" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="Periodo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarResumen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdResumen" Type="int" Mode="In" />
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="TipoResumen" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="FechaIni" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFin" Type="datetime" Mode="In" />
+    <Parameter Name="CodigoRespuesta" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarResumenDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdSecuencia" Type="int" Mode="In" />
+    <Parameter Name="IdResumen" Type="int" Mode="In" />
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="TipoResumen" Type="int" Mode="In" />
+    <Parameter Name="FechaIni" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFin" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarResumenEnvioTCI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdResumen" Type="int" Mode="In" />
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarSede" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DescripcionLocal" Type="varchar" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarSedeCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+    <Parameter Name="IdSedeCliente" Type="int" Mode="In" />
+    <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
+    <Parameter Name="SedCodigo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarSedePrinter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPrinter" Type="int" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="Ip" Type="varchar" Mode="In" />
+    <Parameter Name="Shared_Name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarSedeSucursal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="Sucursal" Type="varchar" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarSedeSucursalNegocio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="Sucursal" Type="varchar" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="TipoComprobante" Type="varchar" Mode="In" />
+    <Parameter Name="Serie" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarSerie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Compania" Type="varchar" Mode="In" />
+    <Parameter Name="TipoComprobante" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarSinapa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pIdAdmision" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarSucursal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DescripcionLocal" Type="varchar" Mode="In" />
+    <Parameter Name="Sucursal" Type="varchar" Mode="In" />
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarSucursalCompSerie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClasificadorMovimiento" Type="varchar" Mode="In" />
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="Sucursal" Type="varchar" Mode="In" />
+    <Parameter Name="TipoComprobante" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarSucursalSerie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompaniaCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="TipoComprobante" Type="varchar" Mode="In" />
+    <Parameter Name="Serie" Type="varchar" Mode="In" />
+    <Parameter Name="Sucursal" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTablaMaestroDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodigoTabla" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTablasMaestras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Idtabla" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+    <Parameter Name="Codigo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTipoCambio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WCO_ListarTipoCambioComercial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdTipoCambio" Type="int" Mode="In" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFin" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="char" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTipoCambioMo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PFechacambio" Type="datetime" Mode="In" />
+    <Parameter Name="PFechainicial" Type="date" Mode="In" />
+    <Parameter Name="PFechaFinal" Type="date" Mode="In" />
+    <Parameter Name="PEstado" Type="char" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTipodeAdmision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AdmCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="AdmDescripcion" Type="varchar" Mode="In" />
+    <Parameter Name="AdmEstado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTipoOperacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="TipoOperacionId" Type="int" Mode="In" />
+    <Parameter Name="Persona" Type="int" Mode="In" />
+    <Parameter Name="TipoAdmisionId" Type="int" Mode="In" />
+    <Parameter Name="TipEstado" Type="int" Mode="In" />
+    <Parameter Name="TipoPacienteId" Type="int" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="IdSedeCliente" Type="int" Mode="In" />
+    <Parameter Name="SedCodigo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTipoOperacionCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="Persona" Type="int" Mode="In" />
+    <Parameter Name="TipoAdmisionId" Type="int" Mode="In" />
+    <Parameter Name="TipEstado" Type="int" Mode="In" />
+    <Parameter Name="Cliente" Type="varchar" Mode="In" />
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="SedCodigo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTipoOperacionClienteSede" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="Persona" Type="int" Mode="In" />
+    <Parameter Name="TipoAdmisionId" Type="int" Mode="In" />
+    <Parameter Name="TipEstado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTipoOperacionClienteTipoPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="Persona" Type="int" Mode="In" />
+    <Parameter Name="TipoAdmisionId" Type="int" Mode="In" />
+    <Parameter Name="TipEstado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTipoOperacionPrecio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TipoOperacionID" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTipoPaciente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TipoPacienteId" Type="int" Mode="In" />
+    <Parameter Name="TipoAdmisionId" Type="int" Mode="In" />
+    <Parameter Name="Codigo" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTipoPago" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="IdCodigo" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="Visible" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTipoTrabajador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pTipoTrabajador" Type="char" Mode="In" />
+    <Parameter Name="pDescripcion" Type="varchar" Mode="In" />
+    <Parameter Name="pEstado" Type="char" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarTMAestroDetalles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idtablamaestro" Type="int" Mode="In" />
+    <Parameter Name="idcodigo" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarUbigeo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pUbigeo" Type="varchar" Mode="In" />
+    <Parameter Name="NUM" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarUsuarioSede" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usuario" Type="varchar" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarUsuarioWeb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPersona" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+    <Parameter Name="ClasificadorMovimiento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_PerfilPaginas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USUARIO" Type="varchar" Mode="In" />
+    <Parameter Name="PASSWORD" Type="varchar" Mode="In" />
+    <Parameter Name="SEDE" Type="varchar" Mode="In" />
+    <Parameter Name="IDPERSONA" Type="int" Mode="In" />
+    <Parameter Name="TDOCUMENTO" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_TraerTIPOADMISIONxId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TipoAdmisionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_TraerTipoOperacionCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="TipoAdmisionId" Type="int" Mode="In" />
+    <Parameter Name="TipEstado" Type="int" Mode="In" />
+    <Parameter Name="Documento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_TraerTipoOperacionxCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+    <Parameter Name="TipoAdmisionId" Type="int" Mode="In" />
+    <Parameter Name="Persona" Type="int" Mode="In" />
+    <Parameter Name="TipEstado" Type="int" Mode="In" />
+    <Parameter Name="TipoPacienteId" Type="int" Mode="In" />
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_TraerTipoOperacionxId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TipoOperacionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_TRAERUSUARIOXCODIGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USUARIO" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_TraerXAdmisionServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pIdAdmision" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WCO_TraerXOAAdmisionServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdSede" Type="int" Mode="In" />
+    <Parameter Name="OrdenAtencion" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="PrecisaModelStoreContainer">
+    <EntitySet Name="WCO_UsuarioWeb" EntityType="Self.WCO_UsuarioWeb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VW_HomologacionCliente" EntityType="Self.VW_HomologacionCliente" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_HomologacionCliente].[CodigoHomologado] AS [CodigoHomologado], 
+    [VW_HomologacionCliente].[NombreCompleto] AS [NombreCompleto], 
+    [VW_HomologacionCliente].[IdEmpresa] AS [IdEmpresa], 
+    [VW_HomologacionCliente].[Documento] AS [Documento], 
+    [VW_HomologacionCliente].[CodigoComponente] AS [CodigoComponente], 
+    [VW_HomologacionCliente].[TipoDocumento] AS [TipoDocumento]
+    FROM [dbo].[VW_HomologacionCliente] AS [VW_HomologacionCliente]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

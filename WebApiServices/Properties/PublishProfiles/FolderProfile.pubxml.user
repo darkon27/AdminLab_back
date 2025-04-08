@@ -1,0 +1,705 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Publicaciones\PRECISA\ApiRest</_PublishTargetUrl>
+    <History>True|2024-11-01T16:25:15.0589881Z;True|2024-10-10T16:46:29.0764995-05:00;True|2024-10-09T20:42:37.4708090-05:00;True|2024-08-26T11:17:03.7027077-05:00;True|2024-04-29T23:33:06.7600509-05:00;True|2024-04-29T23:31:47.9912333-05:00;True|2023-07-05T22:04:02.3306352-05:00;True|2023-06-05T08:22:14.1286445-05:00;True|2023-02-20T08:40:28.1532135-05:00;True|2023-01-04T11:35:51.0938628-05:00;True|2022-12-29T14:35:20.5837701-05:00;True|2022-10-17T08:44:33.9962105-05:00;True|2022-10-11T16:29:20.4150673-05:00;True|2022-10-11T10:08:22.5004817-05:00;True|2022-08-02T15:03:24.2320312-05:00;True|2022-07-26T10:18:23.4567833-05:00;True|2022-07-15T09:40:07.3995730-05:00;True|2022-07-15T09:38:44.7579183-05:00;True|2022-07-12T16:45:41.3798298-05:00;True|2022-06-27T11:48:54.5806311-05:00;True|2022-06-23T14:16:15.8286233-05:00;True|2022-06-17T10:09:29.4042565-05:00;True|2022-06-15T09:57:13.0839494-05:00;True|2022-06-14T16:23:46.9664174-05:00;True|2022-06-13T10:29:37.3328450-05:00;True|2022-06-10T12:35:39.4249535-05:00;True|2022-06-03T16:36:16.0175493-05:00;True|2022-06-01T10:32:04.4943909-05:00;True|2022-05-20T17:16:00.5936815-05:00;True|2022-05-11T11:02:53.7575839-05:00;True|2022-05-03T12:17:44.5708922-05:00;True|2022-05-03T11:22:44.4173951-05:00;True|2022-04-22T14:38:44.2518989-05:00;True|2022-04-22T09:06:46.0036250-05:00;True|2022-04-12T09:35:04.4448621-05:00;True|2022-04-11T14:38:51.6547035-05:00;True|2022-04-08T16:01:10.2300449-05:00;True|2022-04-08T14:52:41.0130176-05:00;True|2022-04-06T17:56:25.1503301-05:00;True|2022-04-01T18:12:08.3474117-05:00;True|2022-04-01T18:11:15.2837545-05:00;True|2022-03-10T12:24:18.6787948-05:00;True|2022-03-04T11:28:47.6560007-05:00;True|2022-03-03T10:55:09.8381325-05:00;True|2022-02-18T17:09:30.8911366-05:00;True|2022-02-18T12:09:04.3859839-05:00;True|2022-02-18T09:37:26.4062450-05:00;True|2022-02-17T22:39:08.0806109-05:00;True|2022-02-08T09:42:17.0348259-05:00;True|2022-02-07T09:19:14.1907492-05:00;True|2022-01-25T18:12:17.1743098-05:00;True|2022-01-24T15:46:51.7300437-05:00;True|2022-01-12T10:34:12.5989907-05:00;True|2022-01-05T13:58:53.7798539-05:00;True|2021-11-03T12:43:18.2903718-05:00;True|2021-10-25T14:44:22.6378912-05:00;True|2021-10-21T17:22:09.5054626-05:00;True|2021-10-21T17:01:54.8023982-05:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="AppService.asmx">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/HelpPage.css">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/Api.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ApiGroup.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/CollectionModelDescription.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ComplexTypeModelDescription.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/DictionaryModelDescription.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/EnumTypeModelDescription.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/HelpPageApiModel.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ImageSample.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/InvalidSample.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/KeyValuePairModelDescription.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ModelDescriptionLink.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/Parameters.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/Samples.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/SimpleTypeModelDescription.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/TextSample.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/Index.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/ResourceModel.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Shared/_Layout.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Web.config">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/_ViewStart.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.CrystalReports.Engine.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.DataSetConversion.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportSource.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.Shared.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/cs/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/cs/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/cs/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/da/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/da/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/da/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/de/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/de/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/de/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/en/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/en/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/en/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/es/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/es/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/es/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/es/System.Net.Http.Formatting.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.Helpers.resources.dll">
+      <publishTime>07/23/2024 13:12:16</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.Http.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.Http.WebHost.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.Mvc.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.Optimization.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.Razor.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>07/23/2024 13:12:16</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>07/23/2024 13:12:16</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.WebPages.resources.dll">
+      <publishTime>07/23/2024 13:12:16</publishTime>
+    </File>
+    <File Include="bin/fi/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/fi/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/fi/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/FlashControlV71.dll">
+      <publishTime>10/19/2014 06:46:22</publishTime>
+    </File>
+    <File Include="bin/fr/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/fr/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/fr/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/hu/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/hu/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/hu/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/it/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/it/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/it/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/ja/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/ja/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/ja/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/ko/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/ko/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/ko/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>07/23/2024 13:12:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>07/23/2024 13:12:16</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.JsonWebTokens.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Logging.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Tokens.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/nb-NO/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/nb-NO/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/nb-NO/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/nl/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/nl/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/nl/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/pl/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/pl/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/pl/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/pt/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/pt/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/pt/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe.config">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Console.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Globalization.Calendars.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.ZipFile.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Http.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Sockets.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Runtime.InteropServices.RuntimeInformation.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Threading.Tasks.Extensions.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.ValueTuple.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>07/23/2024 13:12:17</publishTime>
+    </File>
+    <File Include="bin/RoyalSystems.Core.dll">
+      <publishTime>07/23/2024 13:12:12</publishTime>
+    </File>
+    <File Include="bin/RoyalSystems.Data.dll">
+      <publishTime>07/23/2024 13:12:12</publishTime>
+    </File>
+    <File Include="bin/ru/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/ru/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/ru/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/SAPBusinessObjects.WPF.Viewer.dll">
+      <publishTime>10/19/2014 06:46:24</publishTime>
+    </File>
+    <File Include="bin/SAPBusinessObjects.WPF.ViewerShared.dll">
+      <publishTime>10/19/2014 06:46:24</publishTime>
+    </File>
+    <File Include="bin/ShockwaveFlashObjects.dll">
+      <publishTime>10/19/2014 06:46:22</publishTime>
+    </File>
+    <File Include="bin/sk/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/sk/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/sk/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/stdole.dll">
+      <publishTime>01/21/2022 20:50:11</publishTime>
+    </File>
+    <File Include="bin/sv/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/sv/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/sv/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/System.IdentityModel.Tokens.Jwt.dll">
+      <publishTime>07/23/2024 13:12:18</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>07/23/2024 13:12:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Cors.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>07/23/2024 13:12:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>07/23/2024 13:12:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>07/23/2024 13:12:16</publishTime>
+    </File>
+    <File Include="bin/th/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/th/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/th/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/tr/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/tr/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/tr/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/WebApiServices.dll">
+      <publishTime>11/01/2024 11:25:01</publishTime>
+    </File>
+    <File Include="bin/WebApiServices.pdb">
+      <publishTime>11/01/2024 11:25:01</publishTime>
+    </File>
+    <File Include="bin/WebApiServices.XmlSerializers.dll">
+      <publishTime>11/01/2024 11:25:12</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>07/23/2024 13:12:18</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/CrystalDecisions.CrystalReports.Engine.resources.dll">
+      <publishTime>07/23/2024 13:12:14</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/CrystalDecisions.ReportSource.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/CrystalDecisions.Shared.resources.dll">
+      <publishTime>07/23/2024 13:12:15</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css.map">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css.map">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css.map">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Controllers/BarraCodigo/Instructivo.pdf">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>07/23/2024 13:12:13</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>07/23/2024 13:12:13</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>07/23/2024 13:12:13</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>07/23/2024 13:12:13</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>07/23/2024 13:12:13</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>07/23/2024 13:12:13</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="ModelPrecisa.edmx.diagram">
+      <publishTime>01/24/2022 19:16:10</publishTime>
+    </File>
+    <File Include="Models/ModelPrecisa.edmx.diagram">
+      <publishTime>10/11/2024 19:54:04</publishTime>
+    </File>
+    <File Include="Reporte/cr_Constancia.rpt">
+      <publishTime>03/03/2020 17:57:34</publishTime>
+    </File>
+    <File Include="Reporte/Cr_Documento.rpt">
+      <publishTime>03/24/2022 12:04:32</publishTime>
+    </File>
+    <File Include="Reporte/ReporteConstancia.xml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Reporte/Rpt_Constancia.rpt">
+      <publishTime>04/07/2022 20:55:50</publishTime>
+    </File>
+    <File Include="Reporte/Rpt_ConstanciaZivot.rpt">
+      <publishTime>04/07/2022 22:47:20</publishTime>
+    </File>
+    <File Include="Reporte/Zivot.xml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.js">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.min.js">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.min.map">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.js">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.min.js">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.min.map">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.8.3.js">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="SoaService.asmx">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="SpringWeb.config">
+      <publishTime>09/10/2024 18:38:56</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Web References/WebRoe/Reference.map">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Web References/WebSanna/Reference.map">
+      <publishTime>02/17/2022 16:15:18</publishTime>
+    </File>
+    <File Include="Web References/WsSeguridad/Reference.map">
+      <publishTime>07/23/2024 13:12:11</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/10/2024 20:42:36</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

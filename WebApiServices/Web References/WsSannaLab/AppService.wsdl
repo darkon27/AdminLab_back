@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ConsultaOAGolf">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrdenAtencion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoOrden" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Unidad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaOAGolfResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaOAGolfResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarcarEnviadoGolf">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdOrdenAtención" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListaLineaOA" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Medico" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Especialidad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarcarEnviadoGolfResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MarcarEnviadoGolfResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GrupoSecuencialGolf">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdOrdenAtención" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="LineaOrdenAtencion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Grupo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GrupoSecuencialGolfResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GrupoSecuencialGolfResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaMigracionGolf">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrdenAtencion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoOrden" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FechaIni" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FechaFin" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Estado" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaMigracionGolfResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaMigracionGolfResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioResultadoGolf">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="as_IdOrdenAtencion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="as_LineaOrdenAtencion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="as_OrdenAtencionProveedor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="as_NombreArchivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="as_Diagnostico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="as_Extension" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Medico" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Especialidad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pdfBase64" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioResultadoGolfResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnvioResultadoGolfResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaOASanBorja">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrdenAtencion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoOrden" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Unidad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaOASanBorjaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaOASanBorjaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarcarEnviadoSanBorja">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdOrdenAtención" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListaLineaOA" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Medico" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Especialidad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarcarEnviadoSanBorjaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MarcarEnviadoSanBorjaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GrupoSecuencialSanBorja">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdOrdenAtención" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="LineaOrdenAtencion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Grupo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GrupoSecuencialSanBorjaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GrupoSecuencialSanBorjaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaMigracionSanBorja">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrdenAtencion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoOrden" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FechaIni" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FechaFin" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Estado" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaMigracionSanBorjaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaMigracionSanBorjaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaOAAliada">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrdenAtencion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoOrden" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Unidad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaOAAliadaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaOAAliadaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarcarEnviadoAliada">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdOrdenAtención" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListaLineaOA" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Medico" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Especialidad" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarcarEnviadoAliadaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MarcarEnviadoAliadaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GrupoSecuencialAliada">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdOrdenAtención" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="LineaOrdenAtencion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Grupo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GrupoSecuencialAliadaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GrupoSecuencialAliadaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaMigracionAliada">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrdenAtencion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoOrden" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Sucursal" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FechaIni" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FechaFin" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Estado" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaMigracionAliadaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaMigracionAliadaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultaOAGolfSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaOAGolf" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaOAGolfSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaOAGolfResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarcarEnviadoGolfSoapIn">
+    <wsdl:part name="parameters" element="tns:MarcarEnviadoGolf" />
+  </wsdl:message>
+  <wsdl:message name="MarcarEnviadoGolfSoapOut">
+    <wsdl:part name="parameters" element="tns:MarcarEnviadoGolfResponse" />
+  </wsdl:message>
+  <wsdl:message name="GrupoSecuencialGolfSoapIn">
+    <wsdl:part name="parameters" element="tns:GrupoSecuencialGolf" />
+  </wsdl:message>
+  <wsdl:message name="GrupoSecuencialGolfSoapOut">
+    <wsdl:part name="parameters" element="tns:GrupoSecuencialGolfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaMigracionGolfSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaMigracionGolf" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaMigracionGolfSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaMigracionGolfResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnvioResultadoGolfSoapIn">
+    <wsdl:part name="parameters" element="tns:EnvioResultadoGolf" />
+  </wsdl:message>
+  <wsdl:message name="EnvioResultadoGolfSoapOut">
+    <wsdl:part name="parameters" element="tns:EnvioResultadoGolfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaOASanBorjaSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaOASanBorja" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaOASanBorjaSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaOASanBorjaResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarcarEnviadoSanBorjaSoapIn">
+    <wsdl:part name="parameters" element="tns:MarcarEnviadoSanBorja" />
+  </wsdl:message>
+  <wsdl:message name="MarcarEnviadoSanBorjaSoapOut">
+    <wsdl:part name="parameters" element="tns:MarcarEnviadoSanBorjaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GrupoSecuencialSanBorjaSoapIn">
+    <wsdl:part name="parameters" element="tns:GrupoSecuencialSanBorja" />
+  </wsdl:message>
+  <wsdl:message name="GrupoSecuencialSanBorjaSoapOut">
+    <wsdl:part name="parameters" element="tns:GrupoSecuencialSanBorjaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaMigracionSanBorjaSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaMigracionSanBorja" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaMigracionSanBorjaSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaMigracionSanBorjaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaOAAliadaSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaOAAliada" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaOAAliadaSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaOAAliadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarcarEnviadoAliadaSoapIn">
+    <wsdl:part name="parameters" element="tns:MarcarEnviadoAliada" />
+  </wsdl:message>
+  <wsdl:message name="MarcarEnviadoAliadaSoapOut">
+    <wsdl:part name="parameters" element="tns:MarcarEnviadoAliadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GrupoSecuencialAliadaSoapIn">
+    <wsdl:part name="parameters" element="tns:GrupoSecuencialAliada" />
+  </wsdl:message>
+  <wsdl:message name="GrupoSecuencialAliadaSoapOut">
+    <wsdl:part name="parameters" element="tns:GrupoSecuencialAliadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaMigracionAliadaSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaMigracionAliada" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaMigracionAliadaSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaMigracionAliadaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AppServiceSoap">
+    <wsdl:operation name="ConsultaOAGolf">
+      <wsdl:input message="tns:ConsultaOAGolfSoapIn" />
+      <wsdl:output message="tns:ConsultaOAGolfSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MarcarEnviadoGolf">
+      <wsdl:input message="tns:MarcarEnviadoGolfSoapIn" />
+      <wsdl:output message="tns:MarcarEnviadoGolfSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GrupoSecuencialGolf">
+      <wsdl:input message="tns:GrupoSecuencialGolfSoapIn" />
+      <wsdl:output message="tns:GrupoSecuencialGolfSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaMigracionGolf">
+      <wsdl:input message="tns:ConsultaMigracionGolfSoapIn" />
+      <wsdl:output message="tns:ConsultaMigracionGolfSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnvioResultadoGolf">
+      <wsdl:input message="tns:EnvioResultadoGolfSoapIn" />
+      <wsdl:output message="tns:EnvioResultadoGolfSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaOASanBorja">
+      <wsdl:input message="tns:ConsultaOASanBorjaSoapIn" />
+      <wsdl:output message="tns:ConsultaOASanBorjaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MarcarEnviadoSanBorja">
+      <wsdl:input message="tns:MarcarEnviadoSanBorjaSoapIn" />
+      <wsdl:output message="tns:MarcarEnviadoSanBorjaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GrupoSecuencialSanBorja">
+      <wsdl:input message="tns:GrupoSecuencialSanBorjaSoapIn" />
+      <wsdl:output message="tns:GrupoSecuencialSanBorjaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaMigracionSanBorja">
+      <wsdl:input message="tns:ConsultaMigracionSanBorjaSoapIn" />
+      <wsdl:output message="tns:ConsultaMigracionSanBorjaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaOAAliada">
+      <wsdl:input message="tns:ConsultaOAAliadaSoapIn" />
+      <wsdl:output message="tns:ConsultaOAAliadaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MarcarEnviadoAliada">
+      <wsdl:input message="tns:MarcarEnviadoAliadaSoapIn" />
+      <wsdl:output message="tns:MarcarEnviadoAliadaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GrupoSecuencialAliada">
+      <wsdl:input message="tns:GrupoSecuencialAliadaSoapIn" />
+      <wsdl:output message="tns:GrupoSecuencialAliadaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaMigracionAliada">
+      <wsdl:input message="tns:ConsultaMigracionAliadaSoapIn" />
+      <wsdl:output message="tns:ConsultaMigracionAliadaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AppServiceSoap" type="tns:AppServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultaOAGolf">
+      <soap:operation soapAction="http://tempuri.org/ConsultaOAGolf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarcarEnviadoGolf">
+      <soap:operation soapAction="http://tempuri.org/MarcarEnviadoGolf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GrupoSecuencialGolf">
+      <soap:operation soapAction="http://tempuri.org/GrupoSecuencialGolf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaMigracionGolf">
+      <soap:operation soapAction="http://tempuri.org/ConsultaMigracionGolf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioResultadoGolf">
+      <soap:operation soapAction="http://tempuri.org/EnvioResultadoGolf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaOASanBorja">
+      <soap:operation soapAction="http://tempuri.org/ConsultaOASanBorja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarcarEnviadoSanBorja">
+      <soap:operation soapAction="http://tempuri.org/MarcarEnviadoSanBorja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GrupoSecuencialSanBorja">
+      <soap:operation soapAction="http://tempuri.org/GrupoSecuencialSanBorja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaMigracionSanBorja">
+      <soap:operation soapAction="http://tempuri.org/ConsultaMigracionSanBorja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaOAAliada">
+      <soap:operation soapAction="http://tempuri.org/ConsultaOAAliada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarcarEnviadoAliada">
+      <soap:operation soapAction="http://tempuri.org/MarcarEnviadoAliada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GrupoSecuencialAliada">
+      <soap:operation soapAction="http://tempuri.org/GrupoSecuencialAliada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaMigracionAliada">
+      <soap:operation soapAction="http://tempuri.org/ConsultaMigracionAliada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AppServiceSoap12" type="tns:AppServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultaOAGolf">
+      <soap12:operation soapAction="http://tempuri.org/ConsultaOAGolf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarcarEnviadoGolf">
+      <soap12:operation soapAction="http://tempuri.org/MarcarEnviadoGolf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GrupoSecuencialGolf">
+      <soap12:operation soapAction="http://tempuri.org/GrupoSecuencialGolf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaMigracionGolf">
+      <soap12:operation soapAction="http://tempuri.org/ConsultaMigracionGolf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioResultadoGolf">
+      <soap12:operation soapAction="http://tempuri.org/EnvioResultadoGolf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaOASanBorja">
+      <soap12:operation soapAction="http://tempuri.org/ConsultaOASanBorja" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarcarEnviadoSanBorja">
+      <soap12:operation soapAction="http://tempuri.org/MarcarEnviadoSanBorja" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GrupoSecuencialSanBorja">
+      <soap12:operation soapAction="http://tempuri.org/GrupoSecuencialSanBorja" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaMigracionSanBorja">
+      <soap12:operation soapAction="http://tempuri.org/ConsultaMigracionSanBorja" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaOAAliada">
+      <soap12:operation soapAction="http://tempuri.org/ConsultaOAAliada" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarcarEnviadoAliada">
+      <soap12:operation soapAction="http://tempuri.org/MarcarEnviadoAliada" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GrupoSecuencialAliada">
+      <soap12:operation soapAction="http://tempuri.org/GrupoSecuencialAliada" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaMigracionAliada">
+      <soap12:operation soapAction="http://tempuri.org/ConsultaMigracionAliada" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AppService">
+    <wsdl:port name="AppServiceSoap" binding="tns:AppServiceSoap">
+      <soap:address location="http://143.137.145.236/ServicesClinica/AppService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AppServiceSoap12" binding="tns:AppServiceSoap12">
+      <soap12:address location="http://143.137.145.236/ServicesClinica/AppService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
