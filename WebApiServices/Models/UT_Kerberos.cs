@@ -116,27 +116,61 @@ namespace WebApiServices.Models
 
         public static void WriteLog(string strLog)
         {
-            StreamWriter log;
-            FileStream fileStream = null;
-            DirectoryInfo logDirInfo = null;
-            FileInfo logFileInfo;
+            string logDirectoryPath = @"C:\Logs\";
+            string baseFileName = "Logs-adminlab" + DateTime.Today.ToString("yyyy-MM-dd");
+            string fileExtension = ".txt";
+            int fileCounter = 0;
 
-            string logFilePath = @"C:\Logs\";
-            logFilePath = logFilePath + "Logs-" + System.DateTime.Today.ToString("yyyy-MM-dd") + "." + "txt";
-            logFileInfo = new FileInfo(logFilePath);
-            logDirInfo = new DirectoryInfo(logFileInfo.DirectoryName);
-            if (!logDirInfo.Exists) logDirInfo.Create();
-            if (!logFileInfo.Exists)
+            DirectoryInfo logDirInfo = new DirectoryInfo(logDirectoryPath);
+            if (!logDirInfo.Exists)
             {
-                fileStream = logFileInfo.Create();
+                logDirInfo.Create(); 
             }
-            else
+
+            while (true)
             {
-                fileStream = new FileStream(logFilePath, FileMode.Append);
+                string logFilePath = Path.Combine(logDirectoryPath, baseFileName + (fileCounter > 0 ? $"_{fileCounter}" : "") + fileExtension);
+                FileStream fileStream = null;
+
+                try
+                {
+                    if (!File.Exists(logFilePath))
+                    {
+                        fileStream = new FileStream(logFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
+                    }
+                    else
+                    {
+                        fileStream = new FileStream(logFilePath, FileMode.Append, FileAccess.Write, FileShare.None);
+                    }
+
+                    using (StreamWriter log = new StreamWriter(fileStream))
+                    {
+                        log.WriteLine(strLog); 
+                    }
+
+                    break; // Se sale del bucle si el archivo se puede escribir
+                }
+                catch (IOException ex)
+                {
+                    // Manejar archivo en uso o errores de E/S
+                    fileCounter++;
+                }
+                catch (UnauthorizedAccessException ex)
+                {
+                    Console.WriteLine("Error de acceso no autorizado: " + ex.Message);
+                    throw; 
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ocurrió un error Escritura de log: " + ex.Message);
+                    throw;
+                }
+                finally
+                {
+                    fileStream?.Dispose(); 
+                }
             }
-            log = new StreamWriter(fileStream);
-            log.WriteLine(strLog);
-            log.Close();
         }
+
     }
 }

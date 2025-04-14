@@ -133,7 +133,7 @@ namespace WebApiServices.Controllers
                 string Jsons = Newtonsoft.Json.JsonConvert.SerializeObject(request);
                 result = (ViewModalReporte)Newtonsoft.Json.JsonConvert.DeserializeObject(request, typeof(ViewModalReporte));
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 result.CodigoError = 200;
                 result.MensajeError = "ERROR_SERVICIO   : PROBLEMAS DE COMUNICACION";
@@ -918,7 +918,7 @@ namespace WebApiServices.Controllers
                 var perfiles = ObtenerPerfiles(objDetalle.list_AdmisionServicio);
                 var observacion = ValidarComponentesEnPerfiles(perfiles, objDetalle.list_AdmisionServicio);
                  string   arrayOfLines = JsonConvert.SerializeObject(perfiles, Newtonsoft.Json.Formatting.Indented);
-                UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "ValidarComponentePerfil =" + arrayOfLines);
+                //UT_Kerberos.WriteLog(System.DateTime.Now + " | " + "ValidarComponentePerfil =" + arrayOfLines);
                 if (!string.IsNullOrEmpty(observacion))
                 {
                     response.mensaje = observacion;
