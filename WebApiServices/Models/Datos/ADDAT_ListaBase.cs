@@ -131,7 +131,7 @@ namespace WebApiServices.Models.Datos
             using (var context = new BDComercialEntities())
             {
                 lst = context.WCO_ListarComponentesdeListaB(ObjEntidad.IdListaBase, ObjEntidad.CODIGOCOMPONENTE,
-                    ObjEntidad.Nombre, 0, 0).ToList();
+                    ObjEntidad.Nombre, ObjEntidad.Estado, 0).ToList();
             }
             return lst;
         }
