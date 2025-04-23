@@ -280,7 +280,7 @@ namespace WebApiServices.Controllers
                         {
                             foreach (var xuSede in USUARIO)
                             {
-                                if (xuSede.IdSede == ObjDetalle.IdSede)
+                                if (xuSede.IdSede == ObjDetalle.IdSede && xuSede.ESTADO == "A")
                                 {
                                     lst = m.ListaAccesoUsuario(ObjDetalle);
                                     var user = lst.First();
