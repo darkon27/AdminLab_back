@@ -10,7 +10,7 @@
     <Property Name="IdSedeCompartida" Type="int" Nullable="false" />
   </EntityType>
   <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="VW_HomologacionCliente">
     <Key>
       <PropertyRef Name="IdEmpresa" />
@@ -18,7 +18,7 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
       <PropertyRef Name="TipoDocumento" />
     </Key>
     <Property Name="CodigoHomologado" Type="varchar" MaxLength="25" />
-    <Property Name="NombreCompleto" Type="varchar" MaxLength="100" />
+    <Property Name="NombreCompleto" Type="varchar" MaxLength="150" />
     <Property Name="IdEmpresa" Type="int" Nullable="false" />
     <Property Name="Documento" Type="char" MaxLength="20" Nullable="false" />
     <Property Name="CodigoComponente" Type="varchar" MaxLength="25" />
@@ -238,7 +238,6 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
   <Function Name="WCO_ListarBanco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Banco" Type="varchar" Mode="In" />
     <Parameter Name="Estado" Type="varchar" Mode="In" />
-    <Parameter Name="DescripcionCorta" Type="varchar" Mode="In" />
   </Function>
   <Function Name="WCO_ListarBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="WCO_ListarClasiComponente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -578,8 +577,8 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
     <Parameter Name="IdSede" Type="int" Mode="In" />
     <Parameter Name="IdEmpresa" Type="int" Mode="In" />
     <Parameter Name="IdSedeCliente" Type="int" Mode="In" />
-    <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
     <Parameter Name="SedCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
   </Function>
   <Function Name="WCO_ListarSedeCompartida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IdSede" Type="int" Mode="In" />

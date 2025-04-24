@@ -1763,44 +1763,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="WCO_ListarCorrelativosMast" FunctionName="PrecisaModel.Store.WCO_ListarCorrelativosMast">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarCorrelativosMast_Result">
-          <ScalarProperty Name="CompaniaCodigo" ColumnName="CompaniaCodigo" />
-          <ScalarProperty Name="TipoComprobante" ColumnName="TipoComprobante" />
-          <ScalarProperty Name="Serie" ColumnName="Serie" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="CorrelativoNumero" ColumnName="CorrelativoNumero" />
-          <ScalarProperty Name="CorrelativoDesde" ColumnName="CorrelativoDesde" />
-          <ScalarProperty Name="CorrelativoHasta" ColumnName="CorrelativoHasta" />
-          <ScalarProperty Name="AlmacenCodigo" ColumnName="AlmacenCodigo" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
-          <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
-          <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
-          <ScalarProperty Name="IdEstablecimiento" ColumnName="IdEstablecimiento" />
-          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="ObjetoReporte" ColumnName="ObjetoReporte" />
-          <ScalarProperty Name="Impresora" ColumnName="Impresora" />
-          <ScalarProperty Name="IndicadorImpresora" ColumnName="IndicadorImpresora" />
-          <ScalarProperty Name="Lineas" ColumnName="Lineas" />
-          <ScalarProperty Name="NumeroDigitos" ColumnName="NumeroDigitos" />
-          <ScalarProperty Name="IndicadorTicket" ColumnName="IndicadorTicket" />
-          <ScalarProperty Name="idCaja" ColumnName="idCaja" />
-          <ScalarProperty Name="IndicadorIncluirFacturacion" ColumnName="IndicadorIncluirFacturacion" />
-          <ScalarProperty Name="ImpresoraFlag" ColumnName="ImpresoraFlag" />
-          <ScalarProperty Name="DatawindowObjeto" ColumnName="DatawindowObjeto" />
-          <ScalarProperty Name="Ancho" ColumnName="Ancho" />
-          <ScalarProperty Name="Alto" ColumnName="Alto" />
-          <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
-          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
-          <ScalarProperty Name="SedDescripcion" ColumnName="SedDescripcion" />
-          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
-          <ScalarProperty Name="IdSede" ColumnName="IdSede" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="WCO_ListarCostCenterMst" FunctionName="PrecisaModel.Store.WCO_ListarCostCenterMst">
       <ResultMapping>
         <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarCostCenterMst_Result">
@@ -2954,6 +2916,45 @@
           <ScalarProperty Name="SedDescripcion" ColumnName="SedDescripcion" />
           <ScalarProperty Name="TIPOADMISIONID" ColumnName="TIPOADMISIONID" />
           <ScalarProperty Name="TipoPacienteId" ColumnName="TipoPacienteId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WCO_ListarCorrelativosMast" FunctionName="PrecisaModel.Store.WCO_ListarCorrelativosMast">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarCorrelativosMast_Result">
+          <ScalarProperty Name="CompaniaCodigo" ColumnName="CompaniaCodigo" />
+          <ScalarProperty Name="TipoComprobante" ColumnName="TipoComprobante" />
+          <ScalarProperty Name="Serie" ColumnName="Serie" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CorrelativoNumero" ColumnName="CorrelativoNumero" />
+          <ScalarProperty Name="CorrelativoDesde" ColumnName="CorrelativoDesde" />
+          <ScalarProperty Name="CorrelativoHasta" ColumnName="CorrelativoHasta" />
+          <ScalarProperty Name="AlmacenCodigo" ColumnName="AlmacenCodigo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
+          <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
+          <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+          <ScalarProperty Name="IdEstablecimiento" ColumnName="IdEstablecimiento" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="ObjetoReporte" ColumnName="ObjetoReporte" />
+          <ScalarProperty Name="Impresora" ColumnName="Impresora" />
+          <ScalarProperty Name="IndicadorImpresora" ColumnName="IndicadorImpresora" />
+          <ScalarProperty Name="Lineas" ColumnName="Lineas" />
+          <ScalarProperty Name="NumeroDigitos" ColumnName="NumeroDigitos" />
+          <ScalarProperty Name="IndicadorTicket" ColumnName="IndicadorTicket" />
+          <ScalarProperty Name="idCaja" ColumnName="idCaja" />
+          <ScalarProperty Name="IndicadorIncluirFacturacion" ColumnName="IndicadorIncluirFacturacion" />
+          <ScalarProperty Name="ImpresoraFlag" ColumnName="ImpresoraFlag" />
+          <ScalarProperty Name="DatawindowObjeto" ColumnName="DatawindowObjeto" />
+          <ScalarProperty Name="Ancho" ColumnName="Ancho" />
+          <ScalarProperty Name="Alto" ColumnName="Alto" />
+          <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+          <ScalarProperty Name="SedDescripcion" ColumnName="SedDescripcion" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="IdSede" ColumnName="IdSede" />
+          <ScalarProperty Name="TipoComprobanteDesc" ColumnName="TipoComprobanteDesc" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

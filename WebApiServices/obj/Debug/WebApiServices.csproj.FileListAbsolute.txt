@@ -932,3 +932,4 @@ D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\obj\Debug\WebApiServices.csproj
 D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\obj\Debug\WebApiServices.csproj.CopyComplete
 D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\obj\Debug\WebApiServices.dll
 D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\obj\Debug\WebApiServices.pdb
+D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\obj\Debug\WebApiServices.csproj.AssemblyReference.cache
