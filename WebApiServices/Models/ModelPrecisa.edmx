@@ -243,6 +243,7 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
         <Function Name="WCO_ListarBanco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Banco" Type="varchar" Mode="In" />
           <Parameter Name="Estado" Type="varchar" Mode="In" />
+          <Parameter Name="DescripcionCorta" Type="varchar" Mode="In" />
         </Function>
         <Function Name="WCO_ListarBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="WCO_ListarClasiComponente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -841,10 +842,6 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
             <Parameter Name="perfil" Mode="In" Type="String" />
             <Parameter Name="usuario" Mode="In" Type="String" />
             <Parameter Name="nombrecompleto" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="WCO_ListarBanco" ReturnType="Collection(PrecisaModel.WCO_ListarBanco_Result)">
-            <Parameter Name="Banco" Mode="In" Type="String" />
-            <Parameter Name="Estado" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="WCO_ListarBase" ReturnType="Collection(PrecisaModel.WCO_ListarBase_Result)" />
           <FunctionImport Name="WCO_ListarClasiComponente" ReturnType="Collection(PrecisaModel.WCO_ListarClasiComponente_Result)">
@@ -1563,6 +1560,11 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
             <Parameter Name="IdSede" Mode="In" Type="Int32" />
             <Parameter Name="Estado" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="WCO_ListarBanco" ReturnType="Collection(PrecisaModel.WCO_ListarBanco_Result)">
+            <Parameter Name="Banco" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="String" />
+            <Parameter Name="DescripcionCorta" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="WCO_ListarAdmisionServicio_Result">
           <Property Type="Int32" Name="IdAdmision" Nullable="false" />
@@ -1807,25 +1809,6 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
           <Property Type="String" Name="PERFIL" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="ESTADO" Nullable="false" MaxLength="8" />
           <Property Type="String" Name="ClasificadorMovimiento" Nullable="true" MaxLength="15" />
-        </ComplexType>
-        <ComplexType Name="WCO_ListarBanco_Result">
-          <Property Type="String" Name="Banco" Nullable="false" MaxLength="3" />
-          <Property Type="String" Name="DescripcionCorta" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="DescripcionLarga" Nullable="true" MaxLength="40" />
-          <Property Type="Int32" Name="BancoNumero" Nullable="true" />
-          <Property Type="String" Name="PersonaContacto" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="ConciliacionAutomaticaFlag" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="FormatoPropioFlag" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="FormatoDatawindow" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="ConciliacionFormatoFlag" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
-          <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
-          <Property Type="String" Name="UltimoUsuario" Nullable="true" MaxLength="25" />
-          <Property Type="String" Name="CODIGOINTERFASEAFP" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="DisponibleEDflag" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="FormatoDatawindowenvio" Nullable="true" MaxLength="50" />
-          <Property Type="Single" Name="TasaEfectivaAnual" Nullable="true" />
-          <Property Type="String" Name="CodigoFiscal" Nullable="true" MaxLength="2" />
         </ComplexType>
         <ComplexType Name="WCO_ListarBase_Result">
           <Property Type="Int32" Name="IdListaBase" Nullable="false" />
@@ -4159,6 +4142,25 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
           <Property Type="Int32" Name="IdSede" Nullable="true" />
           <Property Type="String" Name="TipoComprobanteDesc" Nullable="false" MaxLength="2" />
         </ComplexType>
+        <ComplexType Name="WCO_ListarBanco_Result">
+          <Property Type="String" Name="Banco" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="DescripcionCorta" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DescripcionLarga" Nullable="true" MaxLength="40" />
+          <Property Type="Int32" Name="BancoNumero" Nullable="true" />
+          <Property Type="String" Name="PersonaContacto" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ConciliacionAutomaticaFlag" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="FormatoPropioFlag" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="FormatoDatawindow" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ConciliacionFormatoFlag" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
+          <Property Type="String" Name="UltimoUsuario" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="CODIGOINTERFASEAFP" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DisponibleEDflag" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="FormatoDatawindowenvio" Nullable="true" MaxLength="50" />
+          <Property Type="Single" Name="TasaEfectivaAnual" Nullable="true" />
+          <Property Type="String" Name="CodigoFiscal" Nullable="true" MaxLength="2" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4391,29 +4393,6 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
                 <ScalarProperty Name="PERFIL" ColumnName="PERFIL" />
                 <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="ClasificadorMovimiento" ColumnName="ClasificadorMovimiento" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="WCO_ListarBanco" FunctionName="PrecisaModel.Store.WCO_ListarBanco">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarBanco_Result">
-                <ScalarProperty Name="Banco" ColumnName="Banco" />
-                <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
-                <ScalarProperty Name="DescripcionLarga" ColumnName="DescripcionLarga" />
-                <ScalarProperty Name="BancoNumero" ColumnName="BancoNumero" />
-                <ScalarProperty Name="PersonaContacto" ColumnName="PersonaContacto" />
-                <ScalarProperty Name="ConciliacionAutomaticaFlag" ColumnName="ConciliacionAutomaticaFlag" />
-                <ScalarProperty Name="FormatoPropioFlag" ColumnName="FormatoPropioFlag" />
-                <ScalarProperty Name="FormatoDatawindow" ColumnName="FormatoDatawindow" />
-                <ScalarProperty Name="ConciliacionFormatoFlag" ColumnName="ConciliacionFormatoFlag" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
-                <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
-                <ScalarProperty Name="CODIGOINTERFASEAFP" ColumnName="CODIGOINTERFASEAFP" />
-                <ScalarProperty Name="DisponibleEDflag" ColumnName="DisponibleEDflag" />
-                <ScalarProperty Name="FormatoDatawindowenvio" ColumnName="FormatoDatawindowenvio" />
-                <ScalarProperty Name="TasaEfectivaAnual" ColumnName="TasaEfectivaAnual" />
-                <ScalarProperty Name="CodigoFiscal" ColumnName="CodigoFiscal" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -7119,6 +7098,29 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
                 <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
                 <ScalarProperty Name="IdSede" ColumnName="IdSede" />
                 <ScalarProperty Name="TipoComprobanteDesc" ColumnName="TipoComprobanteDesc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WCO_ListarBanco" FunctionName="PrecisaModel.Store.WCO_ListarBanco">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarBanco_Result">
+                <ScalarProperty Name="Banco" ColumnName="Banco" />
+                <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+                <ScalarProperty Name="DescripcionLarga" ColumnName="DescripcionLarga" />
+                <ScalarProperty Name="BancoNumero" ColumnName="BancoNumero" />
+                <ScalarProperty Name="PersonaContacto" ColumnName="PersonaContacto" />
+                <ScalarProperty Name="ConciliacionAutomaticaFlag" ColumnName="ConciliacionAutomaticaFlag" />
+                <ScalarProperty Name="FormatoPropioFlag" ColumnName="FormatoPropioFlag" />
+                <ScalarProperty Name="FormatoDatawindow" ColumnName="FormatoDatawindow" />
+                <ScalarProperty Name="ConciliacionFormatoFlag" ColumnName="ConciliacionFormatoFlag" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
+                <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
+                <ScalarProperty Name="CODIGOINTERFASEAFP" ColumnName="CODIGOINTERFASEAFP" />
+                <ScalarProperty Name="DisponibleEDflag" ColumnName="DisponibleEDflag" />
+                <ScalarProperty Name="FormatoDatawindowenvio" ColumnName="FormatoDatawindowenvio" />
+                <ScalarProperty Name="TasaEfectivaAnual" ColumnName="TasaEfectivaAnual" />
+                <ScalarProperty Name="CodigoFiscal" ColumnName="CodigoFiscal" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

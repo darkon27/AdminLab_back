@@ -230,29 +230,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="WCO_ListarBanco" FunctionName="PrecisaModel.Store.WCO_ListarBanco">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarBanco_Result">
-          <ScalarProperty Name="Banco" ColumnName="Banco" />
-          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
-          <ScalarProperty Name="DescripcionLarga" ColumnName="DescripcionLarga" />
-          <ScalarProperty Name="BancoNumero" ColumnName="BancoNumero" />
-          <ScalarProperty Name="PersonaContacto" ColumnName="PersonaContacto" />
-          <ScalarProperty Name="ConciliacionAutomaticaFlag" ColumnName="ConciliacionAutomaticaFlag" />
-          <ScalarProperty Name="FormatoPropioFlag" ColumnName="FormatoPropioFlag" />
-          <ScalarProperty Name="FormatoDatawindow" ColumnName="FormatoDatawindow" />
-          <ScalarProperty Name="ConciliacionFormatoFlag" ColumnName="ConciliacionFormatoFlag" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
-          <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
-          <ScalarProperty Name="CODIGOINTERFASEAFP" ColumnName="CODIGOINTERFASEAFP" />
-          <ScalarProperty Name="DisponibleEDflag" ColumnName="DisponibleEDflag" />
-          <ScalarProperty Name="FormatoDatawindowenvio" ColumnName="FormatoDatawindowenvio" />
-          <ScalarProperty Name="TasaEfectivaAnual" ColumnName="TasaEfectivaAnual" />
-          <ScalarProperty Name="CodigoFiscal" ColumnName="CodigoFiscal" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="WCO_ListarBase" FunctionName="PrecisaModel.Store.WCO_ListarBase">
       <ResultMapping>
         <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarBase_Result">
@@ -2955,6 +2932,29 @@
           <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
           <ScalarProperty Name="IdSede" ColumnName="IdSede" />
           <ScalarProperty Name="TipoComprobanteDesc" ColumnName="TipoComprobanteDesc" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WCO_ListarBanco" FunctionName="PrecisaModel.Store.WCO_ListarBanco">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarBanco_Result">
+          <ScalarProperty Name="Banco" ColumnName="Banco" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+          <ScalarProperty Name="DescripcionLarga" ColumnName="DescripcionLarga" />
+          <ScalarProperty Name="BancoNumero" ColumnName="BancoNumero" />
+          <ScalarProperty Name="PersonaContacto" ColumnName="PersonaContacto" />
+          <ScalarProperty Name="ConciliacionAutomaticaFlag" ColumnName="ConciliacionAutomaticaFlag" />
+          <ScalarProperty Name="FormatoPropioFlag" ColumnName="FormatoPropioFlag" />
+          <ScalarProperty Name="FormatoDatawindow" ColumnName="FormatoDatawindow" />
+          <ScalarProperty Name="ConciliacionFormatoFlag" ColumnName="ConciliacionFormatoFlag" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
+          <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
+          <ScalarProperty Name="CODIGOINTERFASEAFP" ColumnName="CODIGOINTERFASEAFP" />
+          <ScalarProperty Name="DisponibleEDflag" ColumnName="DisponibleEDflag" />
+          <ScalarProperty Name="FormatoDatawindowenvio" ColumnName="FormatoDatawindowenvio" />
+          <ScalarProperty Name="TasaEfectivaAnual" ColumnName="TasaEfectivaAnual" />
+          <ScalarProperty Name="CodigoFiscal" ColumnName="CodigoFiscal" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

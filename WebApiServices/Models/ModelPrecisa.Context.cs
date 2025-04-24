@@ -169,19 +169,6 @@ namespace WebApiServices.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_LISTARASIGNARPERFILPAG_Result>("WCO_LISTARASIGNARPERFILPAG", perfilParameter, usuarioParameter, nombrecompletoParameter);
         }
     
-        public virtual ObjectResult<WCO_ListarBanco_Result> WCO_ListarBanco(string banco, string estado)
-        {
-            var bancoParameter = banco != null ?
-                new ObjectParameter("Banco", banco) :
-                new ObjectParameter("Banco", typeof(string));
-    
-            var estadoParameter = estado != null ?
-                new ObjectParameter("Estado", estado) :
-                new ObjectParameter("Estado", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarBanco_Result>("WCO_ListarBanco", bancoParameter, estadoParameter);
-        }
-    
         public virtual ObjectResult<WCO_ListarBase_Result> WCO_ListarBase()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarBase_Result>("WCO_ListarBase");
@@ -2767,6 +2754,23 @@ namespace WebApiServices.Models
                 new ObjectParameter("Estado", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarCorrelativosMast_Result>("WCO_ListarCorrelativosMast", companiaCodigoParameter, tipoComprobanteParameter, serieParameter, sedCodigoParameter, idSedeParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<WCO_ListarBanco_Result> WCO_ListarBanco(string banco, string estado, string descripcionCorta)
+        {
+            var bancoParameter = banco != null ?
+                new ObjectParameter("Banco", banco) :
+                new ObjectParameter("Banco", typeof(string));
+    
+            var estadoParameter = estado != null ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(string));
+    
+            var descripcionCortaParameter = descripcionCorta != null ?
+                new ObjectParameter("DescripcionCorta", descripcionCorta) :
+                new ObjectParameter("DescripcionCorta", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarBanco_Result>("WCO_ListarBanco", bancoParameter, estadoParameter, descripcionCortaParameter);
         }
     }
 }

@@ -238,6 +238,7 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
   <Function Name="WCO_ListarBanco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Banco" Type="varchar" Mode="In" />
     <Parameter Name="Estado" Type="varchar" Mode="In" />
+    <Parameter Name="DescripcionCorta" Type="varchar" Mode="In" />
   </Function>
   <Function Name="WCO_ListarBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="WCO_ListarClasiComponente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

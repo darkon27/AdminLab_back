@@ -41,10 +41,6 @@
       <Parameter Name="usuario" Mode="In" Type="String" />
       <Parameter Name="nombrecompleto" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="WCO_ListarBanco" ReturnType="Collection(PrecisaModel.WCO_ListarBanco_Result)">
-      <Parameter Name="Banco" Mode="In" Type="String" />
-      <Parameter Name="Estado" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="WCO_ListarBase" ReturnType="Collection(PrecisaModel.WCO_ListarBase_Result)" />
     <FunctionImport Name="WCO_ListarClasiComponente" ReturnType="Collection(PrecisaModel.WCO_ListarClasiComponente_Result)">
       <Parameter Name="IdClasificacion" Mode="In" Type="Int32" />
@@ -762,6 +758,11 @@
       <Parameter Name="IdSede" Mode="In" Type="Int32" />
       <Parameter Name="Estado" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="WCO_ListarBanco" ReturnType="Collection(PrecisaModel.WCO_ListarBanco_Result)">
+      <Parameter Name="Banco" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="String" />
+      <Parameter Name="DescripcionCorta" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="WCO_ListarAdmisionServicio_Result">
     <Property Type="Int32" Name="IdAdmision" Nullable="false" />
@@ -1006,25 +1007,6 @@
     <Property Type="String" Name="PERFIL" Nullable="true" MaxLength="20" />
     <Property Type="String" Name="ESTADO" Nullable="false" MaxLength="8" />
     <Property Type="String" Name="ClasificadorMovimiento" Nullable="true" MaxLength="15" />
-  </ComplexType>
-  <ComplexType Name="WCO_ListarBanco_Result">
-    <Property Type="String" Name="Banco" Nullable="false" MaxLength="3" />
-    <Property Type="String" Name="DescripcionCorta" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="DescripcionLarga" Nullable="true" MaxLength="40" />
-    <Property Type="Int32" Name="BancoNumero" Nullable="true" />
-    <Property Type="String" Name="PersonaContacto" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="ConciliacionAutomaticaFlag" Nullable="true" MaxLength="1" />
-    <Property Type="String" Name="FormatoPropioFlag" Nullable="true" MaxLength="1" />
-    <Property Type="String" Name="FormatoDatawindow" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="ConciliacionFormatoFlag" Nullable="true" MaxLength="1" />
-    <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
-    <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
-    <Property Type="String" Name="UltimoUsuario" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="CODIGOINTERFASEAFP" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="DisponibleEDflag" Nullable="true" MaxLength="1" />
-    <Property Type="String" Name="FormatoDatawindowenvio" Nullable="true" MaxLength="50" />
-    <Property Type="Single" Name="TasaEfectivaAnual" Nullable="true" />
-    <Property Type="String" Name="CodigoFiscal" Nullable="true" MaxLength="2" />
   </ComplexType>
   <ComplexType Name="WCO_ListarBase_Result">
     <Property Type="Int32" Name="IdListaBase" Nullable="false" />
@@ -3357,5 +3339,24 @@
     <Property Type="Int32" Name="IdEmpresa" Nullable="true" />
     <Property Type="Int32" Name="IdSede" Nullable="true" />
     <Property Type="String" Name="TipoComprobanteDesc" Nullable="false" MaxLength="2" />
+  </ComplexType>
+  <ComplexType Name="WCO_ListarBanco_Result">
+    <Property Type="String" Name="Banco" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="DescripcionCorta" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="DescripcionLarga" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="BancoNumero" Nullable="true" />
+    <Property Type="String" Name="PersonaContacto" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="ConciliacionAutomaticaFlag" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="FormatoPropioFlag" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="FormatoDatawindow" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ConciliacionFormatoFlag" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
+    <Property Type="String" Name="UltimoUsuario" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="CODIGOINTERFASEAFP" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="DisponibleEDflag" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="FormatoDatawindowenvio" Nullable="true" MaxLength="50" />
+    <Property Type="Single" Name="TasaEfectivaAnual" Nullable="true" />
+    <Property Type="String" Name="CodigoFiscal" Nullable="true" MaxLength="2" />
   </ComplexType>
 </Schema>
