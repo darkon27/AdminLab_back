@@ -15,7 +15,7 @@
           <Property Name="IdSedeCompartida" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VW_HomologacionCliente">
           <Key>
             <PropertyRef Name="IdEmpresa" />
@@ -23,7 +23,7 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
             <PropertyRef Name="TipoDocumento" />
           </Key>
           <Property Name="CodigoHomologado" Type="varchar" MaxLength="25" />
-          <Property Name="NombreCompleto" Type="varchar" MaxLength="100" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="150" />
           <Property Name="IdEmpresa" Type="int" Nullable="false" />
           <Property Name="Documento" Type="char" MaxLength="20" Nullable="false" />
           <Property Name="CodigoComponente" Type="varchar" MaxLength="25" />
@@ -243,7 +243,6 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
         <Function Name="WCO_ListarBanco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Banco" Type="varchar" Mode="In" />
           <Parameter Name="Estado" Type="varchar" Mode="In" />
-          <Parameter Name="DescripcionCorta" Type="varchar" Mode="In" />
         </Function>
         <Function Name="WCO_ListarBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="WCO_ListarClasiComponente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -583,8 +582,8 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
           <Parameter Name="IdSede" Type="int" Mode="In" />
           <Parameter Name="IdEmpresa" Type="int" Mode="In" />
           <Parameter Name="IdSedeCliente" Type="int" Mode="In" />
-          <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
           <Parameter Name="SedCodigo" Type="varchar" Mode="In" />
+          <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
         </Function>
         <Function Name="WCO_ListarSedeCompartida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdSede" Type="int" Mode="In" />
@@ -846,7 +845,6 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
           <FunctionImport Name="WCO_ListarBanco" ReturnType="Collection(PrecisaModel.WCO_ListarBanco_Result)">
             <Parameter Name="Banco" Mode="In" Type="String" />
             <Parameter Name="Estado" Mode="In" Type="String" />
-            <Parameter Name="DescripcionCorta" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="WCO_ListarBase" ReturnType="Collection(PrecisaModel.WCO_ListarBase_Result)" />
           <FunctionImport Name="WCO_ListarClasiComponente" ReturnType="Collection(PrecisaModel.WCO_ListarClasiComponente_Result)">
@@ -1149,8 +1147,8 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
             <Parameter Name="IdSede" Mode="In" Type="Int32" />
             <Parameter Name="IdEmpresa" Mode="In" Type="Int32" />
             <Parameter Name="IdSedeCliente" Mode="In" Type="Int32" />
-            <Parameter Name="NombreCompleto" Mode="In" Type="String" />
             <Parameter Name="SedCodigo" Mode="In" Type="String" />
+            <Parameter Name="NombreCompleto" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="WCO_ListarSedePrinter" ReturnType="Collection(PrecisaModel.WCO_ListarSedePrinter_Result)">
             <Parameter Name="IdPrinter" Mode="In" Type="Int32" />
@@ -1243,14 +1241,6 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
             <Parameter Name="IdComprobante" Mode="In" Type="Int32" />
             <Parameter Name="IdLinea" Mode="In" Type="Int32" />
             <Parameter Name="Estado" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="WCO_ListarCorrelativosMast" ReturnType="Collection(PrecisaModel.WCO_ListarCorrelativosMast_Result)">
-            <Parameter Name="CompaniaCodigo" Mode="In" Type="String" />
-            <Parameter Name="TipoComprobante" Mode="In" Type="String" />
-            <Parameter Name="Serie" Mode="In" Type="String" />
-            <Parameter Name="SedCodigo" Mode="In" Type="String" />
-            <Parameter Name="IdSede" Mode="In" Type="Int32" />
-            <Parameter Name="Estado" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="WCO_ListarCostCenterMst" ReturnType="Collection(PrecisaModel.WCO_ListarCostCenterMst_Result)">
             <Parameter Name="CostCenter" Mode="In" Type="String" />
@@ -1564,6 +1554,14 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
             <Parameter Name="TipoOperacionId" Mode="In" Type="Int32" />
             <Parameter Name="TIPOADMISIONID" Mode="In" Type="Int32" />
             <Parameter Name="TipoPacienteId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="WCO_ListarCorrelativosMast" ReturnType="Collection(PrecisaModel.WCO_ListarCorrelativosMast_Result)">
+            <Parameter Name="CompaniaCodigo" Mode="In" Type="String" />
+            <Parameter Name="TipoComprobante" Mode="In" Type="String" />
+            <Parameter Name="Serie" Mode="In" Type="String" />
+            <Parameter Name="SedCodigo" Mode="In" Type="String" />
+            <Parameter Name="IdSede" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="WCO_ListarAdmisionServicio_Result">
@@ -2420,7 +2418,7 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
             <PropertyRef Name="TipoDocumento" />
           </Key>
           <Property Name="CodigoHomologado" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="NombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
           <Property Name="Documento" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
           <Property Name="CodigoComponente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
@@ -3097,40 +3095,6 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
           <Property Type="DateTime" Name="FechaModificacion" Nullable="true" Precision="23" />
           <Property Type="String" Name="TipoFormaPago" Nullable="true" MaxLength="1" />
           <Property Type="String" Name="DesEstado" Nullable="false" MaxLength="8" />
-        </ComplexType>
-        <ComplexType Name="WCO_ListarCorrelativosMast_Result">
-          <Property Type="String" Name="CompaniaCodigo" Nullable="false" MaxLength="15" />
-          <Property Type="String" Name="TipoComprobante" Nullable="false" MaxLength="2" />
-          <Property Type="String" Name="Serie" Nullable="false" MaxLength="4" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
-          <Property Type="Int32" Name="CorrelativoNumero" Nullable="true" />
-          <Property Type="Int32" Name="CorrelativoDesde" Nullable="true" />
-          <Property Type="Int32" Name="CorrelativoHasta" Nullable="true" />
-          <Property Type="String" Name="AlmacenCodigo" Nullable="true" MaxLength="4" />
-          <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="UltimoUsuario" Nullable="true" MaxLength="25" />
-          <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Sucursal" Nullable="true" MaxLength="4" />
-          <Property Type="Int32" Name="IdEstablecimiento" Nullable="true" />
-          <Property Type="String" Name="UsuarioCreacion" Nullable="true" MaxLength="25" />
-          <Property Type="DateTime" Name="FechaCreacion" Nullable="true" Precision="23" />
-          <Property Type="String" Name="ObjetoReporte" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="Impresora" Nullable="true" MaxLength="80" />
-          <Property Type="Int32" Name="IndicadorImpresora" Nullable="true" />
-          <Property Type="Int32" Name="Lineas" Nullable="true" />
-          <Property Type="Int32" Name="NumeroDigitos" Nullable="true" />
-          <Property Type="Int32" Name="IndicadorTicket" Nullable="true" />
-          <Property Type="Int32" Name="idCaja" Nullable="true" />
-          <Property Type="Int32" Name="IndicadorIncluirFacturacion" Nullable="true" />
-          <Property Type="String" Name="ImpresoraFlag" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="DatawindowObjeto" Nullable="true" MaxLength="40" />
-          <Property Type="Decimal" Name="Ancho" Nullable="true" Precision="16" Scale="4" />
-          <Property Type="Decimal" Name="Alto" Nullable="true" Precision="16" Scale="4" />
-          <Property Type="String" Name="ESTADOdesc" Nullable="false" MaxLength="8" />
-          <Property Type="String" Name="DescripcionCorta" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="SedDescripcion" Nullable="true" MaxLength="30" />
-          <Property Type="Int32" Name="IdEmpresa" Nullable="true" />
-          <Property Type="Int32" Name="IdSede" Nullable="true" />
         </ComplexType>
         <ComplexType Name="WCO_ListarCostCenterMst_Result">
           <Property Type="String" Name="CostCenter" Nullable="false" MaxLength="10" />
@@ -4159,6 +4123,41 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
           <Property Type="String" Name="SedDescripcion" Nullable="true" MaxLength="60" />
           <Property Type="Int32" Name="TIPOADMISIONID" Nullable="true" />
           <Property Type="Int32" Name="TipoPacienteId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="WCO_ListarCorrelativosMast_Result">
+          <Property Type="String" Name="CompaniaCodigo" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="TipoComprobante" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="Serie" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="CorrelativoNumero" Nullable="true" />
+          <Property Type="Int32" Name="CorrelativoDesde" Nullable="true" />
+          <Property Type="Int32" Name="CorrelativoHasta" Nullable="true" />
+          <Property Type="String" Name="AlmacenCodigo" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="UltimoUsuario" Nullable="true" MaxLength="25" />
+          <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Sucursal" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="IdEstablecimiento" Nullable="true" />
+          <Property Type="String" Name="UsuarioCreacion" Nullable="true" MaxLength="25" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ObjetoReporte" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Impresora" Nullable="true" MaxLength="80" />
+          <Property Type="Int32" Name="IndicadorImpresora" Nullable="true" />
+          <Property Type="Int32" Name="Lineas" Nullable="true" />
+          <Property Type="Int32" Name="NumeroDigitos" Nullable="true" />
+          <Property Type="Int32" Name="IndicadorTicket" Nullable="true" />
+          <Property Type="Int32" Name="idCaja" Nullable="true" />
+          <Property Type="Int32" Name="IndicadorIncluirFacturacion" Nullable="true" />
+          <Property Type="String" Name="ImpresoraFlag" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="DatawindowObjeto" Nullable="true" MaxLength="40" />
+          <Property Type="Decimal" Name="Ancho" Nullable="true" Precision="16" Scale="4" />
+          <Property Type="Decimal" Name="Alto" Nullable="true" Precision="16" Scale="4" />
+          <Property Type="String" Name="ESTADOdesc" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="DescripcionCorta" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="SedDescripcion" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="IdEmpresa" Nullable="true" />
+          <Property Type="Int32" Name="IdSede" Nullable="true" />
+          <Property Type="String" Name="TipoComprobanteDesc" Nullable="false" MaxLength="2" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -5928,44 +5927,6 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="WCO_ListarCorrelativosMast" FunctionName="PrecisaModel.Store.WCO_ListarCorrelativosMast">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarCorrelativosMast_Result">
-                <ScalarProperty Name="CompaniaCodigo" ColumnName="CompaniaCodigo" />
-                <ScalarProperty Name="TipoComprobante" ColumnName="TipoComprobante" />
-                <ScalarProperty Name="Serie" ColumnName="Serie" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="CorrelativoNumero" ColumnName="CorrelativoNumero" />
-                <ScalarProperty Name="CorrelativoDesde" ColumnName="CorrelativoDesde" />
-                <ScalarProperty Name="CorrelativoHasta" ColumnName="CorrelativoHasta" />
-                <ScalarProperty Name="AlmacenCodigo" ColumnName="AlmacenCodigo" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
-                <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
-                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
-                <ScalarProperty Name="IdEstablecimiento" ColumnName="IdEstablecimiento" />
-                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="ObjetoReporte" ColumnName="ObjetoReporte" />
-                <ScalarProperty Name="Impresora" ColumnName="Impresora" />
-                <ScalarProperty Name="IndicadorImpresora" ColumnName="IndicadorImpresora" />
-                <ScalarProperty Name="Lineas" ColumnName="Lineas" />
-                <ScalarProperty Name="NumeroDigitos" ColumnName="NumeroDigitos" />
-                <ScalarProperty Name="IndicadorTicket" ColumnName="IndicadorTicket" />
-                <ScalarProperty Name="idCaja" ColumnName="idCaja" />
-                <ScalarProperty Name="IndicadorIncluirFacturacion" ColumnName="IndicadorIncluirFacturacion" />
-                <ScalarProperty Name="ImpresoraFlag" ColumnName="ImpresoraFlag" />
-                <ScalarProperty Name="DatawindowObjeto" ColumnName="DatawindowObjeto" />
-                <ScalarProperty Name="Ancho" ColumnName="Ancho" />
-                <ScalarProperty Name="Alto" ColumnName="Alto" />
-                <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
-                <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
-                <ScalarProperty Name="SedDescripcion" ColumnName="SedDescripcion" />
-                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
-                <ScalarProperty Name="IdSede" ColumnName="IdSede" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="WCO_ListarCostCenterMst" FunctionName="PrecisaModel.Store.WCO_ListarCostCenterMst">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarCostCenterMst_Result">
@@ -7119,6 +7080,45 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
                 <ScalarProperty Name="SedDescripcion" ColumnName="SedDescripcion" />
                 <ScalarProperty Name="TIPOADMISIONID" ColumnName="TIPOADMISIONID" />
                 <ScalarProperty Name="TipoPacienteId" ColumnName="TipoPacienteId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WCO_ListarCorrelativosMast" FunctionName="PrecisaModel.Store.WCO_ListarCorrelativosMast">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarCorrelativosMast_Result">
+                <ScalarProperty Name="CompaniaCodigo" ColumnName="CompaniaCodigo" />
+                <ScalarProperty Name="TipoComprobante" ColumnName="TipoComprobante" />
+                <ScalarProperty Name="Serie" ColumnName="Serie" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CorrelativoNumero" ColumnName="CorrelativoNumero" />
+                <ScalarProperty Name="CorrelativoDesde" ColumnName="CorrelativoDesde" />
+                <ScalarProperty Name="CorrelativoHasta" ColumnName="CorrelativoHasta" />
+                <ScalarProperty Name="AlmacenCodigo" ColumnName="AlmacenCodigo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
+                <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
+                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+                <ScalarProperty Name="IdEstablecimiento" ColumnName="IdEstablecimiento" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="ObjetoReporte" ColumnName="ObjetoReporte" />
+                <ScalarProperty Name="Impresora" ColumnName="Impresora" />
+                <ScalarProperty Name="IndicadorImpresora" ColumnName="IndicadorImpresora" />
+                <ScalarProperty Name="Lineas" ColumnName="Lineas" />
+                <ScalarProperty Name="NumeroDigitos" ColumnName="NumeroDigitos" />
+                <ScalarProperty Name="IndicadorTicket" ColumnName="IndicadorTicket" />
+                <ScalarProperty Name="idCaja" ColumnName="idCaja" />
+                <ScalarProperty Name="IndicadorIncluirFacturacion" ColumnName="IndicadorIncluirFacturacion" />
+                <ScalarProperty Name="ImpresoraFlag" ColumnName="ImpresoraFlag" />
+                <ScalarProperty Name="DatawindowObjeto" ColumnName="DatawindowObjeto" />
+                <ScalarProperty Name="Ancho" ColumnName="Ancho" />
+                <ScalarProperty Name="Alto" ColumnName="Alto" />
+                <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
+                <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+                <ScalarProperty Name="SedDescripcion" ColumnName="SedDescripcion" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdSede" ColumnName="IdSede" />
+                <ScalarProperty Name="TipoComprobanteDesc" ColumnName="TipoComprobanteDesc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

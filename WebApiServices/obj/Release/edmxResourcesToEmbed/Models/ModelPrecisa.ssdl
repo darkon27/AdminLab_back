@@ -210,6 +210,13 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
     <Parameter Name="pIdAdmision" Type="int" Mode="In" />
     <Parameter Name="NroPeticion" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="WCO_ListarAprobadores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAprobador" Type="int" Mode="In" />
+    <Parameter Name="TipoDescuento" Type="int" Mode="In" />
+    <Parameter Name="IdUsuario" Type="char" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="UneuNegocioId" Type="int" Mode="In" />
+  </Function>
   <Function Name="WCO_ListarAseguradora" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
     <Parameter Name="IdAseguradora" Type="int" Mode="In" />
@@ -483,6 +490,8 @@ advertencia 6002: La tabla o vista 'Precisa.dbo.VW_HomologacionCliente' no tiene
     <Parameter Name="MosDescripcion" Type="varchar" Mode="In" />
     <Parameter Name="MosEstado" Type="int" Mode="In" />
     <Parameter Name="TipoOperacionId" Type="int" Mode="In" />
+    <Parameter Name="TIPOADMISIONID" Type="int" Mode="In" />
+    <Parameter Name="TipoPacienteId" Type="int" Mode="In" />
   </Function>
   <Function Name="WCO_ListarModServDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UneuNegocioId" Type="int" Mode="In" />

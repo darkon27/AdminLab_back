@@ -1236,31 +1236,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="WCO_ListarModeloServicio" FunctionName="PrecisaModel.Store.WCO_ListarModeloServicio">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarModeloServicio_Result">
-          <ScalarProperty Name="UneuNegocioId" ColumnName="UneuNegocioId" />
-          <ScalarProperty Name="ModeloServicioId" ColumnName="ModeloServicioId" />
-          <ScalarProperty Name="TipoOperacionId" ColumnName="TipoOperacionId" />
-          <ScalarProperty Name="MosDescripcion" ColumnName="MosDescripcion" />
-          <ScalarProperty Name="MosEstado" ColumnName="MosEstado" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
-          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
-          <ScalarProperty Name="IpCreacion" ColumnName="IpCreacion" />
-          <ScalarProperty Name="IpModificacion" ColumnName="IpModificacion" />
-          <ScalarProperty Name="MosAplicaFactor" ColumnName="MosAplicaFactor" />
-          <ScalarProperty Name="MosFactor" ColumnName="MosFactor" />
-          <ScalarProperty Name="empresa" ColumnName="empresa" />
-          <ScalarProperty Name="EstadoDesc" ColumnName="EstadoDesc" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="AdmDescripcion" ColumnName="AdmDescripcion" />
-          <ScalarProperty Name="IdListaBase" ColumnName="IdListaBase" />
-          <ScalarProperty Name="SedDescripcion" ColumnName="SedDescripcion" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="WCO_ListarModServDetalle" FunctionName="PrecisaModel.Store.WCO_ListarModServDetalle">
       <ResultMapping>
         <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarModServDetalle_Result">
@@ -2931,6 +2906,54 @@
           <ScalarProperty Name="Clave" ColumnName="Clave" />
           <ScalarProperty Name="Psw" ColumnName="Psw" />
           <ScalarProperty Name="ClasificadorMovimiento" ColumnName="ClasificadorMovimiento" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WCO_ListarAprobadores" FunctionName="PrecisaModel.Store.WCO_ListarAprobadores">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarAprobadores_Result">
+          <ScalarProperty Name="IdAprobador" ColumnName="IdAprobador" />
+          <ScalarProperty Name="UneuNegocioId" ColumnName="UneuNegocioId" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="TipoDescuento" ColumnName="TipoDescuento" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="IpCreacion" ColumnName="IpCreacion" />
+          <ScalarProperty Name="IpModificacion" ColumnName="IpModificacion" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WCO_ListarModeloServicio" FunctionName="PrecisaModel.Store.WCO_ListarModeloServicio">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarModeloServicio_Result">
+          <ScalarProperty Name="UneuNegocioId" ColumnName="UneuNegocioId" />
+          <ScalarProperty Name="ModeloServicioId" ColumnName="ModeloServicioId" />
+          <ScalarProperty Name="TipoOperacionId" ColumnName="TipoOperacionId" />
+          <ScalarProperty Name="MosDescripcion" ColumnName="MosDescripcion" />
+          <ScalarProperty Name="MosEstado" ColumnName="MosEstado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="IpCreacion" ColumnName="IpCreacion" />
+          <ScalarProperty Name="IpModificacion" ColumnName="IpModificacion" />
+          <ScalarProperty Name="MosAplicaFactor" ColumnName="MosAplicaFactor" />
+          <ScalarProperty Name="MosFactor" ColumnName="MosFactor" />
+          <ScalarProperty Name="empresa" ColumnName="empresa" />
+          <ScalarProperty Name="EstadoDesc" ColumnName="EstadoDesc" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="AdmDescripcion" ColumnName="AdmDescripcion" />
+          <ScalarProperty Name="IdListaBase" ColumnName="IdListaBase" />
+          <ScalarProperty Name="SedDescripcion" ColumnName="SedDescripcion" />
+          <ScalarProperty Name="TIPOADMISIONID" ColumnName="TIPOADMISIONID" />
+          <ScalarProperty Name="TipoPacienteId" ColumnName="TipoPacienteId" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

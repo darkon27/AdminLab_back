@@ -169,7 +169,7 @@ namespace WebApiServices.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_LISTARASIGNARPERFILPAG_Result>("WCO_LISTARASIGNARPERFILPAG", perfilParameter, usuarioParameter, nombrecompletoParameter);
         }
     
-        public virtual ObjectResult<WCO_ListarBanco_Result> WCO_ListarBanco(string banco, string estado, string descripcionCorta)
+        public virtual ObjectResult<WCO_ListarBanco_Result> WCO_ListarBanco(string banco, string estado)
         {
             var bancoParameter = banco != null ?
                 new ObjectParameter("Banco", banco) :
@@ -179,11 +179,7 @@ namespace WebApiServices.Models
                 new ObjectParameter("Estado", estado) :
                 new ObjectParameter("Estado", typeof(string));
     
-            var descripcionCortaParameter = descripcionCorta != null ?
-                new ObjectParameter("DescripcionCorta", descripcionCorta) :
-                new ObjectParameter("DescripcionCorta", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarBanco_Result>("WCO_ListarBanco", bancoParameter, estadoParameter, descripcionCortaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarBanco_Result>("WCO_ListarBanco", bancoParameter, estadoParameter);
         }
     
         public virtual ObjectResult<WCO_ListarBase_Result> WCO_ListarBase()
@@ -1240,7 +1236,7 @@ namespace WebApiServices.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarSede_Result>("WCO_ListarSede", descripcionLocalParameter, idSedeParameter, idEmpresaParameter, estadoParameter);
         }
     
-        public virtual ObjectResult<WCO_ListarSedeCliente_Result> WCO_ListarSedeCliente(Nullable<int> idSede, Nullable<int> idEmpresa, Nullable<int> idSedeCliente, string nombreCompleto, string sedCodigo)
+        public virtual ObjectResult<WCO_ListarSedeCliente_Result> WCO_ListarSedeCliente(Nullable<int> idSede, Nullable<int> idEmpresa, Nullable<int> idSedeCliente, string sedCodigo, string nombreCompleto)
         {
             var idSedeParameter = idSede.HasValue ?
                 new ObjectParameter("IdSede", idSede) :
@@ -1254,15 +1250,15 @@ namespace WebApiServices.Models
                 new ObjectParameter("IdSedeCliente", idSedeCliente) :
                 new ObjectParameter("IdSedeCliente", typeof(int));
     
-            var nombreCompletoParameter = nombreCompleto != null ?
-                new ObjectParameter("NombreCompleto", nombreCompleto) :
-                new ObjectParameter("NombreCompleto", typeof(string));
-    
             var sedCodigoParameter = sedCodigo != null ?
                 new ObjectParameter("SedCodigo", sedCodigo) :
                 new ObjectParameter("SedCodigo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarSedeCliente_Result>("WCO_ListarSedeCliente", idSedeParameter, idEmpresaParameter, idSedeClienteParameter, nombreCompletoParameter, sedCodigoParameter);
+            var nombreCompletoParameter = nombreCompleto != null ?
+                new ObjectParameter("NombreCompleto", nombreCompleto) :
+                new ObjectParameter("NombreCompleto", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarSedeCliente_Result>("WCO_ListarSedeCliente", idSedeParameter, idEmpresaParameter, idSedeClienteParameter, sedCodigoParameter, nombreCompletoParameter);
         }
     
         public virtual ObjectResult<WCO_ListarSedePrinter_Result> WCO_ListarSedePrinter(Nullable<int> idPrinter, Nullable<int> idSede, string ip, string shared_Name)
@@ -1590,35 +1586,6 @@ namespace WebApiServices.Models
                 new ObjectParameter("Estado", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarComprobanteFormaPago_Result>("WCO_ListarComprobanteFormaPago", idComprobanteParameter, idLineaParameter, estadoParameter);
-        }
-    
-        public virtual ObjectResult<WCO_ListarCorrelativosMast_Result> WCO_ListarCorrelativosMast(string companiaCodigo, string tipoComprobante, string serie, string sedCodigo, Nullable<int> idSede, string estado)
-        {
-            var companiaCodigoParameter = companiaCodigo != null ?
-                new ObjectParameter("CompaniaCodigo", companiaCodigo) :
-                new ObjectParameter("CompaniaCodigo", typeof(string));
-    
-            var tipoComprobanteParameter = tipoComprobante != null ?
-                new ObjectParameter("TipoComprobante", tipoComprobante) :
-                new ObjectParameter("TipoComprobante", typeof(string));
-    
-            var serieParameter = serie != null ?
-                new ObjectParameter("Serie", serie) :
-                new ObjectParameter("Serie", typeof(string));
-    
-            var sedCodigoParameter = sedCodigo != null ?
-                new ObjectParameter("SedCodigo", sedCodigo) :
-                new ObjectParameter("SedCodigo", typeof(string));
-    
-            var idSedeParameter = idSede.HasValue ?
-                new ObjectParameter("IdSede", idSede) :
-                new ObjectParameter("IdSede", typeof(int));
-    
-            var estadoParameter = estado != null ?
-                new ObjectParameter("Estado", estado) :
-                new ObjectParameter("Estado", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarCorrelativosMast_Result>("WCO_ListarCorrelativosMast", companiaCodigoParameter, tipoComprobanteParameter, serieParameter, sedCodigoParameter, idSedeParameter, estadoParameter);
         }
     
         public virtual ObjectResult<WCO_ListarCostCenterMst_Result> WCO_ListarCostCenterMst(string costCenter, string localName)
@@ -2771,6 +2738,35 @@ namespace WebApiServices.Models
                 new ObjectParameter("TipoPacienteId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarModeloServicio_Result>("WCO_ListarModeloServicio", uneuNegocioIdParameter, modeloServicioIdParameter, mosDescripcionParameter, mosEstadoParameter, tipoOperacionIdParameter, tIPOADMISIONIDParameter, tipoPacienteIdParameter);
+        }
+    
+        public virtual ObjectResult<WCO_ListarCorrelativosMast_Result> WCO_ListarCorrelativosMast(string companiaCodigo, string tipoComprobante, string serie, string sedCodigo, Nullable<int> idSede, string estado)
+        {
+            var companiaCodigoParameter = companiaCodigo != null ?
+                new ObjectParameter("CompaniaCodigo", companiaCodigo) :
+                new ObjectParameter("CompaniaCodigo", typeof(string));
+    
+            var tipoComprobanteParameter = tipoComprobante != null ?
+                new ObjectParameter("TipoComprobante", tipoComprobante) :
+                new ObjectParameter("TipoComprobante", typeof(string));
+    
+            var serieParameter = serie != null ?
+                new ObjectParameter("Serie", serie) :
+                new ObjectParameter("Serie", typeof(string));
+    
+            var sedCodigoParameter = sedCodigo != null ?
+                new ObjectParameter("SedCodigo", sedCodigo) :
+                new ObjectParameter("SedCodigo", typeof(string));
+    
+            var idSedeParameter = idSede.HasValue ?
+                new ObjectParameter("IdSede", idSede) :
+                new ObjectParameter("IdSede", typeof(int));
+    
+            var estadoParameter = estado != null ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarCorrelativosMast_Result>("WCO_ListarCorrelativosMast", companiaCodigoParameter, tipoComprobanteParameter, serieParameter, sedCodigoParameter, idSedeParameter, estadoParameter);
         }
     }
 }

@@ -928,7 +928,6 @@ D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\bin\es\System.Web.Razor.resourc
 D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\bin\es\System.Web.WebPages.resources.dll
 D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\bin\es\System.Web.WebPages.Deployment.resources.dll
 D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\bin\es\System.Web.WebPages.Razor.resources.dll
-D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\obj\Debug\WebApiServices.csproj.AssemblyReference.cache
 D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\obj\Debug\WebApiServices.csproj.CoreCompileInputs.cache
 D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\obj\Debug\WebApiServices.csproj.CopyComplete
 D:\Proyecto\PRECISA\AdminLab_back\WebApiServices\obj\Debug\WebApiServices.dll

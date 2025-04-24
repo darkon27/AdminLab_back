@@ -45,5 +45,6 @@ namespace WebApiServices.Models
         public string SedDescripcion { get; set; }
         public Nullable<int> IdEmpresa { get; set; }
         public Nullable<int> IdSede { get; set; }
+        public string TipoComprobanteDesc { get; set; }
     }
 }
