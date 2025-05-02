@@ -32,7 +32,7 @@ namespace WebApiServices.Models
                 prm_Params[7] = new Parameter("@FechaFin", obj_pWServicioLog.FechaFin);
                 prm_Params[8] = new Parameter("@Parametros", obj_pWServicioLog.Parametros);
                 prm_Params[9] = new Parameter("@Trama", obj_pWServicioLog.Trama);
-                prm_Params[10] = new Parameter("@Observacion", obj_pWServicioLog.Observacion);      
+                prm_Params[10] = new Parameter("@Observacion", obj_pWServicioLog.Observacion);
                 dop_DataOperation.Parameters.AddRange(prm_Params);
                 DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_DataOperation);
             }
@@ -366,17 +366,7 @@ namespace WebApiServices.Models
         public int ActualizarTablaMaestro(WCO_ListarTablasMaestras_Result objBETablaMaestro)
         {
             int valor = 0;
-            WCO_ListarTablasMaestras_Result obj = new WCO_ListarTablasMaestras_Result()
-            {
-                IdTablaMaestro = 0,
-                CodigoTabla = "",
-                Nombre = ""
-            };
-
-            bool isExists = false;
-            isExists = ListaTablasMaestras(obj).Exists(x => x.CodigoTabla == objBETablaMaestro.CodigoTabla || x.Nombre == objBETablaMaestro.Nombre);
-
-            if (!isExists)
+            try
             {
                 DataOperation dop_Operacion = new DataOperation("WCO_ActualizarTablaMaestro");
                 Parameter[] prm_Params = new Parameter[7];
@@ -389,9 +379,10 @@ namespace WebApiServices.Models
                 prm_Params[6] = new Parameter("@version", objBETablaMaestro.Version);
                 dop_Operacion.Parameters.AddRange(prm_Params);
                 DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
-                valor = int.Parse(dop_Operacion.GetParameterByName("@IdTablaMaestro").Value.ToString());
+                //valor = int.Parse(dop_Operacion.GetParameterByName("@IdTablaMaestro").Value.ToString());
+                valor = 0;
             }
-            else
+            catch
             {
                 valor = -1;
             }
@@ -443,8 +434,8 @@ namespace WebApiServices.Models
             };
 
             bool isExists = false;
-            isExists = ListaMaestroDetalle(obj).Exists(x => x.IdTablaMaestro == objBETablaMaestrodeta.IdTablaMaestro 
-                && x.IdCodigo == objBETablaMaestrodeta.IdCodigo );
+            isExists = ListaMaestroDetalle(obj).Exists(x => x.IdTablaMaestro == objBETablaMaestrodeta.IdTablaMaestro
+                && x.IdCodigo == objBETablaMaestrodeta.IdCodigo);
 
             isExists = ListaMaestroDetalle(obj).Exists(x => x.IdTablaMaestro == objBETablaMaestrodeta.IdTablaMaestro
                  && x.Nombre == objBETablaMaestrodeta.Nombre);
@@ -559,8 +550,8 @@ namespace WebApiServices.Models
             List<WCO_ListarParametro_Result> lst = new List<WCO_ListarParametro_Result>();
             using (var context = new BDComercialEntities())
             {
-                lst = context.WCO_ListarParametro(ObjUsuario.CompaniaCodigo, ObjUsuario.AplicacionCodigo, 
-                    ObjUsuario.ParametroClave, ObjUsuario.DescripcionParametro, ObjUsuario.TipodeDatoFlag, 
+                lst = context.WCO_ListarParametro(ObjUsuario.CompaniaCodigo, ObjUsuario.AplicacionCodigo,
+                    ObjUsuario.ParametroClave, ObjUsuario.DescripcionParametro, ObjUsuario.TipodeDatoFlag,
                     ObjUsuario.Estado).ToList();
             }
             return lst;
@@ -576,7 +567,7 @@ namespace WebApiServices.Models
             };
 
             bool isExists = false;
-            isExists = ListaParametro(obj).Exists(x => x.CompaniaCodigo == objBETablaMaestrodeta.CompaniaCodigo 
+            isExists = ListaParametro(obj).Exists(x => x.CompaniaCodigo == objBETablaMaestrodeta.CompaniaCodigo
             && x.AplicacionCodigo == objBETablaMaestrodeta.AplicacionCodigo && x.ParametroClave == objBETablaMaestrodeta.ParametroClave);
 
             if (!isExists)
@@ -596,7 +587,7 @@ namespace WebApiServices.Models
                 prm_Params[10] = new Parameter("@ExplicacionAdicional", objBETablaMaestrodeta.ExplicacionAdicional);
                 prm_Params[11] = new Parameter("@Texto1", objBETablaMaestrodeta.Texto1);
                 prm_Params[12] = new Parameter("@Texto2", objBETablaMaestrodeta.Texto2);
-                prm_Params[13] = new Parameter("@UsuarioCreacion", objBETablaMaestrodeta.UltimoUsuario);       
+                prm_Params[13] = new Parameter("@UsuarioCreacion", objBETablaMaestrodeta.UltimoUsuario);
                 dop_Operacion.Parameters.AddRange(prm_Params);
                 DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
                 valor = "true";
@@ -619,7 +610,7 @@ namespace WebApiServices.Models
 
             bool isExists = false;
             isExists = ListaParametro(obj).Exists(x => x.CompaniaCodigo == objBETablaMaestrodeta.CompaniaCodigo && x.AplicacionCodigo == objBETablaMaestrodeta.AplicacionCodigo
-             &&  x.ParametroClave != objBETablaMaestrodeta.ParametroClave);
+             && x.ParametroClave != objBETablaMaestrodeta.ParametroClave);
 
             if (!isExists)
             {
@@ -666,7 +657,7 @@ namespace WebApiServices.Models
         }
 
         #endregion
-            
+
         #region Moneda
         public List<WCO_ListarMonedaMast_Result> ListarMoneda(WCO_ListarMonedaMast_Result ObjUbigeo)
         {

@@ -78,18 +78,18 @@ namespace WebApiServices.Controllers
                 else if (id == 2)
                 {
                     valor = m.ActualizarTablaMaestro(ObjDetalle);
-                    if (valor < 0)
+                    if (valor != 0)
                     {
                         objLogin.success = false;
                         objLogin.valor = valor;
-                        objLogin.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                        objLogin.mensaje = "Se generó un error al actualizar";
                         statusCode = HttpStatusCode.OK;
                     }
                     else
                     {
                         objLogin.success = true;
                         objLogin.valor = 1;
-                        objLogin.mensaje = "Ok";
+                        objLogin.mensaje = "Actualización realizada";
                         statusCode = HttpStatusCode.OK;
                     }
 
