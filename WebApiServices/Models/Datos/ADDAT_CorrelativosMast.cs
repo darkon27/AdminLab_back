@@ -26,60 +26,85 @@ namespace WebApiServices.Models.Datos
             return lst;
         }
 
-        public  string Insertar(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
+        public int Insertar(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
         {
-            DataOperation dop_Operacion = new DataOperation("WCO_InsertarCorrelativosMast");
-            Parameter[] prm_Params = new Parameter[11];
-            prm_Params[0] = new Parameter("@CompaniaCodigo", objBECorrelativosMast.CompaniaCodigo);
-            prm_Params[1] = new Parameter("@TipoComprobante", objBECorrelativosMast.TipoComprobante);
-            prm_Params[2] = new Parameter("@Serie", objBECorrelativosMast.Serie);
-            prm_Params[3] = new Parameter("@SedCodigo", objBECorrelativosMast.Sucursal);
-            prm_Params[4] = new Parameter("@IdEstablecimiento", objBECorrelativosMast.IdEstablecimiento);
-            prm_Params[5] = new Parameter("@Descripcion", objBECorrelativosMast.Descripcion);
-            prm_Params[6] = new Parameter("@CorrelativoNumero", objBECorrelativosMast.CorrelativoNumero);
-            prm_Params[7] = new Parameter("@CorrelativoDesde", objBECorrelativosMast.CorrelativoDesde);
-            prm_Params[8] = new Parameter("@CorrelativoHasta", objBECorrelativosMast.CorrelativoHasta);
-            prm_Params[9] = new Parameter("@Estado", objBECorrelativosMast.Estado);
-            prm_Params[10] = new Parameter("@UsuarioCreacion", objBECorrelativosMast.UsuarioCreacion);
-            dop_Operacion.Parameters.AddRange(prm_Params);
-            DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
-            return dop_Operacion.GetParameterByName("@Serie").Value.ToString();
+            try
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_InsertarCorrelativosMast");
+                Parameter[] prm_Params = new Parameter[11];
+                prm_Params[0] = new Parameter("@CompaniaCodigo", objBECorrelativosMast.CompaniaCodigo);
+                prm_Params[1] = new Parameter("@TipoComprobante", objBECorrelativosMast.TipoComprobante);
+                prm_Params[2] = new Parameter("@Serie", objBECorrelativosMast.Serie);
+                prm_Params[3] = new Parameter("@SedCodigo", objBECorrelativosMast.Sucursal);
+                prm_Params[4] = new Parameter("@IdEstablecimiento", objBECorrelativosMast.IdEstablecimiento);
+                prm_Params[5] = new Parameter("@Descripcion", objBECorrelativosMast.Descripcion);
+                prm_Params[6] = new Parameter("@CorrelativoNumero", objBECorrelativosMast.CorrelativoNumero);
+                prm_Params[7] = new Parameter("@CorrelativoDesde", objBECorrelativosMast.CorrelativoDesde);
+                prm_Params[8] = new Parameter("@CorrelativoHasta", objBECorrelativosMast.CorrelativoHasta);
+                prm_Params[9] = new Parameter("@Estado", objBECorrelativosMast.Estado);
+                prm_Params[10] = new Parameter("@UsuarioCreacion", objBECorrelativosMast.UsuarioCreacion);
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 1;
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
         }
 
-        public  void Actualizar(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
+        public int Actualizar(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
         {
-            DataOperation dop_Operacion = new DataOperation("WCO_ActualizarCorrelativosMast");
-            Parameter[] prm_Params = new Parameter[11];
-            prm_Params[0] = new Parameter("@CompaniaCodigo", objBECorrelativosMast.CompaniaCodigo);
-            prm_Params[1] = new Parameter("@TipoComprobante", objBECorrelativosMast.TipoComprobante);
-            prm_Params[2] = new Parameter("@Serie", objBECorrelativosMast.Serie);
-            prm_Params[3] = new Parameter("@SedCodigo", objBECorrelativosMast.Sucursal);
-            prm_Params[4] = new Parameter("@IdEstablecimiento", objBECorrelativosMast.IdEstablecimiento);
-            prm_Params[5] = new Parameter("@Descripcion", objBECorrelativosMast.Descripcion);
-            prm_Params[6] = new Parameter("@CorrelativoNumero", objBECorrelativosMast.CorrelativoNumero);
-            prm_Params[7] = new Parameter("@CorrelativoDesde", objBECorrelativosMast.CorrelativoDesde);
-            prm_Params[8] = new Parameter("@CorrelativoHasta", objBECorrelativosMast.CorrelativoHasta);
-            prm_Params[9] = new Parameter("@Estado", objBECorrelativosMast.Estado);
-            prm_Params[10] = new Parameter("@UsuarioModificacion", objBECorrelativosMast.UltimoUsuario);
-            dop_Operacion.Parameters.AddRange(prm_Params);
-            DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+            try
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_ActualizarCorrelativosMast");
+                Parameter[] prm_Params = new Parameter[11];
+                prm_Params[0] = new Parameter("@CompaniaCodigo", objBECorrelativosMast.CompaniaCodigo);
+                prm_Params[1] = new Parameter("@TipoComprobante", objBECorrelativosMast.TipoComprobante);
+                prm_Params[2] = new Parameter("@Serie", objBECorrelativosMast.Serie);
+                prm_Params[3] = new Parameter("@SedCodigo", objBECorrelativosMast.Sucursal);
+                prm_Params[4] = new Parameter("@IdEstablecimiento", objBECorrelativosMast.IdEstablecimiento);
+                prm_Params[5] = new Parameter("@Descripcion", objBECorrelativosMast.Descripcion);
+                prm_Params[6] = new Parameter("@CorrelativoNumero", objBECorrelativosMast.CorrelativoNumero);
+                prm_Params[7] = new Parameter("@CorrelativoDesde", objBECorrelativosMast.CorrelativoDesde);
+                prm_Params[8] = new Parameter("@CorrelativoHasta", objBECorrelativosMast.CorrelativoHasta);
+                prm_Params[9] = new Parameter("@Estado", objBECorrelativosMast.Estado);
+                prm_Params[10] = new Parameter("@UsuarioModificacion", objBECorrelativosMast.UltimoUsuario);
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 1;
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
         }
 
-        public  void Inactivar(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
+        public int Inactivar(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
         {
-            DataOperation dop_Operacion = new DataOperation("WCO_InactivarCorrelativosMast");
-            Parameter[] prm_Params = new Parameter[6];
-            prm_Params[0] = new Parameter("@CompaniaCodigo", objBECorrelativosMast.CompaniaCodigo);
-            prm_Params[1] = new Parameter("@TipoComprobante", objBECorrelativosMast.TipoComprobante);
-            prm_Params[2] = new Parameter("@Serie", objBECorrelativosMast.Serie);
-            prm_Params[3] = new Parameter("@SedCodigo", objBECorrelativosMast.Sucursal);
-            prm_Params[4] = new Parameter("@Estado", objBECorrelativosMast.Estado);
-            prm_Params[5] = new Parameter("@UltimoUsuario", objBECorrelativosMast.UltimoUsuario);
-            dop_Operacion.Parameters.AddRange(prm_Params);
-            DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+            try
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_InactivarCorrelativosMast");
+                Parameter[] prm_Params = new Parameter[6];
+                prm_Params[0] = new Parameter("@CompaniaCodigo", objBECorrelativosMast.CompaniaCodigo);
+                prm_Params[1] = new Parameter("@TipoComprobante", objBECorrelativosMast.TipoComprobante);
+                prm_Params[2] = new Parameter("@Serie", objBECorrelativosMast.Serie);
+                prm_Params[3] = new Parameter("@SedCodigo", objBECorrelativosMast.Sucursal);
+                prm_Params[4] = new Parameter("@Estado", objBECorrelativosMast.Estado);
+                prm_Params[5] = new Parameter("@UltimoUsuario", objBECorrelativosMast.UltimoUsuario);
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
         }
 
-        public  bool ValidarExisteDescCorrelativosMast(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
+        public bool ValidarExisteDescCorrelativosMast(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
         {
             DataOperation dop_DataOperation = new DataOperation("WCO_ExisteCorrelativosMast");
             Parameter[] prm_Params = new Parameter[6];
@@ -99,7 +124,7 @@ namespace WebApiServices.Models.Datos
             return true;
         }
 
-        public  DataTable ListarSucursalSerie(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
+        public DataTable ListarSucursalSerie(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
         {
             DataSet ds_Result = null;
             DataOperation dop_DataOperation = new DataOperation("WCO_ListarSucursalSerie");
@@ -117,7 +142,7 @@ namespace WebApiServices.Models.Datos
             return ds_Result.Tables[0];
         }
 
-        public  string InsertarSerieSucursal(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
+        public string InsertarSerieSucursal(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
         {
             DataOperation dop_Operacion = new DataOperation("WCO_InsertarSerieSucursal");
             Parameter[] prm_Params = new Parameter[4];
@@ -130,7 +155,7 @@ namespace WebApiServices.Models.Datos
             return dop_Operacion.GetParameterByName("@Sucursal").Value.ToString();
         }
 
-        public  void EliminarSerieSucursal(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
+        public void EliminarSerieSucursal(WCO_ListarCorrelativosMast_Result objBECorrelativosMast)
         {
             DataOperation dop_Operacion = new DataOperation("WCO_EliminarSerieSucursal");
             Parameter[] prm_Params = new Parameter[4];

@@ -227,6 +227,72 @@ namespace WebApiServices.Controllers
             return lst;
         }
 
+        [HttpPost]
+        [Route("api/Facturacion/MantenimientoCorrelativos/{id}")]
+        public async Task<IHttpActionResult> MantenimientoCorrelativos(int id, [FromBody] WCO_ListarCorrelativosMast_Result ObjDetalle)
+        {
+            ADDAT_CorrelativosMast per = new ADDAT_CorrelativosMast();
+            HttpStatusCode statusCode = new HttpStatusCode();
+            ViewModalExite response = new ViewModalExite();
+
+            try
+            {
+                int valor = 0;
+                switch (id)
+                {
+                    case 1:
+                        valor = per.Insertar(ObjDetalle);
+                        if (valor < 0)
+                        {
+                            response.success = false;
+                            response.valor = valor;
+                            response.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                            response.data = null;
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            response.success = true;
+                            response.valor = valor;
+                            response.mensaje = "Se creó el nuevo correlativo";
+                            response.data = ObjDetalle;
+                            statusCode = HttpStatusCode.Created;
+                        }
+                        break;
+                    case 2:
+                        valor = per.Actualizar(ObjDetalle);
+                        if (valor < 0)
+                        {
+                            response.success = false;
+                            response.valor = valor;
+                            response.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            response.success = true;
+                            response.valor = 1;
+                            response.mensaje = "Se actualizó el registro";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        break;
+
+                    case 3:
+                        per.Inactivar(ObjDetalle);
+                        response.success = true;
+                        response.valor = 1;
+                        response.mensaje = "Ok";
+                        statusCode = HttpStatusCode.OK;
+                        break;
+                }
+                return Content(statusCode, response);
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, new ViewModalExite() { success = false, mensaje = ex.Message, valor = -1 });
+            }
+        }
+
         #endregion
 
         #region Produccion

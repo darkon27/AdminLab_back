@@ -501,7 +501,7 @@ namespace WebApiServices.Controllers
 
                     case 3:
                         valor = Usuario.Inactivar(ObjDetalle);
-                        if (valor != "0")
+                        if (valor == "0")
                         {
                             objLogin.success = false;
                             objLogin.valor = 0;
