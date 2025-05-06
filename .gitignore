@@ -257,3 +257,15 @@ _Pvt_Extensions
 **/*.csproj
 Web.config
 **/*.config
+/WebApiServices/Web.config
+/WebApiServices/Web.Debug.config
+/WebApiServices/Web.Release.config
+/WebApiServices/SpringWeb.config
+/WebApiServices
+WebApiServices/SpringWeb.config
+WebApiServices/Web.Debug.config
+WebApiServices/SpringWeb.config
+/.vs/WebApiServices/config/applicationhost.config
+/.vs/WebApiServices/v17/.suo
+/WebApiServices/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/WebApiServices/obj/Debug/WebApiServices.csproj.AssemblyReference.cache
