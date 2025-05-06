@@ -157,25 +157,25 @@ namespace WebApiServices.Controllers
                 {
                     case 1:
                         resultado = m.InsertarParametro(ObjDetalle);
-                        objLogin.success = false;
+                        objLogin.success = true;
                         objLogin.valor = 0;
-                        objLogin.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                        objLogin.mensaje = "Creación correcta";
                         objLogin.data = null;
 
                         break;
                     case 2:
                         resultado = m.ActualizarParametro(ObjDetalle);
-                        objLogin.success = false;
+                        objLogin.success = true;
                         objLogin.valor = 0;
-                        objLogin.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                        objLogin.mensaje = "Se actualizó el registro";
                         objLogin.data = null;
                         break;
                     case 3:
                         ObjDetalle.Estado = "I";
                         resultado = m.ActualizarParametro(ObjDetalle);
-                        objLogin.success = false;
+                        objLogin.success = true;
                         objLogin.valor = 0;
-                        objLogin.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                        objLogin.mensaje = "Se inactivó el registro";
                         objLogin.data = null;
                         break;
                 }
