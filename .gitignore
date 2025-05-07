@@ -269,3 +269,4 @@ WebApiServices/SpringWeb.config
 /.vs/WebApiServices/v17/.suo
 /WebApiServices/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /WebApiServices/obj/Debug/WebApiServices.csproj.AssemblyReference.cache
+/WebApiServices/SpringWeb.config
