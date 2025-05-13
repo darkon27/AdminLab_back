@@ -295,21 +295,30 @@ namespace WebApiServices.Models
             return lst;
         }
 
-        public static void ActualizarPortal(WCO_ListarPortal_Result objBEPortal)
+        public int ActualizarPortal(WCO_ListarPortal_Result objBEPortal)
         {
-            DataOperation dop_Operacion = new DataOperation("WCO_ActualizarPortal");
-            Parameter[] prm_Params = new Parameter[9];
-            prm_Params[0] = new Parameter("@IdPortal", objBEPortal.IdPortal);
-            prm_Params[1] = new Parameter("@Logo", objBEPortal.Logo);
-            prm_Params[2] = new Parameter("@RutaImagen", objBEPortal.RutaImagen);
-            prm_Params[3] = new Parameter("@Direccion", objBEPortal.Direccion);
-            prm_Params[4] = new Parameter("@Telefono", objBEPortal.Telefono);
-            prm_Params[5] = new Parameter("@Correo", objBEPortal.Correo);
-            prm_Params[6] = new Parameter("@Estado", objBEPortal.Estado);
-            prm_Params[7] = new Parameter("@UsuarioModificacion", objBEPortal.UsuarioModificacion);
-            prm_Params[8] = new Parameter("@IpModificacion", objBEPortal.IpModificacion);
-            dop_Operacion.Parameters.AddRange(prm_Params);
-            DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+            try
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_ActualizarPortal");
+                Parameter[] prm_Params = new Parameter[9];
+                prm_Params[0] = new Parameter("@IdPortal", objBEPortal.IdPortal);
+                prm_Params[1] = new Parameter("@Logo", objBEPortal.Logo);
+                prm_Params[2] = new Parameter("@RutaImagen", objBEPortal.RutaImagen);
+                prm_Params[3] = new Parameter("@Direccion", objBEPortal.Direccion);
+                prm_Params[4] = new Parameter("@Telefono", objBEPortal.Telefono);
+                prm_Params[5] = new Parameter("@Correo", objBEPortal.Correo);
+                prm_Params[6] = new Parameter("@Estado", objBEPortal.Estado);
+                prm_Params[7] = new Parameter("@UsuarioModificacion", objBEPortal.UsuarioModificacion);
+                prm_Params[8] = new Parameter("@IpModificacion", objBEPortal.IpModificacion);
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+
         }
         #endregion
 

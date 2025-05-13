@@ -646,6 +646,7 @@ namespace WebApiServices.Controllers
             try
             {
                 lst = m.ListaPortal(ObjDetalle);
+
             }
             catch
             {
@@ -653,6 +654,48 @@ namespace WebApiServices.Controllers
             }
             return lst;
         }
+
+        [Authorize]
+        [HttpPost]
+        [Route("api/Seguridad/MantenimientoPortal/{id}")]
+        public async Task<IHttpActionResult> MantenimientoPortal(int id, [FromBody] WCO_ListarPortal_Result ObjDetalle)
+        {
+            ViewModalExite objLogin = new ViewModalExite();
+            HttpStatusCode statusCode = new HttpStatusCode();
+            ADDAT_Usuario Usuario = new ADDAT_Usuario();
+            try
+            {
+                int valor = 0;
+
+                switch (id)
+                {
+                    case 2:
+                        valor = m.ActualizarPortal(ObjDetalle);
+                        if (valor == 0)
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = 0;
+                            objLogin.mensaje = "Surgió un error al actualizar";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = 1;
+                            objLogin.mensaje = "Se actualizó la información de portal";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        break;
+                }
+                return Ok(objLogin);
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, new ViewModalExite() { success = false, mensaje = ex.Message, valor = -1 });
+            }
+        }
+
+
         #endregion
 
 
