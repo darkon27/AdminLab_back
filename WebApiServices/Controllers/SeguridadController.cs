@@ -1008,6 +1008,20 @@ namespace WebApiServices.Controllers
             {
                 ADDAT_Compania compa = new ADDAT_Compania();
                 string valor = "0";
+
+                if (string.IsNullOrEmpty(ObjDetalle.RepresentanteLegal))
+                {
+                    ObjDetalle.RepresentanteLegal = string.Empty;
+                }
+                if (string.IsNullOrEmpty(ObjDetalle.DetraccionCuentaBancaria))
+                {
+                    ObjDetalle.DetraccionCuentaBancaria = string.Empty;
+                }
+                if (string.IsNullOrEmpty(ObjDetalle.Fax1))
+                {
+                    ObjDetalle.Fax1 = string.Empty;
+                }
+                
                 if (ObjDetalle.DescripcionCorta != null)
                 {
                     if (!string.IsNullOrEmpty(ObjDetalle.DescripcionCorta.ToString()))

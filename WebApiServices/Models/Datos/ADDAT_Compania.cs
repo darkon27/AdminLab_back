@@ -77,7 +77,7 @@ namespace WebApiServices.Models.Datos
             prm_Params[8] = new Parameter("@Fax1", objBECompaniaMast.Fax1);
             prm_Params[9] = new Parameter("@FechaFundacion", objBECompaniaMast.FechaFundacion);
             prm_Params[10] = new Parameter("@RepresentanteLegal", objBECompaniaMast.RepresentanteLegal);
-            prm_Params[11] = new Parameter("@RepresentanteLegalDocumento", objBECompaniaMast.RepresentanteLegalDocumento);
+            prm_Params[11] = new Parameter("@RepresentanteLegalDocumento", objBECompaniaMast.RepresentanteLegalDocumento.TrimEnd());
             prm_Params[12] = new Parameter("@Estado", objBECompaniaMast.Estado);
             prm_Params[13] = new Parameter("@UltimoUsuario", objBECompaniaMast.UltimoUsuario);
             prm_Params[14] = new Parameter("@CompaniaCodigo", objBECompaniaMast.CompaniaCodigo);
