@@ -437,7 +437,7 @@ namespace WebApiServices.Controllers
             try
             {
                 string valor = "0";
-                ObjDetalle.Clave = Kerberos.Encriptar(ObjDetalle.Clave);
+                ObjDetalle.Clave = id != 4 ? Kerberos.Encriptar(ObjDetalle.Clave) : ObjDetalle.Clave; // No se encripta cuando el id es 4: asignar perfil
                 if (ObjDetalle.Usuario != null)
                 {
                     if (!string.IsNullOrEmpty(ObjDetalle.Usuario.ToString()))
@@ -501,6 +501,24 @@ namespace WebApiServices.Controllers
 
                     case 3:
                         valor = Usuario.Inactivar(ObjDetalle);
+                        if (valor == "0")
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = 0;
+                            objLogin.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = 1;
+                            objLogin.mensaje = "Ok";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        break;
+                    case 4:
+
+                        valor = Usuario.Actualizar(ObjDetalle);
                         if (valor == "0")
                         {
                             objLogin.success = false;
