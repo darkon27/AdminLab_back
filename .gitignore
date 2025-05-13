@@ -270,3 +270,16 @@ WebApiServices/SpringWeb.config
 /WebApiServices/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /WebApiServices/obj/Debug/WebApiServices.csproj.AssemblyReference.cache
 /WebApiServices/SpringWeb.config
+/WebApiServices/obj/Release/Package/PackageTmp/bin/roslyn/csc.exe
+/WebApiServices/obj/Debug/WebApiServices.pdb
+/WebApiServices/obj/Debug/WebApiServices.dll
+/WebApiServices/obj/Debug/WebApiServices.csproj.FileListAbsolute.txt
+/WebApiServices/obj/Debug/WebApiServices.csproj.AssemblyReference.cache
+/WebApiServices/obj/Debug/WebApiServices.csproj.CoreCompileInputs.cache
+/WebApiServices/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/WebApiServices/bin/WebApiServices.pdb
+/WebApiServices/bin/WebApiServices.dll
+/packages/WebGrease.1.6.0/tools/WG.EXE
+/packages/EntityFramework.6.2.0/tools/migrate.exe
+/.vs/WebApiServices/v17/.suo
+/.vs/WebApiServices/config/applicationhost.config
