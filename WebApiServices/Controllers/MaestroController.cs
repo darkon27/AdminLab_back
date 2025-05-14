@@ -1756,7 +1756,7 @@ namespace WebApiServices.Controllers
                         {
                             objLogin.success = true;
                             objLogin.valor = valor;
-                            objLogin.mensaje = "Created";
+                            objLogin.mensaje = "Se creó con exito el tipo de cambio";
                             objLogin.data = ObjDetalle;
                             statusCode = HttpStatusCode.Created;
                         }
@@ -1774,7 +1774,7 @@ namespace WebApiServices.Controllers
                         {
                             objLogin.success = true;
                             objLogin.valor = 1;
-                            objLogin.mensaje = "Ok";
+                            objLogin.mensaje = "Se actualizó el tipo de cambio";
                             statusCode = HttpStatusCode.OK;
                         }
                         break;
@@ -1783,7 +1783,7 @@ namespace WebApiServices.Controllers
                         tipcam.Inactivar(ObjDetalle);
                         objLogin.success = true;
                         objLogin.valor = 1;
-                        objLogin.mensaje = "Ok";
+                        objLogin.mensaje = "Se inactivó el tipo de cambio";
                         statusCode = HttpStatusCode.OK;
                         break;
                 }
