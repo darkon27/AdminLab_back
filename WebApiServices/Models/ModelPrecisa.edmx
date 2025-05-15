@@ -57,6 +57,11 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
           <Parameter Name="SoloBeneficiarios" Type="int" Mode="In" />
           <Parameter Name="idEmpresaEmpleadora" Type="int" Mode="In" />
         </Function>
+        <Function Name="WCO_ExisteInsumo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdInsumo" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="flagSalida" Type="int" Mode="InOut" />
+        </Function>
         <Function Name="WCO_ExportarCobranza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdCobranza" Type="int" Mode="In" />
           <Parameter Name="IdComprobante" Type="int" Mode="In" />
@@ -471,6 +476,11 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
           <Parameter Name="Estado" Type="int" Mode="In" />
           <Parameter Name="IdEmpresa" Type="int" Mode="In" />
           <Parameter Name="Documento" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="WCO_ListarInsumo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdInsumo" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Estado" Type="int" Mode="In" />
         </Function>
         <Function Name="WCO_ListarListaBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
@@ -1564,6 +1574,16 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
             <Parameter Name="Banco" Mode="In" Type="String" />
             <Parameter Name="Estado" Mode="In" Type="String" />
             <Parameter Name="DescripcionCorta" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="WCO_ExisteInsumo">
+            <Parameter Name="IdInsumo" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="flagSalida" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="WCO_ListarInsumo" ReturnType="Collection(PrecisaModel.WCO_ListarInsumo_Result)">
+            <Parameter Name="IdInsumo" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="WCO_ListarAdmisionServicio_Result">
@@ -4160,6 +4180,18 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
           <Property Type="String" Name="FormatoDatawindowenvio" Nullable="true" MaxLength="50" />
           <Property Type="Single" Name="TasaEfectivaAnual" Nullable="true" />
           <Property Type="String" Name="CodigoFiscal" Nullable="true" MaxLength="2" />
+        </ComplexType>
+        <ComplexType Name="WCO_ListarInsumo_Result">
+          <Property Type="Int32" Name="IdInsumo" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Estado" Nullable="true" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="UsuarioCreacion" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="UsuarioModificacion" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="IpCreacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="IpModificacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ESTADOdesc" Nullable="false" MaxLength="8" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -7121,6 +7153,23 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
                 <ScalarProperty Name="FormatoDatawindowenvio" ColumnName="FormatoDatawindowenvio" />
                 <ScalarProperty Name="TasaEfectivaAnual" ColumnName="TasaEfectivaAnual" />
                 <ScalarProperty Name="CodigoFiscal" ColumnName="CodigoFiscal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WCO_ExisteInsumo" FunctionName="PrecisaModel.Store.WCO_ExisteInsumo" />
+          <FunctionImportMapping FunctionImportName="WCO_ListarInsumo" FunctionName="PrecisaModel.Store.WCO_ListarInsumo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarInsumo_Result">
+                <ScalarProperty Name="IdInsumo" ColumnName="IdInsumo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="IpCreacion" ColumnName="IpCreacion" />
+                <ScalarProperty Name="IpModificacion" ColumnName="IpModificacion" />
+                <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

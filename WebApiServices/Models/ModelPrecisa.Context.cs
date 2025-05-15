@@ -2772,5 +2772,35 @@ namespace WebApiServices.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarBanco_Result>("WCO_ListarBanco", bancoParameter, estadoParameter, descripcionCortaParameter);
         }
+    
+        public virtual int WCO_ExisteInsumo(Nullable<int> idInsumo, string descripcion, ObjectParameter flagSalida)
+        {
+            var idInsumoParameter = idInsumo.HasValue ?
+                new ObjectParameter("IdInsumo", idInsumo) :
+                new ObjectParameter("IdInsumo", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("WCO_ExisteInsumo", idInsumoParameter, descripcionParameter, flagSalida);
+        }
+    
+        public virtual ObjectResult<WCO_ListarInsumo_Result> WCO_ListarInsumo(Nullable<int> idInsumo, string descripcion, Nullable<int> estado)
+        {
+            var idInsumoParameter = idInsumo.HasValue ?
+                new ObjectParameter("IdInsumo", idInsumo) :
+                new ObjectParameter("IdInsumo", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarInsumo_Result>("WCO_ListarInsumo", idInsumoParameter, descripcionParameter, estadoParameter);
+        }
     }
 }
