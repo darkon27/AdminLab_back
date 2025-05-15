@@ -437,7 +437,7 @@ namespace WebApiServices.Controllers
             try
             {
                 string valor = "0";
-                ObjDetalle.Clave = Kerberos.Encriptar(ObjDetalle.Clave);
+                ObjDetalle.Clave = id != 4 ? Kerberos.Encriptar(ObjDetalle.Clave) : ObjDetalle.Clave; // No se encripta cuando el id es 4: asignar perfil
                 if (ObjDetalle.Usuario != null)
                 {
                     if (!string.IsNullOrEmpty(ObjDetalle.Usuario.ToString()))
@@ -501,6 +501,24 @@ namespace WebApiServices.Controllers
 
                     case 3:
                         valor = Usuario.Inactivar(ObjDetalle);
+                        if (valor == "0")
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = 0;
+                            objLogin.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = 1;
+                            objLogin.mensaje = "Ok";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        break;
+                    case 4:
+
+                        valor = Usuario.Actualizar(ObjDetalle);
                         if (valor == "0")
                         {
                             objLogin.success = false;
@@ -628,6 +646,7 @@ namespace WebApiServices.Controllers
             try
             {
                 lst = m.ListaPortal(ObjDetalle);
+
             }
             catch
             {
@@ -635,6 +654,48 @@ namespace WebApiServices.Controllers
             }
             return lst;
         }
+
+        [Authorize]
+        [HttpPost]
+        [Route("api/Seguridad/MantenimientoPortal/{id}")]
+        public async Task<IHttpActionResult> MantenimientoPortal(int id, [FromBody] WCO_ListarPortal_Result ObjDetalle)
+        {
+            ViewModalExite objLogin = new ViewModalExite();
+            HttpStatusCode statusCode = new HttpStatusCode();
+            ADDAT_Usuario Usuario = new ADDAT_Usuario();
+            try
+            {
+                int valor = 0;
+
+                switch (id)
+                {
+                    case 2:
+                        valor = m.ActualizarPortal(ObjDetalle);
+                        if (valor == 0)
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = 0;
+                            objLogin.mensaje = "Surgió un error al actualizar";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = 1;
+                            objLogin.mensaje = "Se actualizó la información de portal";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        break;
+                }
+                return Ok(objLogin);
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, new ViewModalExite() { success = false, mensaje = ex.Message, valor = -1 });
+            }
+        }
+
+
         #endregion
 
 
@@ -990,6 +1051,20 @@ namespace WebApiServices.Controllers
             {
                 ADDAT_Compania compa = new ADDAT_Compania();
                 string valor = "0";
+
+                if (string.IsNullOrEmpty(ObjDetalle.RepresentanteLegal))
+                {
+                    ObjDetalle.RepresentanteLegal = string.Empty;
+                }
+                if (string.IsNullOrEmpty(ObjDetalle.DetraccionCuentaBancaria))
+                {
+                    ObjDetalle.DetraccionCuentaBancaria = string.Empty;
+                }
+                if (string.IsNullOrEmpty(ObjDetalle.Fax1))
+                {
+                    ObjDetalle.Fax1 = string.Empty;
+                }
+                
                 if (ObjDetalle.DescripcionCorta != null)
                 {
                     if (!string.IsNullOrEmpty(ObjDetalle.DescripcionCorta.ToString()))

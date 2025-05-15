@@ -157,25 +157,25 @@ namespace WebApiServices.Controllers
                 {
                     case 1:
                         resultado = m.InsertarParametro(ObjDetalle);
-                        objLogin.success = false;
+                        objLogin.success = true;
                         objLogin.valor = 0;
-                        objLogin.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                        objLogin.mensaje = "Creación correcta";
                         objLogin.data = null;
 
                         break;
                     case 2:
                         resultado = m.ActualizarParametro(ObjDetalle);
-                        objLogin.success = false;
+                        objLogin.success = true;
                         objLogin.valor = 0;
-                        objLogin.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                        objLogin.mensaje = "Se actualizó el registro";
                         objLogin.data = null;
                         break;
                     case 3:
                         ObjDetalle.Estado = "I";
                         resultado = m.ActualizarParametro(ObjDetalle);
-                        objLogin.success = false;
+                        objLogin.success = true;
                         objLogin.valor = 0;
-                        objLogin.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                        objLogin.mensaje = "Se inactivó el registro";
                         objLogin.data = null;
                         break;
                 }
@@ -595,9 +595,9 @@ namespace WebApiServices.Controllers
                 {
                     p.Actualizar(ObjDetalle);
 
-                    objLogin.success = false;
+                    objLogin.success = true;
                     objLogin.valor = valor;
-                    objLogin.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                    objLogin.mensaje = "Actualización realizada";
                     statusCode = HttpStatusCode.OK;
 
 
@@ -640,6 +640,83 @@ namespace WebApiServices.Controllers
 
             }
             return lst;
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("api/Maestro/MantenimientoAprobadores/{id}")]
+        public async Task<IHttpActionResult> MantenimientoAprobadores(int id, [FromBody] WCO_ListarAprobadores_Result ObjDetalle)
+        {
+            ViewModalExite objLogin = new ViewModalExite();
+            HttpStatusCode statusCode = new HttpStatusCode();
+            List<WCO_ListarAprobadores_Result> lst = new List<WCO_ListarAprobadores_Result>();
+
+            try
+            {
+                int valor = 0;
+                switch (id)
+                {
+                    case 1:
+                        valor = m.InsertarAprobadores(ObjDetalle);
+                        if (valor < 0)
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = valor;
+                            objLogin.mensaje = "Hubo un error al ingresar el registro";
+                            objLogin.data = null;
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = valor;
+                            objLogin.mensaje = "Se creó el registro con éxito";
+                            objLogin.data = ObjDetalle;
+                            statusCode = HttpStatusCode.Created;
+                        }
+                        break;
+                    case 2:
+                        valor = m.ActualizarAprobadores(ObjDetalle);
+                        if (valor < 0)
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = valor;
+                            objLogin.mensaje = "Hubo un error al actualizar el registro";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = 1;
+                            objLogin.mensaje = "Se actualizó el registro con éxito";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        break;
+
+                    case 3:
+                        valor = m.InactivarAprobadores(ObjDetalle);
+                        if (valor < 0)
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = valor;
+                            objLogin.mensaje = "Hubo un error al inactivar el registro";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = 1;
+                            objLogin.mensaje = "Se inactivó el registro con éxito";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        break;
+                }
+                return Content(statusCode, objLogin);
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, new ViewModalExite() { success = false, mensaje = ex.Message, valor = -1 });
+            }
         }
 
         #endregion
@@ -1756,7 +1833,7 @@ namespace WebApiServices.Controllers
                         {
                             objLogin.success = true;
                             objLogin.valor = valor;
-                            objLogin.mensaje = "Created";
+                            objLogin.mensaje = "Se creó con exito el tipo de cambio";
                             objLogin.data = ObjDetalle;
                             statusCode = HttpStatusCode.Created;
                         }
@@ -1774,7 +1851,7 @@ namespace WebApiServices.Controllers
                         {
                             objLogin.success = true;
                             objLogin.valor = 1;
-                            objLogin.mensaje = "Ok";
+                            objLogin.mensaje = "Se actualizó el tipo de cambio";
                             statusCode = HttpStatusCode.OK;
                         }
                         break;
@@ -1783,7 +1860,7 @@ namespace WebApiServices.Controllers
                         tipcam.Inactivar(ObjDetalle);
                         objLogin.success = true;
                         objLogin.valor = 1;
-                        objLogin.mensaje = "Ok";
+                        objLogin.mensaje = "Se inactivó el tipo de cambio";
                         statusCode = HttpStatusCode.OK;
                         break;
                 }

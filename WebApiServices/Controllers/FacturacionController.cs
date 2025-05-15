@@ -350,7 +350,7 @@ namespace WebApiServices.Controllers
 
         //[Authorize]
         [HttpPost]
-        [Route("api/Maestro/MantenimientoProduccion/{id}")]
+        [Route("api/Facturacion/MantenimientoProduccion/{id}")]
         public async Task<IHttpActionResult> MantenimientoProduccion(int id, [FromBody] WCO_ListarProduccion_Result ObjDetalle)
         {
             ViewModalExite objLogin = new ViewModalExite();
@@ -389,7 +389,7 @@ namespace WebApiServices.Controllers
                     {
                         objLogin.success = true;
                         objLogin.valor = valor;
-                        objLogin.mensaje = "Created";
+                        objLogin.mensaje = "Creado";
                         objLogin.data = ObjDetalle;
                         statusCode = HttpStatusCode.Created;
                     }
@@ -432,7 +432,7 @@ namespace WebApiServices.Controllers
                     m.EliminarProduccion(ObjDetalle);
                     objLogin.success = true;
                     objLogin.valor = 1;
-                    objLogin.mensaje = "Ok";
+                    objLogin.mensaje = "Se elimino correctamente";
                     statusCode = HttpStatusCode.OK;
                 }
                 else if (id == 4)
@@ -440,7 +440,7 @@ namespace WebApiServices.Controllers
                     m.EliminarProduccionMasivo(ObjDetalle);
                     objLogin.success = true;
                     objLogin.valor = 1;
-                    objLogin.mensaje = "Ok";
+                    objLogin.mensaje = "Eliminación masiva realizada";
                     statusCode = HttpStatusCode.OK;
                 }
                 else
