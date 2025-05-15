@@ -389,7 +389,7 @@ namespace WebApiServices.Controllers
                     {
                         objLogin.success = true;
                         objLogin.valor = valor;
-                        objLogin.mensaje = "Created";
+                        objLogin.mensaje = "Creado";
                         objLogin.data = ObjDetalle;
                         statusCode = HttpStatusCode.Created;
                     }
