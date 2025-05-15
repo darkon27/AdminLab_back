@@ -763,6 +763,16 @@
       <Parameter Name="Estado" Mode="In" Type="String" />
       <Parameter Name="DescripcionCorta" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="WCO_ExisteInsumo">
+      <Parameter Name="IdInsumo" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="flagSalida" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="WCO_ListarInsumo" ReturnType="Collection(PrecisaModel.WCO_ListarInsumo_Result)">
+      <Parameter Name="IdInsumo" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="WCO_ListarAdmisionServicio_Result">
     <Property Type="Int32" Name="IdAdmision" Nullable="false" />
@@ -3358,5 +3368,17 @@
     <Property Type="String" Name="FormatoDatawindowenvio" Nullable="true" MaxLength="50" />
     <Property Type="Single" Name="TasaEfectivaAnual" Nullable="true" />
     <Property Type="String" Name="CodigoFiscal" Nullable="true" MaxLength="2" />
+  </ComplexType>
+  <ComplexType Name="WCO_ListarInsumo_Result">
+    <Property Type="Int32" Name="IdInsumo" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Estado" Nullable="true" />
+    <Property Type="DateTime" Name="FechaCreacion" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaModificacion" Nullable="true" Precision="23" />
+    <Property Type="String" Name="UsuarioCreacion" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="UsuarioModificacion" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="IpCreacion" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="IpModificacion" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ESTADOdesc" Nullable="false" MaxLength="8" />
   </ComplexType>
 </Schema>

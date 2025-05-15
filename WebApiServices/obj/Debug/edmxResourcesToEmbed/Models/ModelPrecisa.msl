@@ -2958,5 +2958,22 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WCO_ExisteInsumo" FunctionName="PrecisaModel.Store.WCO_ExisteInsumo" />
+    <FunctionImportMapping FunctionImportName="WCO_ListarInsumo" FunctionName="PrecisaModel.Store.WCO_ListarInsumo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarInsumo_Result">
+          <ScalarProperty Name="IdInsumo" ColumnName="IdInsumo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="IpCreacion" ColumnName="IpCreacion" />
+          <ScalarProperty Name="IpModificacion" ColumnName="IpModificacion" />
+          <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

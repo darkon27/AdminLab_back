@@ -52,6 +52,11 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
     <Parameter Name="SoloBeneficiarios" Type="int" Mode="In" />
     <Parameter Name="idEmpresaEmpleadora" Type="int" Mode="In" />
   </Function>
+  <Function Name="WCO_ExisteInsumo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdInsumo" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="flagSalida" Type="int" Mode="InOut" />
+  </Function>
   <Function Name="WCO_ExportarCobranza" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IdCobranza" Type="int" Mode="In" />
     <Parameter Name="IdComprobante" Type="int" Mode="In" />
@@ -466,6 +471,11 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
     <Parameter Name="Estado" Type="int" Mode="In" />
     <Parameter Name="IdEmpresa" Type="int" Mode="In" />
     <Parameter Name="Documento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="WCO_ListarInsumo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdInsumo" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
   </Function>
   <Function Name="WCO_ListarListaBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Descripcion" Type="varchar" Mode="In" />

@@ -281,6 +281,7 @@
     <Compile Include="Models\Datos\ADDAT_EmpleadoMast.cs" />
     <Compile Include="Models\Datos\ADDAT_Expediente.cs" />
     <Compile Include="Models\Datos\ADDAT_Facturacion.cs" />
+    <Compile Include="Models\Datos\ADDAT_Insumo.cs" />
     <Compile Include="Models\Datos\ADDAT_ListaBase.cs" />
     <Compile Include="Models\Datos\ADDAT_ModeloServicio.cs" />
     <Compile Include="Models\Datos\ADDAT_Perfil.cs" />
@@ -505,6 +506,9 @@
       <DependentUpon>ModelPrecisa.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WCO_ListarHomologacion_Result.cs">
+      <DependentUpon>ModelPrecisa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WCO_ListarInsumo_Result.cs">
       <DependentUpon>ModelPrecisa.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WCO_ListarListaBase_Result.cs">
