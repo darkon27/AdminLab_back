@@ -721,6 +721,103 @@ namespace WebApiServices.Controllers
 
         #endregion
 
+        #region Aprobador
+
+        [HttpPost]
+        [Route("api/Maestro/ListarInsumos")]
+        public IEnumerable<WCO_ListarInsumo_Result> ListarInsumos(WCO_ListarInsumo_Result ObjDetalle)
+        {
+            List<WCO_ListarInsumo_Result> lst = new List<WCO_ListarInsumo_Result>();
+            try
+            {
+                lst = m.ListarInsumo(ObjDetalle);
+            }
+            catch
+            {
+
+            }
+            return lst;
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("api/Maestro/MantenimientoInsumos/{id}")]
+        public async Task<IHttpActionResult> MantenimientoInsumos(int id, [FromBody] WCO_ListarInsumo_Result ObjDetalle)
+        { 
+            ViewModalExite objLogin = new ViewModalExite();
+            HttpStatusCode statusCode = new HttpStatusCode();
+            List<WCO_ListarInsumo_Result> lst = new List<WCO_ListarInsumo_Result>();
+
+            try
+            {
+                int valor = 0;
+                switch (id)
+                {
+                    case 1:
+                        valor = m.InsertarInsumo(ObjDetalle);
+                        if (valor < 0)
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = valor;
+                            objLogin.mensaje = "Hubo un error al ingresar el registro";
+                            objLogin.data = null;
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = valor;
+                            objLogin.mensaje = "Se creó el registro con éxito";
+                            objLogin.data = ObjDetalle;
+                            statusCode = HttpStatusCode.Created;
+                        }
+                        break;
+                    case 2:
+                        valor = m.ActualizarInsumo(ObjDetalle);
+                        if (valor < 0)
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = valor;
+                            objLogin.mensaje = "Hubo un error al actualizar el registro";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = 1;
+                            objLogin.mensaje = "Se actualizó el registro con éxito";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        break;
+
+                    case 3:
+                        valor = m.InactivarInsumo(ObjDetalle);
+                        if (valor < 0)
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = valor;
+                            objLogin.mensaje = "Hubo un error al inactivar el registro";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = 1;
+                            objLogin.mensaje = "Se inactivó el registro con éxito";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        break;
+                }
+                return Content(statusCode, objLogin);
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, new ViewModalExite() { success = false, mensaje = ex.Message, valor = -1 });
+            }
+        }
+
+        #endregion
+
         #region TipoPaciente
         [HttpPost]
         [Route("api/Maestro/ListaTipoPaciente")]
