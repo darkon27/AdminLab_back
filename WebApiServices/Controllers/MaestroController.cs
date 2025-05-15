@@ -595,9 +595,9 @@ namespace WebApiServices.Controllers
                 {
                     p.Actualizar(ObjDetalle);
 
-                    objLogin.success = false;
+                    objLogin.success = true;
                     objLogin.valor = valor;
-                    objLogin.mensaje = "Los campos ingresados coinciden con un registro en nuestra base. Por favor ingrese un nuevo valor";
+                    objLogin.mensaje = "Actualización realizada";
                     statusCode = HttpStatusCode.OK;
 
 
