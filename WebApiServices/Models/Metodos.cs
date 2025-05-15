@@ -819,6 +819,71 @@ namespace WebApiServices.Models
             }
             return lst;
         }
+        public int InsertarAprobadores(WCO_ListarAprobadores_Result ObjRest)
+        {
+            try
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_InsertarAprobadores");
+                Parameter[] prm_Params = new Parameter[8];
+                prm_Params[0] = new Parameter("@IdAprobador", ObjRest.IdAprobador);
+                prm_Params[1] = new Parameter("@IdUsuario", ObjRest.IdUsuario);
+                prm_Params[2] = new Parameter("@TipoDescuento", ObjRest.TipoDescuento);
+                prm_Params[3] = new Parameter("@Monto", ObjRest.Monto);
+                prm_Params[4] = new Parameter("@Estado", ObjRest.Estado);
+                prm_Params[5] = new Parameter("@UsuarioCreacion", ObjRest.UsuarioCreacion);
+                prm_Params[6] = new Parameter("@IpCreacion", ObjRest.IpCreacion);
+                prm_Params[7] = new Parameter("@UneuNegocioId", ObjRest.UneuNegocioId);
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 0;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+        public int ActualizarAprobadores(WCO_ListarAprobadores_Result ObjRest)
+        {
+            try
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_ActualizarAprobadores");
+                Parameter[] prm_Params = new Parameter[8];
+                prm_Params[0] = new Parameter("@IdAprobador", ObjRest.IdAprobador);
+                prm_Params[1] = new Parameter("@IdUsuario", ObjRest.IdUsuario);
+                prm_Params[2] = new Parameter("@TipoDescuento", ObjRest.TipoDescuento);
+                prm_Params[3] = new Parameter("@Monto", ObjRest.Monto);
+                prm_Params[4] = new Parameter("@Estado", ObjRest.Estado);
+                prm_Params[5] = new Parameter("@UltimoUsuario", ObjRest.UsuarioModificacion);
+                prm_Params[6] = new Parameter("@IpModificacion", ObjRest.IpModificacion);
+                prm_Params[7] = new Parameter("@UneuNegocioId", ObjRest.UneuNegocioId);
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 0;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+        public int InactivarAprobadores(WCO_ListarAprobadores_Result ObjRest)
+        {
+            try
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_InactivarAprobadores");
+                Parameter[] prm_Params = new Parameter[4];
+                prm_Params[0] = new Parameter("@IdAprobador", ObjRest.IdAprobador);
+                prm_Params[1] = new Parameter("@Estado", ObjRest.Estado);
+                prm_Params[2] = new Parameter("@UltimoUsuario", ObjRest.UsuarioModificacion);
+                prm_Params[3] = new Parameter("@IpModificacion", ObjRest.IpModificacion);
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 0;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
 
         #endregion
 
