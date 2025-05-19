@@ -1053,6 +1053,223 @@ namespace WebApiServices.Models
         }
         #endregion
 
+        #region Tipo Trabajador
+        public List<WCO_ListarTipoTrabajador_Result> ListarTipoTrabajor(WCO_ListarTipoTrabajador_Result objBusqueda)
+        {
+            List<WCO_ListarTipoTrabajador_Result> lst = new List<WCO_ListarTipoTrabajador_Result>();
+            using (var context = new BDComercialEntities())
+            {
+                lst = context.WCO_ListarTipoTrabajador(objBusqueda.TipoTrabajador, objBusqueda.DescripcionLocal, objBusqueda.Estado).ToList();
+            }
+            return lst;
+        }
+
+        public int InsertarTipoTrabajador(WCO_ListarTipoTrabajador_Result objRegistro)
+        {
+            int valor = 0;
+            WCO_ListarTipoTrabajador_Result obj = new WCO_ListarTipoTrabajador_Result();
+            bool isExists = ListarTipoTrabajor(obj).Exists(x => x.TipoTrabajador == objRegistro.TipoTrabajador && x.DescripcionLocal == objRegistro.DescripcionLocal);
+
+            if (!isExists)
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_InsertarTipoTrabajador");
+                Parameter[] prm_Params = new Parameter[7];
+                prm_Params[0] = new Parameter("@Descripcion", objRegistro.DescripcionLocal);
+                prm_Params[1] = new Parameter("@DescripcionExtran", objRegistro.DescripcionExtranjera);
+                prm_Params[2] = new Parameter("@UsuarioCreacion", objRegistro.UltimoUsuario);
+                prm_Params[3] = new Parameter("@CodigoSeguro", objRegistro.CodigoSeguro);
+                prm_Params[4] = new Parameter("@estado", objRegistro.Estado);
+                prm_Params[5] = new Parameter("@Componente", objRegistro.ComponenteHospitalizacion);
+                prm_Params[6] = new Parameter("@TipoTrabajador", objRegistro.TipoTrabajador);
+
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 0;
+            }
+            else
+            {
+                valor = -1;
+            }
+            return valor;
+        }
+
+        public int ActualizarTipoTrabajador(WCO_ListarTipoTrabajador_Result objRegistro)
+        {
+            int valor = 0;
+
+            DataOperation dop_Operacion = new DataOperation("WCO_ActualizarTipoTrabajador");
+            Parameter[] prm_Params = new Parameter[7];
+            prm_Params[0] = new Parameter("@Descripcion", objRegistro.DescripcionLocal);
+            prm_Params[1] = new Parameter("@DescripcionExtran", objRegistro.DescripcionExtranjera);
+            prm_Params[2] = new Parameter("@Usuario", objRegistro.UltimoUsuario);
+            prm_Params[3] = new Parameter("@CodigoSeguro", objRegistro.CodigoSeguro);
+            prm_Params[4] = new Parameter("@estado", objRegistro.Estado);
+            prm_Params[5] = new Parameter("@Componente", objRegistro.ComponenteHospitalizacion);
+            prm_Params[6] = new Parameter("@TipoTrabajador", objRegistro.TipoTrabajador);
+
+            dop_Operacion.Parameters.AddRange(prm_Params);
+            DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+
+            return valor;
+        }
+
+        public int InactivarTipotrabajador(WCO_ListarTipoTrabajador_Result objRegistro)
+        {
+            try
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_InactivarTipoTrabajador");
+                Parameter[] prm_Params = new Parameter[2];
+                prm_Params[0] = new Parameter("@TipoTrabajador", objRegistro.TipoTrabajador);
+                prm_Params[1] = new Parameter("@pUltimoUSuario", objRegistro.UltimoUsuario);
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+        #endregion
+
+        #region Tipo Trabajador
+        public List<WCO_ListarCuentaBancaria_Result> ListarCuentaBancaria(WCO_ListarCuentaBancaria_Result objBusqueda)
+        {
+            List<WCO_ListarCuentaBancaria_Result> lst = new List<WCO_ListarCuentaBancaria_Result>();
+            using (var context = new BDComercialEntities())
+            {
+                lst = context.WCO_ListarCuentaBancaria(objBusqueda.CuentaBancaria, objBusqueda.Banco, objBusqueda.Estado).ToList();
+            }
+            return lst;
+        }
+
+        public int InsertarCuentaBancaria(WCO_ListarCuentaBancaria_Result objRegistro)
+        {
+            int valor = 0;
+            WCO_ListarCuentaBancaria_Result obj = new WCO_ListarCuentaBancaria_Result();
+            bool isExists = ListarCuentaBancaria(obj).Exists(x => x.CuentaBancaria == objRegistro.CuentaBancaria && x.Banco == objRegistro.Banco);
+
+            if (!isExists)
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_InsertarCuentaBancaria");
+                Parameter[] prm_Params = new Parameter[35];
+                prm_Params[0] = new Parameter("@CuentaBancaria", objRegistro.CuentaBancaria);
+                prm_Params[1] = new Parameter("@Banco", objRegistro.Banco);
+                prm_Params[2] = new Parameter("@Descripcion", objRegistro.Descripcion);
+                prm_Params[3] = new Parameter("@CompaniaCodigo", objRegistro.CompaniaCodigo);
+                prm_Params[4] = new Parameter("@FechaApertura", objRegistro.FechaApertura);
+                prm_Params[5] = new Parameter("@FechaCierreCuenta", objRegistro.FechaCierreCuenta);
+                prm_Params[6] = new Parameter("@MonedaCodigo", objRegistro.MonedaCodigo);
+                prm_Params[7] = new Parameter("@TipoCuenta", objRegistro.TipoCuenta);
+                prm_Params[8] = new Parameter("@CuentaContable", objRegistro.CuentaContable);
+                prm_Params[9] = new Parameter("@CuentaContableDescuento", objRegistro.CuentaContableDescuento);
+                prm_Params[10] = new Parameter("@SobregiroAutorizado", objRegistro.SobregiroAutorizado);
+                prm_Params[11] = new Parameter("@AgenciaBanco", objRegistro.AgenciaBanco);
+                prm_Params[12] = new Parameter("@AgenciaDistrito", objRegistro.AgenciaDistrito);
+                prm_Params[13] = new Parameter("@SucursalCodigo", objRegistro.SucursalCodigo);
+                prm_Params[14] = new Parameter("@Idioma", objRegistro.Idioma);
+                prm_Params[15] = new Parameter("@UltimoPeriodoConciliacion", objRegistro.UltimoPeriodoConciliacion);
+                prm_Params[16] = new Parameter("@VoucherTipo", objRegistro.VoucherTipo);
+                prm_Params[17] = new Parameter("@VoucherClasificacion", objRegistro.VoucherClasificacion);
+                prm_Params[18] = new Parameter("@AtencionPersona", objRegistro.AtencionPersona);
+                prm_Params[19] = new Parameter("@AtencionCargo", objRegistro.AtencionCargo);
+                prm_Params[20] = new Parameter("@FlujodeCajaFlag", objRegistro.FlujodeCajaFlag);
+                prm_Params[21] = new Parameter("@FlujodeCajaOrden", objRegistro.FlujodeCajaOrden);
+                prm_Params[22] = new Parameter("@CodigoDiskette", objRegistro.CodigoDiskette);
+                prm_Params[23] = new Parameter("@ConciliacionBancariaFlag", objRegistro.ConciliacionBancariaFlag);
+                prm_Params[24] = new Parameter("@CuentaBancariaConsolidada", objRegistro.CuentaBancariaConsolidada);
+                prm_Params[25] = new Parameter("@CuentaBancoOriginal", objRegistro.CuentaBancoOriginal);
+                prm_Params[26] = new Parameter("@ArchivoDiskette", objRegistro.ArchivoDiskette);
+                prm_Params[27] = new Parameter("@ReferenciaFiscal03", objRegistro.ReferenciaFiscal03);
+                prm_Params[28] = new Parameter("@ITFFlag", objRegistro.ITFFlag);
+                prm_Params[29] = new Parameter("@ConciliacionAPFlag", objRegistro.ConciliacionAPFlag);
+                prm_Params[30] = new Parameter("@PagosInterfaseFlag", objRegistro.PagosInterfaseFlag);
+                prm_Params[31] = new Parameter("@ConciliacionPeriodo", objRegistro.ConciliacionPeriodo);
+                prm_Params[32] = new Parameter("@Estado", objRegistro.Estado);
+                prm_Params[33] = new Parameter("@UltimoUsuario", objRegistro.UltimoUsuario);
+                prm_Params[34] = new Parameter("@UltimaFechaModif", objRegistro.UltimaFechaModif);
+
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 0;
+            }
+            else
+            {
+                valor = -1;
+            }
+            return valor;
+        }
+
+        public int ActualizarCuentaBancaria(WCO_ListarCuentaBancaria_Result objRegistro)
+        {
+            int valor = 0;
+
+            DataOperation dop_Operacion = new DataOperation("WCO_ActualizarCuentaBancaria");
+            Parameter[] prm_Params = new Parameter[35];
+            prm_Params[0] = new Parameter("@CuentaBancaria", objRegistro.CuentaBancaria);
+            prm_Params[1] = new Parameter("@Banco", objRegistro.Banco);
+            prm_Params[2] = new Parameter("@Descripcion", objRegistro.Descripcion);
+            prm_Params[3] = new Parameter("@CompaniaCodigo", objRegistro.CompaniaCodigo);
+            prm_Params[4] = new Parameter("@FechaApertura", objRegistro.FechaApertura);
+            prm_Params[5] = new Parameter("@FechaCierreCuenta", objRegistro.FechaCierreCuenta);
+            prm_Params[6] = new Parameter("@MonedaCodigo", objRegistro.MonedaCodigo);
+            prm_Params[7] = new Parameter("@TipoCuenta", objRegistro.TipoCuenta);
+            prm_Params[8] = new Parameter("@CuentaContable", objRegistro.CuentaContable);
+            prm_Params[9] = new Parameter("@CuentaContableDescuento", objRegistro.CuentaContableDescuento);
+            prm_Params[10] = new Parameter("@SobregiroAutorizado", objRegistro.SobregiroAutorizado);
+            prm_Params[11] = new Parameter("@AgenciaBanco", objRegistro.AgenciaBanco);
+            prm_Params[12] = new Parameter("@AgenciaDistrito", objRegistro.AgenciaDistrito);
+            prm_Params[13] = new Parameter("@SucursalCodigo", objRegistro.SucursalCodigo);
+            prm_Params[14] = new Parameter("@Idioma", objRegistro.Idioma);
+            prm_Params[15] = new Parameter("@UltimoPeriodoConciliacion", objRegistro.UltimoPeriodoConciliacion);
+            prm_Params[16] = new Parameter("@VoucherTipo", objRegistro.VoucherTipo);
+            prm_Params[17] = new Parameter("@VoucherClasificacion", objRegistro.VoucherClasificacion);
+            prm_Params[18] = new Parameter("@AtencionPersona", objRegistro.AtencionPersona);
+            prm_Params[19] = new Parameter("@AtencionCargo", objRegistro.AtencionCargo);
+            prm_Params[20] = new Parameter("@FlujodeCajaFlag", objRegistro.FlujodeCajaFlag);
+            prm_Params[21] = new Parameter("@FlujodeCajaOrden", objRegistro.FlujodeCajaOrden);
+            prm_Params[22] = new Parameter("@CodigoDiskette", objRegistro.CodigoDiskette);
+            prm_Params[23] = new Parameter("@ConciliacionBancariaFlag", objRegistro.ConciliacionBancariaFlag);
+            prm_Params[24] = new Parameter("@CuentaBancariaConsolidada", objRegistro.CuentaBancariaConsolidada);
+            prm_Params[25] = new Parameter("@CuentaBancoOriginal", objRegistro.CuentaBancoOriginal);
+            prm_Params[26] = new Parameter("@ArchivoDiskette", objRegistro.ArchivoDiskette);
+            prm_Params[27] = new Parameter("@ReferenciaFiscal03", objRegistro.ReferenciaFiscal03);
+            prm_Params[28] = new Parameter("@ITFFlag", objRegistro.ITFFlag);
+            prm_Params[29] = new Parameter("@ConciliacionAPFlag", objRegistro.ConciliacionAPFlag);
+            prm_Params[30] = new Parameter("@PagosInterfaseFlag", objRegistro.PagosInterfaseFlag);
+            prm_Params[31] = new Parameter("@ConciliacionPeriodo", objRegistro.ConciliacionPeriodo);
+            prm_Params[32] = new Parameter("@Estado", objRegistro.Estado);
+            prm_Params[33] = new Parameter("@UltimoUsuario", objRegistro.UltimoUsuario);
+            prm_Params[34] = new Parameter("@UltimaFechaModif", objRegistro.UltimaFechaModif);
+
+            dop_Operacion.Parameters.AddRange(prm_Params);
+            DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+
+            return valor;
+        }
+
+        public int InactivarCuentaBancaria(WCO_ListarCuentaBancaria_Result objRegistro)
+        {
+            try
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_InactivarCuentaBancaria");
+                Parameter[] prm_Params = new Parameter[4];
+                prm_Params[0] = new Parameter("@Estado", objRegistro.Estado);
+                prm_Params[1] = new Parameter("@UltimoUsuario", objRegistro.UltimoUsuario);
+                prm_Params[2] = new Parameter("@UltimaFechaModif", objRegistro.UltimaFechaModif);
+                prm_Params[3] = new Parameter("@CuentaBancaria", objRegistro.CuentaBancaria);
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+        #endregion
+
+
         #region Medico
 
         public List<WCO_ListarMedico_Result> ListarMedico(WCO_ListarMedico_Result ObjResul)
