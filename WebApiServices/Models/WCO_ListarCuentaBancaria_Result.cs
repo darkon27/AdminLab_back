@@ -23,7 +23,7 @@ namespace WebApiServices.Models
         public string CuentaBancariaConsolidada { get; set; }
         public string CuentaBancoOriginal { get; set; }
         public string Estado { get; set; }
-        public string Banco { get; set; }
+        public int Banco { get; set; }
         public string ESTADOdesc { get; set; }
     }
 }

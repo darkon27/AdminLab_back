@@ -1132,6 +1132,86 @@ namespace WebApiServices.Models
         }
         #endregion
 
+        #region Tipo Trabajador
+        public List<WCO_ListarCuentaBancaria_Result> ListarCuentaBancaria(WCO_ListarCuentaBancaria_Result objBusqueda)
+        {
+            List<WCO_ListarCuentaBancaria_Result> lst = new List<WCO_ListarCuentaBancaria_Result>();
+            using (var context = new BDComercialEntities())
+            {
+                lst = context.WCO_ListarCuentaBancaria(objBusqueda.CuentaBancaria, objBusqueda.Banco, objBusqueda.Estado).ToList();
+            }
+            return lst;
+        }
+
+        //public int InsertarCuentaBancaria(WCO_ListarCuentaBancaria_Result objRegistro)
+        //{
+        //    int valor = 0;
+        //    WCO_ListarCuentaBancaria_Result obj = new WCO_ListarCuentaBancaria_Result();
+        //    bool isExists = ListarCuentaBancaria(obj).Exists(x => x.CuentaBancaria == objRegistro.CuentaBancaria && x.Banco == objRegistro.Banco);
+
+        //    if (!isExists)
+        //    {
+        //        DataOperation dop_Operacion = new DataOperation("WCO_InsertarCuentaBancaria");
+        //        Parameter[] prm_Params = new Parameter[36];
+        //        prm_Params[0] = new Parameter("@Descripcion", objRegistro.DescripcionLocal);
+        //        prm_Params[1] = new Parameter("@DescripcionExtran", objRegistro.DescripcionExtranjera);
+        //        prm_Params[2] = new Parameter("@UsuarioCreacion", objRegistro.UltimoUsuario);
+        //        prm_Params[3] = new Parameter("@CodigoSeguro", objRegistro.CodigoSeguro);
+        //        prm_Params[4] = new Parameter("@estado", objRegistro.Estado);
+        //        prm_Params[5] = new Parameter("@Componente", objRegistro.ComponenteHospitalizacion);
+        //        prm_Params[6] = new Parameter("@TipoTrabajador", objRegistro.TipoTrabajador);
+
+        //        dop_Operacion.Parameters.AddRange(prm_Params);
+        //        DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        valor = -1;
+        //    }
+        //    return valor;
+        //}
+
+        //public int ActualizarTipoTrabajador(WCO_ListarTipoTrabajador_Result objRegistro)
+        //{
+        //    int valor = 0;
+
+        //    DataOperation dop_Operacion = new DataOperation("WCO_ActualizarTipoTrabajador");
+        //    Parameter[] prm_Params = new Parameter[7];
+        //    prm_Params[0] = new Parameter("@Descripcion", objRegistro.DescripcionLocal);
+        //    prm_Params[1] = new Parameter("@DescripcionExtran", objRegistro.DescripcionExtranjera);
+        //    prm_Params[2] = new Parameter("@Usuario", objRegistro.UltimoUsuario);
+        //    prm_Params[3] = new Parameter("@CodigoSeguro", objRegistro.CodigoSeguro);
+        //    prm_Params[4] = new Parameter("@estado", objRegistro.Estado);
+        //    prm_Params[5] = new Parameter("@Componente", objRegistro.ComponenteHospitalizacion);
+        //    prm_Params[6] = new Parameter("@TipoTrabajador", objRegistro.TipoTrabajador);
+
+        //    dop_Operacion.Parameters.AddRange(prm_Params);
+        //    DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+
+        //    return valor;
+        //}
+
+        //public int InactivarTipotrabajador(WCO_ListarTipoTrabajador_Result objRegistro)
+        //{
+        //    try
+        //    {
+        //        DataOperation dop_Operacion = new DataOperation("WCO_InactivarTipoTrabajador");
+        //        Parameter[] prm_Params = new Parameter[2];
+        //        prm_Params[0] = new Parameter("@TipoTrabajador", objRegistro.TipoTrabajador);
+        //        prm_Params[1] = new Parameter("@pUltimoUSuario", objRegistro.UltimoUsuario);
+        //        dop_Operacion.Parameters.AddRange(prm_Params);
+        //        DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+        //        return 0;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return -1;
+        //    }
+        //}
+        
+        #endregion
+
         #region Medico
 
         public List<WCO_ListarMedico_Result> ListarMedico(WCO_ListarMedico_Result ObjResul)
