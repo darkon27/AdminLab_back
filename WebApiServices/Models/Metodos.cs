@@ -1046,7 +1046,7 @@ namespace WebApiServices.Models
                 DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
                 return 0;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return -1;
             }
@@ -1132,7 +1132,7 @@ namespace WebApiServices.Models
         }
         #endregion
 
-        #region Tipo Trabajador
+        #region Cuenta Bancaria
         public List<WCO_ListarCuentaBancaria_Result> ListarCuentaBancaria(WCO_ListarCuentaBancaria_Result objBusqueda)
         {
             List<WCO_ListarCuentaBancaria_Result> lst = new List<WCO_ListarCuentaBancaria_Result>();
@@ -1269,6 +1269,83 @@ namespace WebApiServices.Models
         }
         #endregion
 
+        #region Cambio Comercial
+        public List<WCO_ListarTipoCambioComercial_Result> ListarCambioComercial(WCO_ListarTipoCambioComercial_Result objBusqueda)
+        {
+            List<WCO_ListarTipoCambioComercial_Result> lst = new List<WCO_ListarTipoCambioComercial_Result>();
+            using (var context = new BDComercialEntities())
+            {
+                lst = context.WCO_ListarTipoCambioComercial(objBusqueda.IdTipoCambio, objBusqueda.FechaInicio, objBusqueda.FechaFin, objBusqueda.Estado).ToList();
+            }
+            return lst;
+        }
+
+        public int InsertarCambioComercial(WCO_ListarTipoCambioComercial_Result objRegistro)
+        {
+            int valor = 0;
+            WCO_ListarTipoCambioComercial_Result obj = new WCO_ListarTipoCambioComercial_Result();
+            bool isExists = ListarCambioComercial(obj).Exists(x => x.IdTipoCambio == objRegistro.IdTipoCambio && x.FechaInicio == objRegistro.FechaInicio);
+
+            if (!isExists)
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_InsertarTipoCambioComercial");
+                Parameter[] prm_Params = new Parameter[6];
+                prm_Params[0] = new Parameter("@IdTipoCambio", objRegistro.IdTipoCambio);
+                prm_Params[1] = new Parameter("@FechaInicio", objRegistro.FechaInicio);
+                prm_Params[2] = new Parameter("@FechaFin", objRegistro.FechaFin);
+                prm_Params[3] = new Parameter("@Valor", objRegistro.Valor);
+                prm_Params[4] = new Parameter("@Estado", objRegistro.Estado);
+                prm_Params[5] = new Parameter("@UsuarioCreacion", objRegistro.UsuarioCreacion);
+
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 0;
+            }
+            else
+            {
+                valor = -1;
+            }
+            return valor;
+        }
+
+        public int ActualizarCambioComercial(WCO_ListarTipoCambioComercial_Result objRegistro)
+        {
+            int valor = 0;
+
+            DataOperation dop_Operacion = new DataOperation("WCO_ActualizarTipoCambioComercial");
+            Parameter[] prm_Params = new Parameter[6];
+            prm_Params[0] = new Parameter("@IdTipoCambio", objRegistro.IdTipoCambio);
+            prm_Params[1] = new Parameter("@FechaInicio", objRegistro.FechaInicio);
+            prm_Params[2] = new Parameter("@FechaFin", objRegistro.FechaFin);
+            prm_Params[3] = new Parameter("@Valor", objRegistro.Valor);
+            prm_Params[4] = new Parameter("@Estado", objRegistro.Estado);
+            prm_Params[5] = new Parameter("@UsuarioCreacion", objRegistro.UsuarioModificacion);
+
+            dop_Operacion.Parameters.AddRange(prm_Params);
+            DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+
+            return valor;
+        }
+
+        public int InactivarCambioComercial(WCO_ListarTipoCambioComercial_Result objRegistro)
+        {
+            try
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_InactivarCuentaBancaria");
+                Parameter[] prm_Params = new Parameter[4];
+                prm_Params[0] = new Parameter("@IdTipoCambio", objRegistro.IdTipoCambio);
+                prm_Params[1] = new Parameter("@Estado", objRegistro.Estado);
+                prm_Params[2] = new Parameter("@UsuarioModificacion", objRegistro.UsuarioModificacion);
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+        #endregion
 
         #region Medico
 

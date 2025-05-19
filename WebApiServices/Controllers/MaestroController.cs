@@ -1011,6 +1011,102 @@ namespace WebApiServices.Controllers
 
         #endregion
 
+        #region Cambio Comercial
+
+        [HttpPost]
+        [Route("api/Maestro/ListarCambioComercial")]
+        public IEnumerable<WCO_ListarTipoCambioComercial_Result> ListarCambioComercial(WCO_ListarTipoCambioComercial_Result ObjDetalle)
+        {
+            List<WCO_ListarTipoCambioComercial_Result> lst = new List<WCO_ListarTipoCambioComercial_Result>();
+            try
+            {
+                lst = m.ListarCambioComercial(ObjDetalle);
+            }
+            catch
+            {
+
+            }
+            return lst;
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("api/Maestro/MantenimientoCambioComercial/{id}")]
+        public async Task<IHttpActionResult> MantenimientoCambioComercial(int id, [FromBody] WCO_ListarTipoCambioComercial_Result ObjDetalle)
+        {
+            ViewModalExite objLogin = new ViewModalExite();
+            HttpStatusCode statusCode = new HttpStatusCode();
+
+            try
+            {
+                int valor = 0;
+                switch (id)
+                {
+                    case 1:
+                        valor = m.InsertarCambioComercial(ObjDetalle);
+                        if (valor < 0)
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = valor;
+                            objLogin.mensaje = "Hubo un error al ingresar el registro";
+                            objLogin.data = null;
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = valor;
+                            objLogin.mensaje = "Se creó el registro con éxito";
+                            objLogin.data = ObjDetalle;
+                            statusCode = HttpStatusCode.Created;
+                        }
+                        break;
+                    case 2:
+                        valor = m.ActualizarCambioComercial(ObjDetalle);
+                        if (valor < 0)
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = valor;
+                            objLogin.mensaje = "Hubo un error al actualizar el registro";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = 1;
+                            objLogin.mensaje = "Se actualizó el registro con éxito";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        break;
+
+                    case 3:
+                        valor = m.InactivarCambioComercial(ObjDetalle);
+                        if (valor < 0)
+                        {
+                            objLogin.success = false;
+                            objLogin.valor = valor;
+                            objLogin.mensaje = "Hubo un error al inactivar el registro";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        else
+                        {
+                            objLogin.success = true;
+                            objLogin.valor = 1;
+                            objLogin.mensaje = "Se inactivó el registro con éxito";
+                            statusCode = HttpStatusCode.OK;
+                        }
+                        break;
+                }
+                return Content(statusCode, objLogin);
+            }
+            catch (Exception ex)
+            {
+                return Content(HttpStatusCode.BadRequest, new ViewModalExite() { success = false, mensaje = ex.Message, valor = -1 });
+            }
+        }
+
+        #endregion
+
         #region TipoPaciente
         [HttpPost]
         [Route("api/Maestro/ListaTipoPaciente")]
