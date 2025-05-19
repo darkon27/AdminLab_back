@@ -1790,24 +1790,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="WCO_ListarCuentaBancaria" FunctionName="PrecisaModel.Store.WCO_ListarCuentaBancaria">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarCuentaBancaria_Result">
-          <ScalarProperty Name="CuentaBancaria" ColumnName="CuentaBancaria" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="FechaApertura" ColumnName="FechaApertura" />
-          <ScalarProperty Name="FechaCierreCuenta" ColumnName="FechaCierreCuenta" />
-          <ScalarProperty Name="MonedaCodigo" ColumnName="MonedaCodigo" />
-          <ScalarProperty Name="TipoCuenta" ColumnName="TipoCuenta" />
-          <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
-          <ScalarProperty Name="CuentaBancariaConsolidada" ColumnName="CuentaBancariaConsolidada" />
-          <ScalarProperty Name="CuentaBancoOriginal" ColumnName="CuentaBancoOriginal" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="Banco" ColumnName="Banco" />
-          <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="WCO_ListarExpediente" FunctionName="PrecisaModel.Store.WCO_ListarExpediente">
       <ResultMapping>
         <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarExpediente_Result">
@@ -2090,30 +2072,6 @@
         <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarSucursalCompSerie_Result">
           <ScalarProperty Name="TipoComprobante" ColumnName="TipoComprobante" />
           <ScalarProperty Name="Serie" ColumnName="Serie" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="WCO_ListarTipoTrabajador" FunctionName="PrecisaModel.Store.WCO_ListarTipoTrabajador">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarTipoTrabajador_Result">
-          <ScalarProperty Name="TipoTrabajador" ColumnName="TipoTrabajador" />
-          <ScalarProperty Name="DescripcionLocal" ColumnName="DescripcionLocal" />
-          <ScalarProperty Name="DescripcionExtranjera" ColumnName="DescripcionExtranjera" />
-          <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
-          <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
-          <ScalarProperty Name="TratamientoContableAuxiliar" ColumnName="TratamientoContableAuxiliar" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="CodigoSeguro" ColumnName="CodigoSeguro" />
-          <ScalarProperty Name="TipotrabajadorRTPS" ColumnName="TipotrabajadorRTPS" />
-          <ScalarProperty Name="categoriaRTPS" ColumnName="categoriaRTPS" />
-          <ScalarProperty Name="IndicadorAplicaCaja" ColumnName="IndicadorAplicaCaja" />
-          <ScalarProperty Name="IndicadorCirugia" ColumnName="IndicadorCirugia" />
-          <ScalarProperty Name="OrdenPersonalCirugia" ColumnName="OrdenPersonalCirugia" />
-          <ScalarProperty Name="ComponenteHospitalizacion" ColumnName="ComponenteHospitalizacion" />
-          <ScalarProperty Name="IndicadorSelectorMedico" ColumnName="IndicadorSelectorMedico" />
-          <ScalarProperty Name="PorcentajeFacturacion" ColumnName="PorcentajeFacturacion" />
-          <ScalarProperty Name="IndicadorPorcentajeFacturacion" ColumnName="IndicadorPorcentajeFacturacion" />
-          <ScalarProperty Name="EstadoDesc" ColumnName="EstadoDesc" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -2971,6 +2929,73 @@
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
           <ScalarProperty Name="IpCreacion" ColumnName="IpCreacion" />
           <ScalarProperty Name="IpModificacion" ColumnName="IpModificacion" />
+          <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WCO_ListarTipoTrabajador" FunctionName="PrecisaModel.Store.WCO_ListarTipoTrabajador">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarTipoTrabajador_Result">
+          <ScalarProperty Name="TipoTrabajador" ColumnName="TipoTrabajador" />
+          <ScalarProperty Name="DescripcionLocal" ColumnName="DescripcionLocal" />
+          <ScalarProperty Name="DescripcionExtranjera" ColumnName="DescripcionExtranjera" />
+          <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
+          <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
+          <ScalarProperty Name="TratamientoContableAuxiliar" ColumnName="TratamientoContableAuxiliar" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="CodigoSeguro" ColumnName="CodigoSeguro" />
+          <ScalarProperty Name="TipotrabajadorRTPS" ColumnName="TipotrabajadorRTPS" />
+          <ScalarProperty Name="categoriaRTPS" ColumnName="categoriaRTPS" />
+          <ScalarProperty Name="IndicadorAplicaCaja" ColumnName="IndicadorAplicaCaja" />
+          <ScalarProperty Name="IndicadorCirugia" ColumnName="IndicadorCirugia" />
+          <ScalarProperty Name="OrdenPersonalCirugia" ColumnName="OrdenPersonalCirugia" />
+          <ScalarProperty Name="ComponenteHospitalizacion" ColumnName="ComponenteHospitalizacion" />
+          <ScalarProperty Name="IndicadorSelectorMedico" ColumnName="IndicadorSelectorMedico" />
+          <ScalarProperty Name="PorcentajeFacturacion" ColumnName="PorcentajeFacturacion" />
+          <ScalarProperty Name="IndicadorPorcentajeFacturacion" ColumnName="IndicadorPorcentajeFacturacion" />
+          <ScalarProperty Name="EstadoDesc" ColumnName="EstadoDesc" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WCO_ListarCuentaBancaria" FunctionName="PrecisaModel.Store.WCO_ListarCuentaBancaria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarCuentaBancaria_Result">
+          <ScalarProperty Name="CuentaBancaria" ColumnName="CuentaBancaria" />
+          <ScalarProperty Name="CompaniaCodigo" ColumnName="CompaniaCodigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaApertura" ColumnName="FechaApertura" />
+          <ScalarProperty Name="FechaCierreCuenta" ColumnName="FechaCierreCuenta" />
+          <ScalarProperty Name="MonedaCodigo" ColumnName="MonedaCodigo" />
+          <ScalarProperty Name="TipoCuenta" ColumnName="TipoCuenta" />
+          <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+          <ScalarProperty Name="CuentaContableDescuento" ColumnName="CuentaContableDescuento" />
+          <ScalarProperty Name="SobregiroAutorizado" ColumnName="SobregiroAutorizado" />
+          <ScalarProperty Name="AgenciaBanco" ColumnName="AgenciaBanco" />
+          <ScalarProperty Name="AgenciaDistrito" ColumnName="AgenciaDistrito" />
+          <ScalarProperty Name="SucursalCodigo" ColumnName="SucursalCodigo" />
+          <ScalarProperty Name="Idioma" ColumnName="Idioma" />
+          <ScalarProperty Name="UltimoPeriodoConciliacion" ColumnName="UltimoPeriodoConciliacion" />
+          <ScalarProperty Name="VoucherTipo" ColumnName="VoucherTipo" />
+          <ScalarProperty Name="VoucherClasificacion" ColumnName="VoucherClasificacion" />
+          <ScalarProperty Name="AtencionPersona" ColumnName="AtencionPersona" />
+          <ScalarProperty Name="AtencionCargo" ColumnName="AtencionCargo" />
+          <ScalarProperty Name="FlujodeCajaFlag" ColumnName="FlujodeCajaFlag" />
+          <ScalarProperty Name="FlujodeCajaOrden" ColumnName="FlujodeCajaOrden" />
+          <ScalarProperty Name="CodigoDiskette" ColumnName="CodigoDiskette" />
+          <ScalarProperty Name="ConciliacionBancariaFlag" ColumnName="ConciliacionBancariaFlag" />
+          <ScalarProperty Name="CuentaBancoOriginal" ColumnName="CuentaBancoOriginal" />
+          <ScalarProperty Name="CuentaBancariaConsolidada" ColumnName="CuentaBancariaConsolidada" />
+          <ScalarProperty Name="ArchivoDiskette" ColumnName="ArchivoDiskette" />
+          <ScalarProperty Name="ReferenciaFiscal03" ColumnName="ReferenciaFiscal03" />
+          <ScalarProperty Name="ITFFlag" ColumnName="ITFFlag" />
+          <ScalarProperty Name="ConciliacionAPFlag" ColumnName="ConciliacionAPFlag" />
+          <ScalarProperty Name="PagosInterfaseFlag" ColumnName="PagosInterfaseFlag" />
+          <ScalarProperty Name="ConciliacionPeriodo" ColumnName="ConciliacionPeriodo" />
+          <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
+          <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
+          <ScalarProperty Name="CuentaBancoOriginal1" ColumnName="CuentaBancoOriginal1" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Banco" ColumnName="Banco" />
           <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
         </ComplexTypeMapping>
       </ResultMapping>

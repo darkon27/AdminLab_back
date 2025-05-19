@@ -14,14 +14,39 @@ namespace WebApiServices.Models
     public partial class WCO_ListarCuentaBancaria_Result
     {
         public string CuentaBancaria { get; set; }
+        public string CompaniaCodigo { get; set; }
         public string Descripcion { get; set; }
         public Nullable<System.DateTime> FechaApertura { get; set; }
         public Nullable<System.DateTime> FechaCierreCuenta { get; set; }
         public string MonedaCodigo { get; set; }
         public string TipoCuenta { get; set; }
         public string CuentaContable { get; set; }
-        public string CuentaBancariaConsolidada { get; set; }
+        public string CuentaContableDescuento { get; set; }
+        public Nullable<decimal> SobregiroAutorizado { get; set; }
+        public string AgenciaBanco { get; set; }
+        public string AgenciaDistrito { get; set; }
+        public string SucursalCodigo { get; set; }
+        public string Idioma { get; set; }
+        public string UltimoPeriodoConciliacion { get; set; }
+        public string VoucherTipo { get; set; }
+        public string VoucherClasificacion { get; set; }
+        public string AtencionPersona { get; set; }
+        public string AtencionCargo { get; set; }
+        public string FlujodeCajaFlag { get; set; }
+        public Nullable<int> FlujodeCajaOrden { get; set; }
+        public string CodigoDiskette { get; set; }
+        public string ConciliacionBancariaFlag { get; set; }
         public string CuentaBancoOriginal { get; set; }
+        public string CuentaBancariaConsolidada { get; set; }
+        public string ArchivoDiskette { get; set; }
+        public string ReferenciaFiscal03 { get; set; }
+        public string ITFFlag { get; set; }
+        public string ConciliacionAPFlag { get; set; }
+        public string PagosInterfaseFlag { get; set; }
+        public string ConciliacionPeriodo { get; set; }
+        public string UltimoUsuario { get; set; }
+        public Nullable<System.DateTime> UltimaFechaModif { get; set; }
+        public string CuentaBancoOriginal1 { get; set; }
         public string Estado { get; set; }
         public string Banco { get; set; }
         public string ESTADOdesc { get; set; }

@@ -1588,23 +1588,6 @@ namespace WebApiServices.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarCostCenterMst_Result>("WCO_ListarCostCenterMst", costCenterParameter, localNameParameter);
         }
     
-        public virtual ObjectResult<WCO_ListarCuentaBancaria_Result> WCO_ListarCuentaBancaria(string cuentaBancaria, Nullable<int> banco, string estado)
-        {
-            var cuentaBancariaParameter = cuentaBancaria != null ?
-                new ObjectParameter("CuentaBancaria", cuentaBancaria) :
-                new ObjectParameter("CuentaBancaria", typeof(string));
-    
-            var bancoParameter = banco.HasValue ?
-                new ObjectParameter("Banco", banco) :
-                new ObjectParameter("Banco", typeof(int));
-    
-            var estadoParameter = estado != null ?
-                new ObjectParameter("Estado", estado) :
-                new ObjectParameter("Estado", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarCuentaBancaria_Result>("WCO_ListarCuentaBancaria", cuentaBancariaParameter, bancoParameter, estadoParameter);
-        }
-    
         public virtual ObjectResult<WCO_ListarExpediente_Result> WCO_ListarExpediente(Nullable<int> uneuNegocioId, Nullable<int> idExpediente, string codigoExpediente, string clasificadorMovimiento, Nullable<int> idTipoExpediente, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFinal, Nullable<int> estado, Nullable<int> tipoAdmisionId, Nullable<int> idCliente, Nullable<int> idContrato, string descripcion)
         {
             var uneuNegocioIdParameter = uneuNegocioId.HasValue ?
@@ -1826,23 +1809,6 @@ namespace WebApiServices.Models
                 new ObjectParameter("Estado", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarSucursalCompSerie_Result>("WCO_ListarSucursalCompSerie", clasificadorMovimientoParameter, companiaCodigoParameter, sucursalParameter, tipoComprobanteParameter, estadoParameter);
-        }
-    
-        public virtual ObjectResult<WCO_ListarTipoTrabajador_Result> WCO_ListarTipoTrabajador(string pTipoTrabajador, string pDescripcion, string pEstado)
-        {
-            var pTipoTrabajadorParameter = pTipoTrabajador != null ?
-                new ObjectParameter("pTipoTrabajador", pTipoTrabajador) :
-                new ObjectParameter("pTipoTrabajador", typeof(string));
-    
-            var pDescripcionParameter = pDescripcion != null ?
-                new ObjectParameter("pDescripcion", pDescripcion) :
-                new ObjectParameter("pDescripcion", typeof(string));
-    
-            var pEstadoParameter = pEstado != null ?
-                new ObjectParameter("pEstado", pEstado) :
-                new ObjectParameter("pEstado", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarTipoTrabajador_Result>("WCO_ListarTipoTrabajador", pTipoTrabajadorParameter, pDescripcionParameter, pEstadoParameter);
         }
     
         public virtual ObjectResult<WCO_ExportarCobranza_Result> WCO_ExportarCobranza(Nullable<int> idCobranza, Nullable<int> idComprobante, string numeroComprobante, string tipoComprobante, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFinal, Nullable<int> estado, string serie, Nullable<int> idPersona, string sucursal, string documento, string idClasificadorMovimiento, string companiaCodigo, Nullable<int> idExpediente, Nullable<int> idAdmision)
@@ -2801,6 +2767,40 @@ namespace WebApiServices.Models
                 new ObjectParameter("Estado", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarInsumo_Result>("WCO_ListarInsumo", idInsumoParameter, descripcionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<WCO_ListarTipoTrabajador_Result> WCO_ListarTipoTrabajador(string pTipoTrabajador, string pDescripcion, string pEstado)
+        {
+            var pTipoTrabajadorParameter = pTipoTrabajador != null ?
+                new ObjectParameter("pTipoTrabajador", pTipoTrabajador) :
+                new ObjectParameter("pTipoTrabajador", typeof(string));
+    
+            var pDescripcionParameter = pDescripcion != null ?
+                new ObjectParameter("pDescripcion", pDescripcion) :
+                new ObjectParameter("pDescripcion", typeof(string));
+    
+            var pEstadoParameter = pEstado != null ?
+                new ObjectParameter("pEstado", pEstado) :
+                new ObjectParameter("pEstado", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarTipoTrabajador_Result>("WCO_ListarTipoTrabajador", pTipoTrabajadorParameter, pDescripcionParameter, pEstadoParameter);
+        }
+    
+        public virtual ObjectResult<WCO_ListarCuentaBancaria_Result> WCO_ListarCuentaBancaria(string cuentaBancaria, Nullable<int> banco, string estado)
+        {
+            var cuentaBancariaParameter = cuentaBancaria != null ?
+                new ObjectParameter("CuentaBancaria", cuentaBancaria) :
+                new ObjectParameter("CuentaBancaria", typeof(string));
+    
+            var bancoParameter = banco.HasValue ?
+                new ObjectParameter("Banco", banco) :
+                new ObjectParameter("Banco", typeof(int));
+    
+            var estadoParameter = estado != null ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WCO_ListarCuentaBancaria_Result>("WCO_ListarCuentaBancaria", cuentaBancariaParameter, bancoParameter, estadoParameter);
         }
     }
 }

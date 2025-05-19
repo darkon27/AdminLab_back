@@ -441,11 +441,6 @@
       <Parameter Name="CostCenter" Mode="In" Type="String" />
       <Parameter Name="LocalName" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="WCO_ListarCuentaBancaria" ReturnType="Collection(PrecisaModel.WCO_ListarCuentaBancaria_Result)">
-      <Parameter Name="CuentaBancaria" Mode="In" Type="String" />
-      <Parameter Name="Banco" Mode="In" Type="Int32" />
-      <Parameter Name="Estado" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="WCO_ListarExpediente" ReturnType="Collection(PrecisaModel.WCO_ListarExpediente_Result)">
       <Parameter Name="UneuNegocioId" Mode="In" Type="Int32" />
       <Parameter Name="IdExpediente" Mode="In" Type="Int32" />
@@ -506,11 +501,6 @@
       <Parameter Name="Sucursal" Mode="In" Type="String" />
       <Parameter Name="TipoComprobante" Mode="In" Type="String" />
       <Parameter Name="Estado" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="WCO_ListarTipoTrabajador" ReturnType="Collection(PrecisaModel.WCO_ListarTipoTrabajador_Result)">
-      <Parameter Name="pTipoTrabajador" Mode="In" Type="String" />
-      <Parameter Name="pDescripcion" Mode="In" Type="String" />
-      <Parameter Name="pEstado" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="WCO_ExportarCobranza" ReturnType="Collection(PrecisaModel.WCO_ExportarCobranza_Result)">
       <Parameter Name="IdCobranza" Mode="In" Type="Int32" />
@@ -772,6 +762,16 @@
       <Parameter Name="IdInsumo" Mode="In" Type="Int32" />
       <Parameter Name="Descripcion" Mode="In" Type="String" />
       <Parameter Name="Estado" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="WCO_ListarTipoTrabajador" ReturnType="Collection(PrecisaModel.WCO_ListarTipoTrabajador_Result)">
+      <Parameter Name="pTipoTrabajador" Mode="In" Type="String" />
+      <Parameter Name="pDescripcion" Mode="In" Type="String" />
+      <Parameter Name="pEstado" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WCO_ListarCuentaBancaria" ReturnType="Collection(PrecisaModel.WCO_ListarCuentaBancaria_Result)">
+      <Parameter Name="CuentaBancaria" Mode="In" Type="String" />
+      <Parameter Name="Banco" Mode="In" Type="Int32" />
+      <Parameter Name="Estado" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="WCO_ListarAdmisionServicio_Result">
@@ -2333,20 +2333,6 @@
     <Property Type="String" Name="MultiCompanyFlag" Nullable="true" MaxLength="1" />
     <Property Type="String" Name="UnidadNegocio" Nullable="true" MaxLength="6" />
   </ComplexType>
-  <ComplexType Name="WCO_ListarCuentaBancaria_Result">
-    <Property Type="String" Name="CuentaBancaria" Nullable="false" MaxLength="15" />
-    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="40" />
-    <Property Type="DateTime" Name="FechaApertura" Nullable="true" Precision="23" />
-    <Property Type="DateTime" Name="FechaCierreCuenta" Nullable="true" Precision="23" />
-    <Property Type="String" Name="MonedaCodigo" Nullable="true" MaxLength="2" />
-    <Property Type="String" Name="TipoCuenta" Nullable="true" MaxLength="1" />
-    <Property Type="String" Name="CuentaContable" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="CuentaBancariaConsolidada" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="CuentaBancoOriginal" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
-    <Property Type="String" Name="Banco" Nullable="true" MaxLength="40" />
-    <Property Type="String" Name="ESTADOdesc" Nullable="false" MaxLength="8" />
-  </ComplexType>
   <ComplexType Name="WCO_ListarExpediente_Result">
     <Property Type="Int32" Name="IdExpediente" Nullable="false" />
     <Property Type="String" Name="CodigoExpediente" Nullable="true" MaxLength="15" />
@@ -2603,26 +2589,6 @@
   <ComplexType Name="WCO_ListarSucursalCompSerie_Result">
     <Property Type="String" Name="TipoComprobante" Nullable="false" MaxLength="2" />
     <Property Type="String" Name="Serie" Nullable="false" MaxLength="4" />
-  </ComplexType>
-  <ComplexType Name="WCO_ListarTipoTrabajador_Result">
-    <Property Type="String" Name="TipoTrabajador" Nullable="false" MaxLength="2" />
-    <Property Type="String" Name="DescripcionLocal" Nullable="true" MaxLength="40" />
-    <Property Type="String" Name="DescripcionExtranjera" Nullable="true" MaxLength="40" />
-    <Property Type="String" Name="UltimoUsuario" Nullable="true" MaxLength="25" />
-    <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
-    <Property Type="String" Name="TratamientoContableAuxiliar" Nullable="true" MaxLength="1" />
-    <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
-    <Property Type="String" Name="CodigoSeguro" Nullable="true" MaxLength="2" />
-    <Property Type="String" Name="TipotrabajadorRTPS" Nullable="true" MaxLength="2" />
-    <Property Type="String" Name="categoriaRTPS" Nullable="true" MaxLength="2" />
-    <Property Type="Int32" Name="IndicadorAplicaCaja" Nullable="true" />
-    <Property Type="Int32" Name="IndicadorCirugia" Nullable="true" />
-    <Property Type="Int32" Name="OrdenPersonalCirugia" Nullable="true" />
-    <Property Type="String" Name="ComponenteHospitalizacion" Nullable="true" MaxLength="25" />
-    <Property Type="Int32" Name="IndicadorSelectorMedico" Nullable="true" />
-    <Property Type="Decimal" Name="PorcentajeFacturacion" Nullable="true" Precision="20" Scale="6" />
-    <Property Type="Int32" Name="IndicadorPorcentajeFacturacion" Nullable="true" />
-    <Property Type="String" Name="EstadoDesc" Nullable="false" MaxLength="8" />
   </ComplexType>
   <ComplexType Name="WCO_ExportarCobranza_Result">
     <Property Type="String" Name="Compania" Nullable="true" MaxLength="15" />
@@ -3379,6 +3345,65 @@
     <Property Type="String" Name="UsuarioModificacion" Nullable="true" MaxLength="25" />
     <Property Type="String" Name="IpCreacion" Nullable="true" MaxLength="20" />
     <Property Type="String" Name="IpModificacion" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ESTADOdesc" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="WCO_ListarTipoTrabajador_Result">
+    <Property Type="String" Name="TipoTrabajador" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="DescripcionLocal" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DescripcionExtranjera" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="UltimoUsuario" Nullable="true" MaxLength="25" />
+    <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
+    <Property Type="String" Name="TratamientoContableAuxiliar" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="CodigoSeguro" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="TipotrabajadorRTPS" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="categoriaRTPS" Nullable="true" MaxLength="2" />
+    <Property Type="Int32" Name="IndicadorAplicaCaja" Nullable="true" />
+    <Property Type="Int32" Name="IndicadorCirugia" Nullable="true" />
+    <Property Type="Int32" Name="OrdenPersonalCirugia" Nullable="true" />
+    <Property Type="String" Name="ComponenteHospitalizacion" Nullable="true" MaxLength="25" />
+    <Property Type="Int32" Name="IndicadorSelectorMedico" Nullable="true" />
+    <Property Type="Decimal" Name="PorcentajeFacturacion" Nullable="true" Precision="20" Scale="6" />
+    <Property Type="Int32" Name="IndicadorPorcentajeFacturacion" Nullable="true" />
+    <Property Type="String" Name="EstadoDesc" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="WCO_ListarCuentaBancaria_Result">
+    <Property Type="String" Name="CuentaBancaria" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="CompaniaCodigo" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="40" />
+    <Property Type="DateTime" Name="FechaApertura" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaCierreCuenta" Nullable="true" Precision="23" />
+    <Property Type="String" Name="MonedaCodigo" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="TipoCuenta" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="CuentaContable" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="CuentaContableDescuento" Nullable="true" MaxLength="20" />
+    <Property Type="Decimal" Name="SobregiroAutorizado" Nullable="true" Precision="19" />
+    <Property Type="String" Name="AgenciaBanco" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="AgenciaDistrito" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="SucursalCodigo" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Idioma" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="UltimoPeriodoConciliacion" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="VoucherTipo" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="VoucherClasificacion" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="AtencionPersona" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="AtencionCargo" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FlujodeCajaFlag" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="FlujodeCajaOrden" Nullable="true" />
+    <Property Type="String" Name="CodigoDiskette" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ConciliacionBancariaFlag" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="CuentaBancoOriginal" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="CuentaBancariaConsolidada" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ArchivoDiskette" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ReferenciaFiscal03" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ITFFlag" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="ConciliacionAPFlag" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="PagosInterfaseFlag" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="ConciliacionPeriodo" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="UltimoUsuario" Nullable="true" MaxLength="25" />
+    <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CuentaBancoOriginal1" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="Banco" Nullable="true" MaxLength="40" />
     <Property Type="String" Name="ESTADOdesc" Nullable="false" MaxLength="8" />
   </ComplexType>
 </Schema>

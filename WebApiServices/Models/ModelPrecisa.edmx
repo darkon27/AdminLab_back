@@ -1253,11 +1253,6 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
             <Parameter Name="CostCenter" Mode="In" Type="String" />
             <Parameter Name="LocalName" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="WCO_ListarCuentaBancaria" ReturnType="Collection(PrecisaModel.WCO_ListarCuentaBancaria_Result)">
-            <Parameter Name="CuentaBancaria" Mode="In" Type="String" />
-            <Parameter Name="Banco" Mode="In" Type="Int32" />
-            <Parameter Name="Estado" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="WCO_ListarExpediente" ReturnType="Collection(PrecisaModel.WCO_ListarExpediente_Result)">
             <Parameter Name="UneuNegocioId" Mode="In" Type="Int32" />
             <Parameter Name="IdExpediente" Mode="In" Type="Int32" />
@@ -1318,11 +1313,6 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
             <Parameter Name="Sucursal" Mode="In" Type="String" />
             <Parameter Name="TipoComprobante" Mode="In" Type="String" />
             <Parameter Name="Estado" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="WCO_ListarTipoTrabajador" ReturnType="Collection(PrecisaModel.WCO_ListarTipoTrabajador_Result)">
-            <Parameter Name="pTipoTrabajador" Mode="In" Type="String" />
-            <Parameter Name="pDescripcion" Mode="In" Type="String" />
-            <Parameter Name="pEstado" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="WCO_ExportarCobranza" ReturnType="Collection(PrecisaModel.WCO_ExportarCobranza_Result)">
             <Parameter Name="IdCobranza" Mode="In" Type="Int32" />
@@ -1584,6 +1574,16 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
             <Parameter Name="IdInsumo" Mode="In" Type="Int32" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
             <Parameter Name="Estado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="WCO_ListarTipoTrabajador" ReturnType="Collection(PrecisaModel.WCO_ListarTipoTrabajador_Result)">
+            <Parameter Name="pTipoTrabajador" Mode="In" Type="String" />
+            <Parameter Name="pDescripcion" Mode="In" Type="String" />
+            <Parameter Name="pEstado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="WCO_ListarCuentaBancaria" ReturnType="Collection(PrecisaModel.WCO_ListarCuentaBancaria_Result)">
+            <Parameter Name="CuentaBancaria" Mode="In" Type="String" />
+            <Parameter Name="Banco" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="WCO_ListarAdmisionServicio_Result">
@@ -3145,20 +3145,6 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
           <Property Type="String" Name="MultiCompanyFlag" Nullable="true" MaxLength="1" />
           <Property Type="String" Name="UnidadNegocio" Nullable="true" MaxLength="6" />
         </ComplexType>
-        <ComplexType Name="WCO_ListarCuentaBancaria_Result">
-          <Property Type="String" Name="CuentaBancaria" Nullable="false" MaxLength="15" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="40" />
-          <Property Type="DateTime" Name="FechaApertura" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="FechaCierreCuenta" Nullable="true" Precision="23" />
-          <Property Type="String" Name="MonedaCodigo" Nullable="true" MaxLength="2" />
-          <Property Type="String" Name="TipoCuenta" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="CuentaContable" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="CuentaBancariaConsolidada" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="CuentaBancoOriginal" Nullable="true" MaxLength="25" />
-          <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="Banco" Nullable="true" MaxLength="40" />
-          <Property Type="String" Name="ESTADOdesc" Nullable="false" MaxLength="8" />
-        </ComplexType>
         <ComplexType Name="WCO_ListarExpediente_Result">
           <Property Type="Int32" Name="IdExpediente" Nullable="false" />
           <Property Type="String" Name="CodigoExpediente" Nullable="true" MaxLength="15" />
@@ -3415,26 +3401,6 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
         <ComplexType Name="WCO_ListarSucursalCompSerie_Result">
           <Property Type="String" Name="TipoComprobante" Nullable="false" MaxLength="2" />
           <Property Type="String" Name="Serie" Nullable="false" MaxLength="4" />
-        </ComplexType>
-        <ComplexType Name="WCO_ListarTipoTrabajador_Result">
-          <Property Type="String" Name="TipoTrabajador" Nullable="false" MaxLength="2" />
-          <Property Type="String" Name="DescripcionLocal" Nullable="true" MaxLength="40" />
-          <Property Type="String" Name="DescripcionExtranjera" Nullable="true" MaxLength="40" />
-          <Property Type="String" Name="UltimoUsuario" Nullable="true" MaxLength="25" />
-          <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
-          <Property Type="String" Name="TratamientoContableAuxiliar" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="CodigoSeguro" Nullable="true" MaxLength="2" />
-          <Property Type="String" Name="TipotrabajadorRTPS" Nullable="true" MaxLength="2" />
-          <Property Type="String" Name="categoriaRTPS" Nullable="true" MaxLength="2" />
-          <Property Type="Int32" Name="IndicadorAplicaCaja" Nullable="true" />
-          <Property Type="Int32" Name="IndicadorCirugia" Nullable="true" />
-          <Property Type="Int32" Name="OrdenPersonalCirugia" Nullable="true" />
-          <Property Type="String" Name="ComponenteHospitalizacion" Nullable="true" MaxLength="25" />
-          <Property Type="Int32" Name="IndicadorSelectorMedico" Nullable="true" />
-          <Property Type="Decimal" Name="PorcentajeFacturacion" Nullable="true" Precision="20" Scale="6" />
-          <Property Type="Int32" Name="IndicadorPorcentajeFacturacion" Nullable="true" />
-          <Property Type="String" Name="EstadoDesc" Nullable="false" MaxLength="8" />
         </ComplexType>
         <ComplexType Name="WCO_ExportarCobranza_Result">
           <Property Type="String" Name="Compania" Nullable="true" MaxLength="15" />
@@ -4191,6 +4157,65 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
           <Property Type="String" Name="UsuarioModificacion" Nullable="true" MaxLength="25" />
           <Property Type="String" Name="IpCreacion" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="IpModificacion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ESTADOdesc" Nullable="false" MaxLength="8" />
+        </ComplexType>
+        <ComplexType Name="WCO_ListarTipoTrabajador_Result">
+          <Property Type="String" Name="TipoTrabajador" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="DescripcionLocal" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="DescripcionExtranjera" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="UltimoUsuario" Nullable="true" MaxLength="25" />
+          <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TratamientoContableAuxiliar" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="CodigoSeguro" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="TipotrabajadorRTPS" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="categoriaRTPS" Nullable="true" MaxLength="2" />
+          <Property Type="Int32" Name="IndicadorAplicaCaja" Nullable="true" />
+          <Property Type="Int32" Name="IndicadorCirugia" Nullable="true" />
+          <Property Type="Int32" Name="OrdenPersonalCirugia" Nullable="true" />
+          <Property Type="String" Name="ComponenteHospitalizacion" Nullable="true" MaxLength="25" />
+          <Property Type="Int32" Name="IndicadorSelectorMedico" Nullable="true" />
+          <Property Type="Decimal" Name="PorcentajeFacturacion" Nullable="true" Precision="20" Scale="6" />
+          <Property Type="Int32" Name="IndicadorPorcentajeFacturacion" Nullable="true" />
+          <Property Type="String" Name="EstadoDesc" Nullable="false" MaxLength="8" />
+        </ComplexType>
+        <ComplexType Name="WCO_ListarCuentaBancaria_Result">
+          <Property Type="String" Name="CuentaBancaria" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="CompaniaCodigo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="40" />
+          <Property Type="DateTime" Name="FechaApertura" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaCierreCuenta" Nullable="true" Precision="23" />
+          <Property Type="String" Name="MonedaCodigo" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="TipoCuenta" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="CuentaContable" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CuentaContableDescuento" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="SobregiroAutorizado" Nullable="true" Precision="19" />
+          <Property Type="String" Name="AgenciaBanco" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="AgenciaDistrito" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="SucursalCodigo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Idioma" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="UltimoPeriodoConciliacion" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="VoucherTipo" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="VoucherClasificacion" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="AtencionPersona" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="AtencionCargo" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="FlujodeCajaFlag" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="FlujodeCajaOrden" Nullable="true" />
+          <Property Type="String" Name="CodigoDiskette" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ConciliacionBancariaFlag" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="CuentaBancoOriginal" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="CuentaBancariaConsolidada" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ArchivoDiskette" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ReferenciaFiscal03" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ITFFlag" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ConciliacionAPFlag" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="PagosInterfaseFlag" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ConciliacionPeriodo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="UltimoUsuario" Nullable="true" MaxLength="25" />
+          <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CuentaBancoOriginal1" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Banco" Nullable="true" MaxLength="40" />
           <Property Type="String" Name="ESTADOdesc" Nullable="false" MaxLength="8" />
         </ComplexType>
       </Schema>
@@ -5988,24 +6013,6 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="WCO_ListarCuentaBancaria" FunctionName="PrecisaModel.Store.WCO_ListarCuentaBancaria">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarCuentaBancaria_Result">
-                <ScalarProperty Name="CuentaBancaria" ColumnName="CuentaBancaria" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="FechaApertura" ColumnName="FechaApertura" />
-                <ScalarProperty Name="FechaCierreCuenta" ColumnName="FechaCierreCuenta" />
-                <ScalarProperty Name="MonedaCodigo" ColumnName="MonedaCodigo" />
-                <ScalarProperty Name="TipoCuenta" ColumnName="TipoCuenta" />
-                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
-                <ScalarProperty Name="CuentaBancariaConsolidada" ColumnName="CuentaBancariaConsolidada" />
-                <ScalarProperty Name="CuentaBancoOriginal" ColumnName="CuentaBancoOriginal" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Banco" ColumnName="Banco" />
-                <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="WCO_ListarExpediente" FunctionName="PrecisaModel.Store.WCO_ListarExpediente">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarExpediente_Result">
@@ -6288,30 +6295,6 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
               <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarSucursalCompSerie_Result">
                 <ScalarProperty Name="TipoComprobante" ColumnName="TipoComprobante" />
                 <ScalarProperty Name="Serie" ColumnName="Serie" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="WCO_ListarTipoTrabajador" FunctionName="PrecisaModel.Store.WCO_ListarTipoTrabajador">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarTipoTrabajador_Result">
-                <ScalarProperty Name="TipoTrabajador" ColumnName="TipoTrabajador" />
-                <ScalarProperty Name="DescripcionLocal" ColumnName="DescripcionLocal" />
-                <ScalarProperty Name="DescripcionExtranjera" ColumnName="DescripcionExtranjera" />
-                <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
-                <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
-                <ScalarProperty Name="TratamientoContableAuxiliar" ColumnName="TratamientoContableAuxiliar" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="CodigoSeguro" ColumnName="CodigoSeguro" />
-                <ScalarProperty Name="TipotrabajadorRTPS" ColumnName="TipotrabajadorRTPS" />
-                <ScalarProperty Name="categoriaRTPS" ColumnName="categoriaRTPS" />
-                <ScalarProperty Name="IndicadorAplicaCaja" ColumnName="IndicadorAplicaCaja" />
-                <ScalarProperty Name="IndicadorCirugia" ColumnName="IndicadorCirugia" />
-                <ScalarProperty Name="OrdenPersonalCirugia" ColumnName="OrdenPersonalCirugia" />
-                <ScalarProperty Name="ComponenteHospitalizacion" ColumnName="ComponenteHospitalizacion" />
-                <ScalarProperty Name="IndicadorSelectorMedico" ColumnName="IndicadorSelectorMedico" />
-                <ScalarProperty Name="PorcentajeFacturacion" ColumnName="PorcentajeFacturacion" />
-                <ScalarProperty Name="IndicadorPorcentajeFacturacion" ColumnName="IndicadorPorcentajeFacturacion" />
-                <ScalarProperty Name="EstadoDesc" ColumnName="EstadoDesc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -7169,6 +7152,73 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
                 <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
                 <ScalarProperty Name="IpCreacion" ColumnName="IpCreacion" />
                 <ScalarProperty Name="IpModificacion" ColumnName="IpModificacion" />
+                <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WCO_ListarTipoTrabajador" FunctionName="PrecisaModel.Store.WCO_ListarTipoTrabajador">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarTipoTrabajador_Result">
+                <ScalarProperty Name="TipoTrabajador" ColumnName="TipoTrabajador" />
+                <ScalarProperty Name="DescripcionLocal" ColumnName="DescripcionLocal" />
+                <ScalarProperty Name="DescripcionExtranjera" ColumnName="DescripcionExtranjera" />
+                <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
+                <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
+                <ScalarProperty Name="TratamientoContableAuxiliar" ColumnName="TratamientoContableAuxiliar" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CodigoSeguro" ColumnName="CodigoSeguro" />
+                <ScalarProperty Name="TipotrabajadorRTPS" ColumnName="TipotrabajadorRTPS" />
+                <ScalarProperty Name="categoriaRTPS" ColumnName="categoriaRTPS" />
+                <ScalarProperty Name="IndicadorAplicaCaja" ColumnName="IndicadorAplicaCaja" />
+                <ScalarProperty Name="IndicadorCirugia" ColumnName="IndicadorCirugia" />
+                <ScalarProperty Name="OrdenPersonalCirugia" ColumnName="OrdenPersonalCirugia" />
+                <ScalarProperty Name="ComponenteHospitalizacion" ColumnName="ComponenteHospitalizacion" />
+                <ScalarProperty Name="IndicadorSelectorMedico" ColumnName="IndicadorSelectorMedico" />
+                <ScalarProperty Name="PorcentajeFacturacion" ColumnName="PorcentajeFacturacion" />
+                <ScalarProperty Name="IndicadorPorcentajeFacturacion" ColumnName="IndicadorPorcentajeFacturacion" />
+                <ScalarProperty Name="EstadoDesc" ColumnName="EstadoDesc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WCO_ListarCuentaBancaria" FunctionName="PrecisaModel.Store.WCO_ListarCuentaBancaria">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrecisaModel.WCO_ListarCuentaBancaria_Result">
+                <ScalarProperty Name="CuentaBancaria" ColumnName="CuentaBancaria" />
+                <ScalarProperty Name="CompaniaCodigo" ColumnName="CompaniaCodigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaApertura" ColumnName="FechaApertura" />
+                <ScalarProperty Name="FechaCierreCuenta" ColumnName="FechaCierreCuenta" />
+                <ScalarProperty Name="MonedaCodigo" ColumnName="MonedaCodigo" />
+                <ScalarProperty Name="TipoCuenta" ColumnName="TipoCuenta" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+                <ScalarProperty Name="CuentaContableDescuento" ColumnName="CuentaContableDescuento" />
+                <ScalarProperty Name="SobregiroAutorizado" ColumnName="SobregiroAutorizado" />
+                <ScalarProperty Name="AgenciaBanco" ColumnName="AgenciaBanco" />
+                <ScalarProperty Name="AgenciaDistrito" ColumnName="AgenciaDistrito" />
+                <ScalarProperty Name="SucursalCodigo" ColumnName="SucursalCodigo" />
+                <ScalarProperty Name="Idioma" ColumnName="Idioma" />
+                <ScalarProperty Name="UltimoPeriodoConciliacion" ColumnName="UltimoPeriodoConciliacion" />
+                <ScalarProperty Name="VoucherTipo" ColumnName="VoucherTipo" />
+                <ScalarProperty Name="VoucherClasificacion" ColumnName="VoucherClasificacion" />
+                <ScalarProperty Name="AtencionPersona" ColumnName="AtencionPersona" />
+                <ScalarProperty Name="AtencionCargo" ColumnName="AtencionCargo" />
+                <ScalarProperty Name="FlujodeCajaFlag" ColumnName="FlujodeCajaFlag" />
+                <ScalarProperty Name="FlujodeCajaOrden" ColumnName="FlujodeCajaOrden" />
+                <ScalarProperty Name="CodigoDiskette" ColumnName="CodigoDiskette" />
+                <ScalarProperty Name="ConciliacionBancariaFlag" ColumnName="ConciliacionBancariaFlag" />
+                <ScalarProperty Name="CuentaBancoOriginal" ColumnName="CuentaBancoOriginal" />
+                <ScalarProperty Name="CuentaBancariaConsolidada" ColumnName="CuentaBancariaConsolidada" />
+                <ScalarProperty Name="ArchivoDiskette" ColumnName="ArchivoDiskette" />
+                <ScalarProperty Name="ReferenciaFiscal03" ColumnName="ReferenciaFiscal03" />
+                <ScalarProperty Name="ITFFlag" ColumnName="ITFFlag" />
+                <ScalarProperty Name="ConciliacionAPFlag" ColumnName="ConciliacionAPFlag" />
+                <ScalarProperty Name="PagosInterfaseFlag" ColumnName="PagosInterfaseFlag" />
+                <ScalarProperty Name="ConciliacionPeriodo" ColumnName="ConciliacionPeriodo" />
+                <ScalarProperty Name="UltimoUsuario" ColumnName="UltimoUsuario" />
+                <ScalarProperty Name="UltimaFechaModif" ColumnName="UltimaFechaModif" />
+                <ScalarProperty Name="CuentaBancoOriginal1" ColumnName="CuentaBancoOriginal1" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Banco" ColumnName="Banco" />
                 <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
               </ComplexTypeMapping>
             </ResultMapping>
