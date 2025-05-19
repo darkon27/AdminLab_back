@@ -975,34 +975,34 @@ namespace WebApiServices.Models
         #endregion
 
         #region Insumo
-        public List<WCO_ListarInsumo_Result> ListarInsumo(WCO_ListarInsumo_Result BE_Aseguradora)
+        public List<WCO_ListarInsumo_Result> ListarInsumo(WCO_ListarInsumo_Result objBusqueda)
         {
             List<WCO_ListarInsumo_Result> lst = new List<WCO_ListarInsumo_Result>();
             using (var context = new BDComercialEntities())
             {
-                lst = context.WCO_ListarInsumo(BE_Aseguradora.IdInsumo, BE_Aseguradora.Descripcion, BE_Aseguradora.Estado).ToList();
+                lst = context.WCO_ListarInsumo(objBusqueda.IdInsumo, objBusqueda.Descripcion, objBusqueda.Estado).ToList();
             }
             return lst;
         }
 
-        public int InsertarInsumo(WCO_ListarInsumo_Result resp)
+        public int InsertarInsumo(WCO_ListarInsumo_Result objRegistro)
         {
             int valor = 0;
             WCO_ListarInsumo_Result obj = new WCO_ListarInsumo_Result();
 
 
             bool isExists = false;
-            isExists = ListarInsumo(obj).Exists(x => x.IdInsumo == resp.IdInsumo && x.Descripcion == resp.Descripcion);
+            isExists = ListarInsumo(obj).Exists(x => x.IdInsumo == objRegistro.IdInsumo && x.Descripcion == objRegistro.Descripcion);
 
             if (!isExists)
             {
                 DataOperation dop_Operacion = new DataOperation("WCO_InsertarInsumo");
                 Parameter[] prm_Params = new Parameter[5];
-                prm_Params[0] = new Parameter("@Descripcion", resp.Descripcion);
-                prm_Params[1] = new Parameter("@Estado", resp.Estado);
-                prm_Params[2] = new Parameter("@UsuarioCreacion", resp.UsuarioCreacion);
-                prm_Params[3] = new Parameter("@IpCreacion", resp.IpCreacion);
-                prm_Params[4] = new Parameter("@IdInsumo", resp.IdInsumo);
+                prm_Params[0] = new Parameter("@Descripcion", objRegistro.Descripcion);
+                prm_Params[1] = new Parameter("@Estado", objRegistro.Estado);
+                prm_Params[2] = new Parameter("@UsuarioCreacion", objRegistro.UsuarioCreacion);
+                prm_Params[3] = new Parameter("@IpCreacion", objRegistro.IpCreacion);
+                prm_Params[4] = new Parameter("@IdInsumo", objRegistro.IdInsumo);
                 dop_Operacion.Parameters.AddRange(prm_Params);
                 DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
                 return 0;
@@ -1014,39 +1014,118 @@ namespace WebApiServices.Models
             return valor;
         }
 
-        public int ActualizarInsumo(WCO_ListarInsumo_Result objBEAseguradora)
+        public int ActualizarInsumo(WCO_ListarInsumo_Result objRegistro)
         {
             int valor = 0;
             WCO_ListarInsumo_Result obj = new WCO_ListarInsumo_Result();
 
             DataOperation dop_Operacion = new DataOperation("WCO_ActualizarInsumo");
             Parameter[] prm_Params = new Parameter[5];
-            prm_Params[0] = new Parameter("@IdInsumo", objBEAseguradora.IdInsumo);
-            prm_Params[1] = new Parameter("@Descripcion", objBEAseguradora.Descripcion);
-            prm_Params[2] = new Parameter("@Estado", objBEAseguradora.Estado);
-            prm_Params[3] = new Parameter("@UltimoUsuario", objBEAseguradora.UsuarioModificacion);
-            prm_Params[4] = new Parameter("@IpModificacion", objBEAseguradora.IpModificacion);
+            prm_Params[0] = new Parameter("@IdInsumo", objRegistro.IdInsumo);
+            prm_Params[1] = new Parameter("@Descripcion", objRegistro.Descripcion);
+            prm_Params[2] = new Parameter("@Estado", objRegistro.Estado);
+            prm_Params[3] = new Parameter("@UltimoUsuario", objRegistro.UsuarioModificacion);
+            prm_Params[4] = new Parameter("@IpModificacion", objRegistro.IpModificacion);
             dop_Operacion.Parameters.AddRange(prm_Params);
             DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
 
             return valor;
         }
 
-        public int InactivarInsumo(WCO_ListarInsumo_Result objBEAseguradora)
+        public int InactivarInsumo(WCO_ListarInsumo_Result objRegistro)
         {
             try
             {
                 DataOperation dop_Operacion = new DataOperation("WCO_InactivarInsumo");
                 Parameter[] prm_Params = new Parameter[4];
-                prm_Params[0] = new Parameter("@IdInsumo", objBEAseguradora.IdInsumo);
-                prm_Params[1] = new Parameter("@Estado", objBEAseguradora.Estado);
-                prm_Params[2] = new Parameter("@UltimoUsuario", objBEAseguradora.UsuarioModificacion);
-                prm_Params[3] = new Parameter("@IpModificacion", objBEAseguradora.IpModificacion);
+                prm_Params[0] = new Parameter("@IdInsumo", objRegistro.IdInsumo);
+                prm_Params[1] = new Parameter("@Estado", objRegistro.Estado);
+                prm_Params[2] = new Parameter("@UltimoUsuario", objRegistro.UsuarioModificacion);
+                prm_Params[3] = new Parameter("@IpModificacion", objRegistro.IpModificacion);
                 dop_Operacion.Parameters.AddRange(prm_Params);
                 DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
                 return 0;
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+        #endregion
+
+        #region Tipo Trabajador
+        public List<WCO_ListarTipoTrabajador_Result> ListarTipoTrabajor(WCO_ListarTipoTrabajador_Result objBusqueda)
+        {
+            List<WCO_ListarTipoTrabajador_Result> lst = new List<WCO_ListarTipoTrabajador_Result>();
+            using (var context = new BDComercialEntities())
+            {
+                lst = context.WCO_ListarTipoTrabajador(objBusqueda.TipoTrabajador, objBusqueda.DescripcionLocal, objBusqueda.Estado).ToList();
+            }
+            return lst;
+        }
+
+        public int InsertarTipoTrabajador(WCO_ListarTipoTrabajador_Result objRegistro)
+        {
+            int valor = 0;
+            WCO_ListarTipoTrabajador_Result obj = new WCO_ListarTipoTrabajador_Result();
+            bool isExists = ListarTipoTrabajor(obj).Exists(x => x.TipoTrabajador == objRegistro.TipoTrabajador && x.DescripcionLocal == objRegistro.DescripcionLocal);
+
+            if (!isExists)
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_InsertarTipoTrabajador");
+                Parameter[] prm_Params = new Parameter[7];
+                prm_Params[0] = new Parameter("@Descripcion", objRegistro.DescripcionLocal);
+                prm_Params[1] = new Parameter("@DescripcionExtran", objRegistro.DescripcionExtranjera);
+                prm_Params[2] = new Parameter("@UsuarioCreacion", objRegistro.UltimoUsuario);
+                prm_Params[3] = new Parameter("@CodigoSeguro", objRegistro.CodigoSeguro);
+                prm_Params[4] = new Parameter("@estado", objRegistro.Estado);
+                prm_Params[5] = new Parameter("@Componente", objRegistro.ComponenteHospitalizacion);
+                prm_Params[6] = new Parameter("@TipoTrabajador", objRegistro.TipoTrabajador);
+
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 0;
+            }
+            else
+            {
+                valor = -1;
+            }
+            return valor;
+        }
+
+        public int ActualizarTipoTrabajador(WCO_ListarTipoTrabajador_Result objRegistro)
+        {
+            int valor = 0;
+
+            DataOperation dop_Operacion = new DataOperation("WCO_ActualizarTipoTrabajador");
+            Parameter[] prm_Params = new Parameter[7];
+            prm_Params[0] = new Parameter("@Descripcion", objRegistro.DescripcionLocal);
+            prm_Params[1] = new Parameter("@DescripcionExtran", objRegistro.DescripcionExtranjera);
+            prm_Params[2] = new Parameter("@Usuario", objRegistro.UltimoUsuario);
+            prm_Params[3] = new Parameter("@CodigoSeguro", objRegistro.CodigoSeguro);
+            prm_Params[4] = new Parameter("@estado", objRegistro.Estado);
+            prm_Params[5] = new Parameter("@Componente", objRegistro.ComponenteHospitalizacion);
+            prm_Params[6] = new Parameter("@TipoTrabajador", objRegistro.TipoTrabajador);
+
+            dop_Operacion.Parameters.AddRange(prm_Params);
+            DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+
+            return valor;
+        }
+
+        public int InactivarTipotrabajador(WCO_ListarTipoTrabajador_Result objRegistro)
+        {
+            try
+            {
+                DataOperation dop_Operacion = new DataOperation("WCO_InactivarTipoTrabajador");
+                Parameter[] prm_Params = new Parameter[2];
+                prm_Params[0] = new Parameter("@TipoTrabajador", objRegistro.TipoTrabajador);
+                prm_Params[1] = new Parameter("@pUltimoUSuario", objRegistro.UltimoUsuario);
+                dop_Operacion.Parameters.AddRange(prm_Params);
+                DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
+                return 0;
+            }
+            catch (Exception ex)
             {
                 return -1;
             }
