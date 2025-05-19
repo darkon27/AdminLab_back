@@ -721,7 +721,7 @@ namespace WebApiServices.Controllers
 
         #endregion
 
-        #region Aprobador
+        #region Insumo
 
         [HttpPost]
         [Route("api/Maestro/ListarInsumos")]
@@ -734,6 +734,7 @@ namespace WebApiServices.Controllers
             }
             catch
             {
+
 
             }
             return lst;
