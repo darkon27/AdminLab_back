@@ -1037,7 +1037,7 @@ namespace WebApiServices.Models
             try
             {
                 DataOperation dop_Operacion = new DataOperation("WCO_InactivarInsumo");
-                Parameter[] prm_Params = new Parameter[2];
+                Parameter[] prm_Params = new Parameter[4];
                 prm_Params[0] = new Parameter("@IdInsumo", objBEAseguradora.IdInsumo);
                 prm_Params[1] = new Parameter("@Estado", objBEAseguradora.Estado);
                 prm_Params[2] = new Parameter("@UltimoUsuario", objBEAseguradora.UsuarioModificacion);
@@ -1046,7 +1046,7 @@ namespace WebApiServices.Models
                 DataManager.ExecuteNonQuery(DAT_Conexion.Co_ConnecPrecisa, dop_Operacion);
                 return 0;
             }
-            catch
+            catch(Exception ex)
             {
                 return -1;
             }
