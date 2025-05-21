@@ -2996,6 +2996,7 @@
           <ScalarProperty Name="CuentaBancoOriginal1" ColumnName="CuentaBancoOriginal1" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Banco" ColumnName="Banco" />
+          <ScalarProperty Name="BancoDesc" ColumnName="BancoDesc" />
           <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
         </ComplexTypeMapping>
       </ResultMapping>

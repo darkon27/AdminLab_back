@@ -48,7 +48,8 @@ namespace WebApiServices.Models
         public Nullable<System.DateTime> UltimaFechaModif { get; set; }
         public string CuentaBancoOriginal1 { get; set; }
         public string Estado { get; set; }
-        public int Banco { get; set; }
+        public Nullable<int> Banco { get; set; }
+        public string BancoDesc { get; set; }
         public string ESTADOdesc { get; set; }
     }
 }

@@ -4215,7 +4215,8 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
           <Property Type="DateTime" Name="UltimaFechaModif" Nullable="true" Precision="23" />
           <Property Type="String" Name="CuentaBancoOriginal1" Nullable="true" MaxLength="25" />
           <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
-          <Property Type="String" Name="Banco" Nullable="true" MaxLength="40" />
+          <Property Type="Int32" Name="Banco" Nullable="true" />
+          <Property Type="String" Name="BancoDesc" Nullable="true" MaxLength="40" />
           <Property Type="String" Name="ESTADOdesc" Nullable="false" MaxLength="8" />
         </ComplexType>
       </Schema>
@@ -7219,6 +7220,7 @@ advertencia 6002: La tabla o vista 'BDComercial.dbo.VW_HomologacionCliente' no t
                 <ScalarProperty Name="CuentaBancoOriginal1" ColumnName="CuentaBancoOriginal1" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Banco" ColumnName="Banco" />
+                <ScalarProperty Name="BancoDesc" ColumnName="BancoDesc" />
                 <ScalarProperty Name="ESTADOdesc" ColumnName="ESTADOdesc" />
               </ComplexTypeMapping>
             </ResultMapping>
